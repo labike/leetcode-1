@@ -1,12 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0902.Numbers%20At%20Most%20N%20Given%20Digit%20Set/README.md
+tags:
+    - 数组
+    - 数学
+    - 字符串
+    - 二分查找
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [902. 最大为 N 的数字组合](https://leetcode.cn/problems/numbers-at-most-n-given-digit-set)
 
 [English Version](/solution/0900-0999/0902.Numbers%20At%20Most%20N%20Given%20Digit%20Set/README_EN.md)
 
-<!-- tags:数组,数学,字符串,二分查找,动态规划 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个按&nbsp;<strong>非递减顺序</strong>&nbsp;排列的数字数组<meta charset="UTF-8" />&nbsp;<code>digits</code>&nbsp;。你可以用任意次数&nbsp;<code>digits[i]</code>&nbsp;来写的数字。例如，如果<meta charset="UTF-8" />&nbsp;<code>digits = ['1','3','5']</code>，我们可以写数字，如<meta charset="UTF-8" />&nbsp;<code>'13'</code>,&nbsp;<code>'551'</code>, 和&nbsp;<code>'1351315'</code>。</p>
 
@@ -56,7 +68,11 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：数位 DP
 
@@ -74,18 +90,25 @@ $$
 
 基本步骤如下：
 
-1. 将数字 $n$ 转为 int 数组 $a$，其中 $a[1]$ 为最低位，而 $a[len]$ 为最高位；
-1. 根据题目信息，设计函数 $dfs()$，对于本题，我们定义 $dfs(pos, lead, limit)$，答案为 $dfs(len, 1, true)$。
+我们将数字 $n$ 转化为字符串 $s$，记字符串 $s$ 的长度为 $m$。
 
-其中：
+接下来，我们设计一个函数 $\textit{dfs}(i, \textit{lead}, \textit{limit})$，表示当前处理到字符串的第 $i$ 位，到最后一位的方案数。其中：
 
--   `pos` 表示数字的位数，从末位或者第一位开始，一般根据题目的数字构造性质来选择顺序。对于本题，我们选择从高位开始，因此，`pos` 的初始值为 `len`；
--   `lead` 表示当前数字中是否包含前导零，如果包含，则为 `1`，否则为 `0`；初始化为 `1`；
--   `limit` 表示可填的数字的限制，如果无限制，那么可以选择 $[0,1,..9]$，否则，只能选择 $[0,..a[pos]]$。如果 `limit` 为 `true` 且已经取到了能取到的最大值，那么下一个 `limit` 同样为 `true`；如果 `limit` 为 `true` 但是还没有取到最大值，或者 `limit` 为 `false`，那么下一个 `limit` 为 `false`。
+-   数字 $i$ 表示当前处理到字符串 $s$ 的第 $i$ 位；
+-   布尔值 $\textit{lead}$ 表示是否只包含前导零；
+-   布尔值 $\textit{limit}$ 表示当前位置是否受到上界的限制。
 
-关于函数的实现细节，可以参考下面的代码。
+函数的执行过程如下：
 
-时间复杂度 $O(\log n)$。
+如果 $i$ 大于等于 $m$，说明我们已经处理完了所有的位数，此时如果 $\textit{lead}$ 为真，说明当前的数字是前导零，我们应当返回 $0$；否则，我们应当返回 $1$。
+
+否则，我们计算当前位置的上界 $\textit{up}$，如果 $\textit{limit}$ 为真，则 $up$ 为 $s[i]$ 对应的数字，否则 $up$ 为 $9$。
+
+然后，我们在 $[0, \textit{up}]$ 的范围内枚举当前位置的数字 $j$，如果 $j$ 为 $0$ 且 $\textit{lead}$ 为真，我们递归计算 $\textit{dfs}(i + 1, \text{true}, \textit{limit} \wedge j = \textit{up})$；否则，如果 $j$ 在 $\textit{digits}$ 中，我们递归计算 $\textit{dfs}(i + 1, \text{false}, \textit{limit} \wedge j = \textit{up})$。累加所有的结果即为答案。
+
+最后，我们返回 $\textit{dfs}(0, \text{true}, \text{true})$ 即可。
+
+时间复杂度 $O(\log n \times D)$，空间复杂度 $O(\log n)$。其中 $D = 10$。
 
 相似题目：
 
@@ -98,168 +121,193 @@ $$
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def atMostNGivenDigitSet(self, digits: List[str], n: int) -> int:
         @cache
-        def dfs(pos, lead, limit):
-            if pos <= 0:
-                return lead == False
-            up = a[pos] if limit else 9
+        def dfs(i: int, lead: int, limit: bool) -> int:
+            if i >= len(s):
+                return lead ^ 1
+
+            up = int(s[i]) if limit else 9
             ans = 0
-            for i in range(up + 1):
-                if i == 0 and lead:
-                    ans += dfs(pos - 1, lead, limit and i == up)
-                elif i in s:
-                    ans += dfs(pos - 1, False, limit and i == up)
+            for j in range(up + 1):
+                if j == 0 and lead:
+                    ans += dfs(i + 1, 1, limit and j == up)
+                elif j in nums:
+                    ans += dfs(i + 1, 0, limit and j == up)
             return ans
 
-        l = 0
-        a = [0] * 12
-        s = {int(d) for d in digits}
-        while n:
-            l += 1
-            a[l] = n % 10
-            n //= 10
-        return dfs(l, True, True)
+        s = str(n)
+        nums = {int(x) for x in digits}
+        return dfs(0, 1, True)
 ```
+
+#### Java
 
 ```java
 class Solution {
-    private int[] a = new int[12];
-    private int[][] dp = new int[12][2];
-    private Set<Integer> s = new HashSet<>();
+    private Set<Integer> nums = new HashSet<>();
+    private char[] s;
+    private Integer[] f;
 
     public int atMostNGivenDigitSet(String[] digits, int n) {
-        for (var e : dp) {
-            Arrays.fill(e, -1);
+        s = String.valueOf(n).toCharArray();
+        f = new Integer[s.length];
+        for (var x : digits) {
+            nums.add(Integer.parseInt(x));
         }
-        for (String d : digits) {
-            s.add(Integer.parseInt(d));
-        }
-        int len = 0;
-        while (n > 0) {
-            a[++len] = n % 10;
-            n /= 10;
-        }
-        return dfs(len, 1, true);
+        return dfs(0, true, true);
     }
 
-    private int dfs(int pos, int lead, boolean limit) {
-        if (pos <= 0) {
-            return lead ^ 1;
+    private int dfs(int i, boolean lead, boolean limit) {
+        if (i >= s.length) {
+            return lead ? 0 : 1;
         }
-        if (!limit && lead != 1 && dp[pos][lead] != -1) {
-            return dp[pos][lead];
+        if (!lead && !limit && f[i] != null) {
+            return f[i];
         }
+        int up = limit ? s[i] - '0' : 9;
         int ans = 0;
-        int up = limit ? a[pos] : 9;
-        for (int i = 0; i <= up; ++i) {
-            if (i == 0 && lead == 1) {
-                ans += dfs(pos - 1, lead, limit && i == up);
-            } else if (s.contains(i)) {
-                ans += dfs(pos - 1, 0, limit && i == up);
+        for (int j = 0; j <= up; ++j) {
+            if (j == 0 && lead) {
+                ans += dfs(i + 1, true, limit && j == up);
+            } else if (nums.contains(j)) {
+                ans += dfs(i + 1, false, limit && j == up);
             }
         }
-        if (!limit && lead == 0) {
-            dp[pos][lead] = ans;
+        if (!lead && !limit) {
+            f[i] = ans;
         }
         return ans;
     }
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
-    int a[12];
-    int dp[12][2];
-    unordered_set<int> s;
-
     int atMostNGivenDigitSet(vector<string>& digits, int n) {
-        memset(dp, -1, sizeof dp);
-        for (auto& d : digits) {
-            s.insert(stoi(d));
+        string s = to_string(n);
+        unordered_set<int> nums;
+        for (auto& x : digits) {
+            nums.insert(stoi(x));
         }
-        int len = 0;
-        while (n) {
-            a[++len] = n % 10;
-            n /= 10;
-        }
-        return dfs(len, 1, true);
-    }
-
-    int dfs(int pos, int lead, bool limit) {
-        if (pos <= 0) {
-            return lead ^ 1;
-        }
-        if (!limit && !lead && dp[pos][lead] != -1) {
-            return dp[pos][lead];
-        }
-        int ans = 0;
-        int up = limit ? a[pos] : 9;
-        for (int i = 0; i <= up; ++i) {
-            if (i == 0 && lead) {
-                ans += dfs(pos - 1, lead, limit && i == up);
-            } else if (s.count(i)) {
-                ans += dfs(pos - 1, 0, limit && i == up);
+        int m = s.size();
+        int f[m];
+        memset(f, -1, sizeof(f));
+        auto dfs = [&](this auto&& dfs, int i, bool lead, bool limit) -> int {
+            if (i >= m) {
+                return lead ? 0 : 1;
             }
-        }
-        if (!limit && !lead) {
-            dp[pos][lead] = ans;
-        }
-        return ans;
+            if (!lead && !limit && f[i] != -1) {
+                return f[i];
+            }
+            int up = limit ? s[i] - '0' : 9;
+            int ans = 0;
+            for (int j = 0; j <= up; ++j) {
+                if (j == 0 && lead) {
+                    ans += dfs(i + 1, true, limit && j == up);
+                } else if (nums.count(j)) {
+                    ans += dfs(i + 1, false, limit && j == up);
+                }
+            }
+            if (!lead && !limit) {
+                f[i] = ans;
+            }
+            return ans;
+        };
+        return dfs(0, true, true);
     }
 };
 ```
 
+#### Go
+
 ```go
 func atMostNGivenDigitSet(digits []string, n int) int {
-	s := map[int]bool{}
+	s := strconv.Itoa(n)
+	m := len(s)
+	f := make([]int, m)
+	for i := range f {
+		f[i] = -1
+	}
+	nums := map[int]bool{}
 	for _, d := range digits {
-		i, _ := strconv.Atoi(d)
-		s[i] = true
+		x, _ := strconv.Atoi(d)
+		nums[x] = true
 	}
-	a := make([]int, 12)
-	dp := make([][2]int, 12)
-	for i := range a {
-		dp[i] = [2]int{-1, -1}
-	}
-	l := 0
-	for n > 0 {
-		l++
-		a[l] = n % 10
-		n /= 10
-	}
-	var dfs func(int, int, bool) int
-	dfs = func(pos, lead int, limit bool) int {
-		if pos <= 0 {
-			return lead ^ 1
+	var dfs func(i int, lead, limit bool) int
+	dfs = func(i int, lead, limit bool) int {
+		if i >= m {
+			if lead {
+				return 0
+			}
+			return 1
 		}
-		if !limit && lead == 0 && dp[pos][lead] != -1 {
-			return dp[pos][lead]
+		if !lead && !limit && f[i] != -1 {
+			return f[i]
 		}
 		up := 9
 		if limit {
-			up = a[pos]
+			up = int(s[i] - '0')
 		}
 		ans := 0
-		for i := 0; i <= up; i++ {
-			if i == 0 && lead == 1 {
-				ans += dfs(pos-1, lead, limit && i == up)
-			} else if s[i] {
-				ans += dfs(pos-1, 0, limit && i == up)
+		for j := 0; j <= up; j++ {
+			if j == 0 && lead {
+				ans += dfs(i+1, true, limit && j == up)
+			} else if nums[j] {
+				ans += dfs(i+1, false, limit && j == up)
 			}
 		}
-		if !limit {
-			dp[pos][lead] = ans
+		if !lead && !limit {
+			f[i] = ans
 		}
 		return ans
 	}
-	return dfs(l, 1, true)
+	return dfs(0, true, true)
+}
+```
+
+#### TypeScript
+
+```ts
+function atMostNGivenDigitSet(digits: string[], n: number): number {
+    const s = n.toString();
+    const m = s.length;
+    const f: number[] = Array(m).fill(-1);
+    const nums = new Set<number>(digits.map(d => parseInt(d)));
+    const dfs = (i: number, lead: boolean, limit: boolean): number => {
+        if (i >= m) {
+            return lead ? 0 : 1;
+        }
+        if (!lead && !limit && f[i] !== -1) {
+            return f[i];
+        }
+        const up = limit ? +s[i] : 9;
+        let ans = 0;
+        for (let j = 0; j <= up; ++j) {
+            if (!j && lead) {
+                ans += dfs(i + 1, true, limit && j === up);
+            } else if (nums.has(j)) {
+                ans += dfs(i + 1, false, limit && j === up);
+            }
+        }
+        if (!lead && !limit) {
+            f[i] = ans;
+        }
+        return ans;
+    };
+    return dfs(0, true, true);
 }
 ```
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

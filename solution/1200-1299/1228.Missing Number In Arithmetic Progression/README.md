@@ -1,12 +1,23 @@
-# [1228. 等差数列中缺失的数字](https://leetcode.cn/problems/missing-number-in-arithmetic-progression)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1228.Missing%20Number%20In%20Arithmetic%20Progression/README.md
+rating: 1244
+source: 第 11 场双周赛 Q1
+tags:
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
+# [1228. 等差数列中缺失的数字 🔒](https://leetcode.cn/problems/missing-number-in-arithmetic-progression)
 
 [English Version](/solution/1200-1299/1228.Missing%20Number%20In%20Arithmetic%20Progression/README_EN.md)
 
-<!-- tags:数组,数学 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在某个数组&nbsp;<code>arr</code>&nbsp;中，值符合等差数列的数值规律：在&nbsp;<code>0 &lt;= i &lt; arr.length - 1</code>&nbsp;的前提下，<code>arr[i+1] - arr[i]</code>&nbsp;的值都相等。</p>
 
@@ -41,25 +52,33 @@
 	<li>给定的数组 <strong>保证</strong> 是一个有效的数组。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：等差数列求和公式
 
-等差数列求和公式为 $\frac{n(a_1 + a_n)}{2}$，其中 $n$ 为等差数列的项数，$a_1$ 为等差数列的首项，$a_n$ 为等差数列的末项。
+等差数列求和公式为 $\frac{(a_1 + a_n)n}{2}$，其中 $n$ 为等差数列的项数，等差数列的首项为 $a_1$，末项为 $a_n$。
 
-因为题目中给出的数组是一个等差数列，且缺失了一个数，所以数组的项数为 $n + 1$，首项为 $a_1$，末项为 $a_n$，则数组的和为 $\frac{n + 1}{2}(a_1 + a_n)$。
+因为题目中给出的数组是一个等差数列，且缺失了一个数，所以数组的项数为 $n + 1$，首项为 $a_1$，末项为 $a_n$，则数组的和为 $\frac{(a_1 + a_n)(n + 1)}{2}$。
 
-因此，缺失的数为 $\frac{n + 1}{2}(a_1 + a_n) - \sum_{i = 0}^n a_i$。
+因此，缺失的数为 $\frac{(a_1 + a_n)(n + 1)}{2} - \sum_{i = 0}^n a_i$。
 
 时间复杂度 $O(n)$，其中 $n$ 为数组的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
     def missingNumber(self, arr: List[int]) -> int:
         return (arr[0] + arr[-1]) * (len(arr) + 1) // 2 - sum(arr)
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -71,6 +90,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -84,24 +105,49 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func missingNumber(arr []int) int {
 	n := len(arr)
-	d := (arr[n-1] - arr[0]) / n
-	for i := 1; i < n; i++ {
-		if arr[i] != arr[i-1]+d {
-			return arr[i-1] + d
-		}
+	x := (arr[0] + arr[n-1]) * (n + 1) / 2
+	y := 0
+	for _, v := range arr {
+		y += v
 	}
-	return arr[0]
+	return x - y
+}
+```
+
+#### TypeScript
+
+```ts
+function missingNumber(arr: number[]): number {
+    const x = ((arr[0] + arr.at(-1)!) * (arr.length + 1)) >> 1;
+    const y = arr.reduce((acc, cur) => acc + cur, 0);
+    return x - y;
 }
 ```
 
 <!-- tabs:end -->
 
-### 方法二
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：求公差 + 遍历
+
+因为题目中给出的数组是一个等差数列，且缺失了一个数，首项为 $a_1$，末项为 $a_n$，那么公差 $d = \frac{a_n - a_1}{n}$。
+
+遍历数组，如果 $a_i \neq a_{i - 1} + d$，则返回 $a_{i - 1} + d$。
+
+如果遍历完数组都没有找到缺失的数，说明数组的所有数都相等，直接返回数组的第一个数即可。
+
+时间复杂度 $O(n)$，其中 $n$ 为数组的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -113,6 +159,8 @@ class Solution:
                 return arr[i - 1] + d
         return arr[0]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -129,19 +177,55 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
     int missingNumber(vector<int>& arr) {
         int n = arr.size();
         int d = (arr[n - 1] - arr[0]) / n;
-        for (int i = 1; i < n; ++i)
-            if (arr[i] != arr[i - 1] + d) return arr[i - 1] + d;
+        for (int i = 1; i < n; ++i) {
+            if (arr[i] != arr[i - 1] + d) {
+                return arr[i - 1] + d;
+            }
+        }
         return arr[0];
     }
 };
 ```
 
+#### Go
+
+```go
+func missingNumber(arr []int) int {
+	n := len(arr)
+	d := (arr[n-1] - arr[0]) / n
+	for i := 1; i < n; i++ {
+		if arr[i] != arr[i-1]+d {
+			return arr[i-1] + d
+		}
+	}
+	return arr[0]
+}
+```
+
+#### TypeScript
+
+```ts
+function missingNumber(arr: number[]): number {
+    const d = ((arr.at(-1)! - arr[0]) / arr.length) | 0;
+    for (let i = 1; i < arr.length; ++i) {
+        if (arr[i] - arr[i - 1] !== d) {
+            return arr[i - 1] + d;
+        }
+    }
+    return arr[0];
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

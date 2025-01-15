@@ -1,14 +1,25 @@
-# [2015. 每段建筑物的平均高度](https://leetcode.cn/problems/average-height-of-buildings-in-each-segment)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2015.Average%20Height%20of%20Buildings%20in%20Each%20Segment/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
+# [2015. 每段建筑物的平均高度 🔒](https://leetcode.cn/problems/average-height-of-buildings-in-each-segment)
 
 [English Version](/solution/2000-2099/2015.Average%20Height%20of%20Buildings%20in%20Each%20Segment/README_EN.md)
 
-<!-- tags:贪心,数组,排序,堆（优先队列） -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>一条完全笔直的街道由一条数字线表示。街道上有建筑物，由二维整数阵列&nbsp;<code>buildings</code> 表示，其中 <code>buildings[i] = [start<sub>i</sub>, end<sub>i</sub>, height<sub>i</sub>]</code>。这意味着在 <strong>半封闭的位置</strong><code>[starti，endi]</code> 有一座高度为&nbsp;<code>height<sub>i</sub></code>&nbsp;的建筑。<br />
+<p>一条完全笔直的街道由一条数字线表示。街道上有建筑物，由二维整数阵列&nbsp;<code>buildings</code> 表示，其中 <code>buildings[i] = [start<sub>i</sub>, end<sub>i</sub>, height<sub>i</sub>]</code>。这意味着在 <strong>半封闭的位置</strong><code>[starti，endi)</code>&nbsp;有一座高度为&nbsp;<code>height<sub>i</sub></code>&nbsp;的建筑。<br />
 你想用 <strong>最少</strong> 数量的非重叠 <strong>部分</strong> 来 <strong>描述</strong> 街道上建筑物的高度。街道可以用2D整数数组&nbsp;<code>street</code>&nbsp;来表示，其中&nbsp;<code>street[j] = [left<sub>j</sub>, right<sub>j</sub>, average<sub>j</sub>]</code>&nbsp;描述了道路的 <strong>半封闭区域</strong>&nbsp;<code>[left<sub>j</sub>, right<sub>j</sub>)</code>&nbsp;，该段中建筑物的 <strong>平均</strong> 高度为&nbsp;<code>average<sub>j</sub></code> 。</p>
 
 <ul>
@@ -77,145 +88,211 @@
 	<li><code>1 &lt;= height<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-### 方法一：差分有序哈希表
+<!-- solution:start -->
 
-我们利用差分思想，使用有序哈希表 `height` 记录每个位置的高度变化，`cnt` 记录建筑物的数量变化。对有序哈希表求前缀和，即可得到每个位置的高度和建筑物数量。
+### 方法一：差分思想 + 哈希表
 
-最后遍历有序哈希表，对于每个位置，如果高度和建筑物数量都不为 0，则说明该位置有建筑物，判断此时的建筑物是否与上个建筑物的平均高度相同，如果相同，则合并，否则加入结果集。
+我们可以利用差分思想，用一个哈希表 $\textit{cnt}$ 记录每个位置的建筑物数量变化，用另一个哈希表 $\textit{d}$ 记录每个位置的高度变化。
+
+接下来，我们对哈希表 $\textit{d}$ 按照键值进行排序，用一个变量 $\textit{s}$ 记录当前位置的高度和，用一个变量 $\textit{m}$ 记录当前位置的建筑物数量。
+
+然后遍历哈希表 $\textit{d}$，对于每个位置，如果 $\textit{m}$ 不为 0，说明此前有建筑物，我们计算出平均高度，如果当前位置的建筑物与上个建筑物的平均高度相同，则合并，否则加入结果集。
+
+最后返回结果集即可。
 
 时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 为建筑物数量。
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def averageHeightOfBuildings(self, buildings: List[List[int]]) -> List[List[int]]:
-        height = defaultdict(int)
         cnt = defaultdict(int)
-        for s, e, h in buildings:
-            cnt[s] += 1
-            cnt[e] -= 1
-            height[s] += h
-            height[e] -= h
+        d = defaultdict(int)
+        for start, end, height in buildings:
+            cnt[start] += 1
+            cnt[end] -= 1
+            d[start] += height
+            d[end] -= height
+        s = m = 0
+        last = -1
         ans = []
-        i = h = n = 0
-        for j in sorted(cnt.keys()):
-            if n:
-                t = [i, j, h // n]
-                if ans and ans[-1][1] == i and ans[-1][2] == t[-1]:
-                    ans[-1][1] = j
+        for k, v in sorted(d.items()):
+            if m:
+                avg = s // m
+                if ans and ans[-1][2] == avg and ans[-1][1] == last:
+                    ans[-1][1] = k
                 else:
-                    ans.append(t)
-            i = j
-            h += height[j]
-            n += cnt[j]
+                    ans.append([last, k, avg])
+            s += v
+            m += cnt[k]
+            last = k
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
     public int[][] averageHeightOfBuildings(int[][] buildings) {
-        TreeMap<Integer, Integer> height = new TreeMap<>();
-        TreeMap<Integer, Integer> cnt = new TreeMap<>();
-        for (var v : buildings) {
-            int s = v[0], e = v[1], h = v[2];
-            cnt.put(s, cnt.getOrDefault(s, 0) + 1);
-            cnt.put(e, cnt.getOrDefault(e, 0) - 1);
-            height.put(s, height.getOrDefault(s, 0) + h);
-            height.put(e, height.getOrDefault(e, 0) - h);
+        Map<Integer, Integer> cnt = new HashMap<>();
+        TreeMap<Integer, Integer> d = new TreeMap<>();
+        for (var e : buildings) {
+            int start = e[0], end = e[1], height = e[2];
+            cnt.merge(start, 1, Integer::sum);
+            cnt.merge(end, -1, Integer::sum);
+            d.merge(start, height, Integer::sum);
+            d.merge(end, -height, Integer::sum);
         }
-        int i = 0, h = 0, n = 0;
-        List<int[]> res = new ArrayList<>();
-        for (int j : cnt.keySet()) {
-            if (n > 0) {
-                int[] t = new int[] {i, j, h / n};
-                int k = res.size() - 1;
-                if (k >= 0 && res.get(k)[1] == i && res.get(k)[2] == t[2]) {
-                    res.get(k)[1] = j;
+        int s = 0, m = 0;
+        int last = -1;
+        List<int[]> ans = new ArrayList<>();
+        for (var e : d.entrySet()) {
+            int k = e.getKey(), v = e.getValue();
+            if (m > 0) {
+                int avg = s / m;
+                if (!ans.isEmpty() && ans.get(ans.size() - 1)[2] == avg
+                    && ans.get(ans.size() - 1)[1] == last) {
+                    ans.get(ans.size() - 1)[1] = k;
                 } else {
-                    res.add(t);
+                    ans.add(new int[] {last, k, avg});
                 }
             }
-            h += height.get(j);
-            n += cnt.get(j);
-            i = j;
+            s += v;
+            m += cnt.get(k);
+            last = k;
         }
-        int[][] ans = new int[res.size()][3];
-        for (i = 0; i < ans.length; ++i) {
-            ans[i] = res.get(i);
-        }
-        return ans;
+        return ans.toArray(new int[0][]);
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
 public:
     vector<vector<int>> averageHeightOfBuildings(vector<vector<int>>& buildings) {
-        map<int, int> height, cnt;
-        for (auto& v : buildings) {
-            int s = v[0], e = v[1], h = v[2];
-            cnt[s]++, cnt[e]--;
-            height[s] += h, height[e] -= h;
+        unordered_map<int, int> cnt;
+        map<int, int> d;
+
+        for (const auto& e : buildings) {
+            int start = e[0], end = e[1], height = e[2];
+            cnt[start]++;
+            cnt[end]--;
+            d[start] += height;
+            d[end] -= height;
         }
+
+        int s = 0, m = 0;
+        int last = -1;
         vector<vector<int>> ans;
-        int i = 0, h = 0, n = 0;
-        for (auto& [j, _] : cnt) {
-            if (n) {
-                vector<int> t = {i, j, h / n};
-                if (ans.size() && ans.back()[1] == i && ans.back()[2] == t[2]) {
-                    ans.back()[1] = j;
+
+        for (const auto& [k, v] : d) {
+            if (m > 0) {
+                int avg = s / m;
+                if (!ans.empty() && ans.back()[2] == avg && ans.back()[1] == last) {
+                    ans.back()[1] = k;
                 } else {
-                    ans.push_back(t);
+                    ans.push_back({last, k, avg});
                 }
             }
-            i = j;
-            h += height[j];
-            n += cnt[j];
+            s += v;
+            m += cnt[k];
+            last = k;
         }
+
         return ans;
     }
 };
 ```
 
+#### Go
+
 ```go
 func averageHeightOfBuildings(buildings [][]int) [][]int {
-	height := make(map[int]int)
 	cnt := make(map[int]int)
-	for _, v := range buildings {
-		s, e, h := v[0], v[1], v[2]
-		cnt[s]++
-		cnt[e]--
-		height[s] += h
-		height[e] -= h
+	d := make(map[int]int)
+
+	for _, e := range buildings {
+		start, end, height := e[0], e[1], e[2]
+		cnt[start]++
+		cnt[end]--
+		d[start] += height
+		d[end] -= height
 	}
-	keys := make([]int, len(cnt))
-	for k := range cnt {
+
+	s, m := 0, 0
+	last := -1
+	var ans [][]int
+
+	keys := make([]int, 0, len(d))
+	for k := range d {
 		keys = append(keys, k)
 	}
 	sort.Ints(keys)
-	i, h, n := 0, 0, 0
-	ans := [][]int{}
-	for _, j := range keys {
-		if n > 0 {
-			t := []int{i, j, h / n}
-			if len(ans) > 0 && ans[len(ans)-1][1] == i && ans[len(ans)-1][2] == t[2] {
-				ans[len(ans)-1][1] = j
+
+	for _, k := range keys {
+		v := d[k]
+		if m > 0 {
+			avg := s / m
+			if len(ans) > 0 && ans[len(ans)-1][2] == avg && ans[len(ans)-1][1] == last {
+				ans[len(ans)-1][1] = k
 			} else {
-				ans = append(ans, t)
+				ans = append(ans, []int{last, k, avg})
 			}
 		}
-		i = j
-		h += height[j]
-		n += cnt[j]
+		s += v
+		m += cnt[k]
+		last = k
 	}
+
 	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function averageHeightOfBuildings(buildings: number[][]): number[][] {
+    const cnt = new Map<number, number>();
+    const d = new Map<number, number>();
+    for (const [start, end, height] of buildings) {
+        cnt.set(start, (cnt.get(start) || 0) + 1);
+        cnt.set(end, (cnt.get(end) || 0) - 1);
+        d.set(start, (d.get(start) || 0) + height);
+        d.set(end, (d.get(end) || 0) - height);
+    }
+    let [s, m] = [0, 0];
+    let last = -1;
+    const ans: number[][] = [];
+    const sortedKeys = Array.from(d.keys()).sort((a, b) => a - b);
+    for (const k of sortedKeys) {
+        const v = d.get(k)!;
+        if (m > 0) {
+            const avg = Math.floor(s / m);
+            if (ans.length > 0 && ans.at(-1)![2] === avg && ans.at(-1)![1] === last) {
+                ans[ans.length - 1][1] = k;
+            } else {
+                ans.push([last, k, avg]);
+            }
+        }
+        s += v;
+        m += cnt.get(k)!;
+        last = k;
+    }
+    return ans;
 }
 ```
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2641.Cousins%20in%20Binary%20Tree%20II/README_EN.md
+rating: 1676
+source: Biweekly Contest 102 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Hash Table
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [2641. Cousins in Binary Tree II](https://leetcode.com/problems/cousins-in-binary-tree-ii)
 
 [中文文档](/solution/2600-2699/2641.Cousins%20in%20Binary%20Tree%20II/README.md)
 
-<!-- tags:Tree,Depth-First Search,Breadth-First Search,Hash Table,Binary Tree -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree, replace the value of each node in the tree with the <strong>sum of all its cousins&#39; values</strong>.</p>
 
@@ -48,7 +64,11 @@
 	<li><code>1 &lt;= Node.val &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Two DFS Traversals
 
@@ -59,6 +79,8 @@ Next, we perform a DFS traversal to calculate the values in the array $s$. Then,
 The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the number of nodes in the binary tree.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -96,6 +118,8 @@ class Solution:
         dfs2(root, 0)
         return root
 ```
+
+#### Java
 
 ```java
 /**
@@ -152,6 +176,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -201,6 +227,8 @@ private:
     };
 };
 ```
+
+#### Go
 
 ```go
 /**
@@ -252,6 +280,8 @@ func replaceValueInTree(root *TreeNode) *TreeNode {
 }
 ```
 
+#### TypeScript
+
 ```ts
 /**
  * Definition for a binary tree node.
@@ -301,6 +331,10 @@ function replaceValueInTree(root: TreeNode | null): TreeNode | null {
 
 <!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
 ### Solution 2: Breadth-First Search (BFS)
 
 First, we update the root node's value to $0$, and use a queue $q$ to store all nodes at each level, initially enqueueing the root node.
@@ -312,6 +346,8 @@ After the traversal ends, we return the root node.
 The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the number of nodes in the binary tree.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -345,6 +381,8 @@ class Solution:
             q = t
         return root
 ```
+
+#### Java
 
 ```java
 /**
@@ -396,6 +434,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -441,6 +481,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 /**
@@ -488,6 +530,8 @@ func replaceValueInTree(root *TreeNode) *TreeNode {
 }
 ```
 
+#### TypeScript
+
 ```ts
 /**
  * Definition for a binary tree node.
@@ -504,36 +548,72 @@ func replaceValueInTree(root *TreeNode) *TreeNode {
  */
 
 function replaceValueInTree(root: TreeNode | null): TreeNode | null {
-    root.val = 0;
-    const q: TreeNode[] = [root];
-    while (q.length > 0) {
-        const t: TreeNode[] = [];
-        let s = 0;
-        for (const { left, right } of q) {
-            if (left) {
-                t.push(left);
-                s += left.val;
+    let q = [root];
+    let [sum, nextSum] = [0, root.val];
+
+    while (q.length) {
+        const qNext: TreeNode[] = [];
+        [sum, nextSum] = [nextSum, 0];
+
+        for (const node of q) {
+            const x = (node.left?.val ?? 0) + (node.right?.val ?? 0);
+            node.val = sum - node.val;
+            nextSum += x;
+
+            if (node.left) {
+                node.left.val = x;
+                qNext.push(node.left);
             }
-            if (right) {
-                t.push(right);
-                s += right.val;
-            }
-        }
-        for (const { left, right } of q) {
-            const sub = (left?.val || 0) + (right?.val || 0);
-            if (left) {
-                left.val = s - sub;
-            }
-            if (right) {
-                right.val = s - sub;
+
+            if (node.right) {
+                node.right.val = x;
+                qNext.push(node.right);
             }
         }
-        q.splice(0, q.length, ...t);
+
+        q = qNext;
     }
+
+    return root;
+}
+```
+
+#### JavaScript
+
+```js
+function replaceValueInTree(root) {
+    let q = [root];
+    let [sum, nextSum] = [0, root.val];
+
+    while (q.length) {
+        const qNext = [];
+        [sum, nextSum] = [nextSum, 0];
+
+        for (const node of q) {
+            const x = (node.left?.val ?? 0) + (node.right?.val ?? 0);
+            node.val = sum - node.val;
+            nextSum += x;
+
+            if (node.left) {
+                node.left.val = x;
+                qNext.push(node.left);
+            }
+
+            if (node.right) {
+                node.right.val = x;
+                qNext.push(node.right);
+            }
+        }
+
+        q = qNext;
+    }
+
     return root;
 }
 ```
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

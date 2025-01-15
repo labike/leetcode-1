@@ -1,12 +1,24 @@
-# [2638. 统计 K-Free 子集的总数](https://leetcode.cn/problems/count-the-number-of-k-free-subsets)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2638.Count%20the%20Number%20of%20K-Free%20Subsets/README.md
+tags:
+    - 数组
+    - 数学
+    - 动态规划
+    - 组合数学
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2638. 统计 K-Free 子集的总数 🔒](https://leetcode.cn/problems/count-the-number-of-k-free-subsets)
 
 [English Version](/solution/2600-2699/2638.Count%20the%20Number%20of%20K-Free%20Subsets/README_EN.md)
 
-<!-- tags:数组,动态规划,排序 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个包含 <strong>无重复</strong> 元素的整数数组 <code>nums</code> 和一个整数 <code>k</code> 。</p>
 
@@ -52,7 +64,11 @@
 	<li><code>1 &lt;= k &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：分组 + 动态规划
 
@@ -65,6 +81,8 @@
 时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $nums$ 的长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -87,6 +105,8 @@ class Solution:
             ans *= f[m]
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -115,6 +135,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -145,6 +167,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func countTheNumOfKFreeSubsets(nums []int, k int) int64 {
 	sort.Ints(nums)
@@ -170,6 +194,8 @@ func countTheNumOfKFreeSubsets(nums []int, k int) int64 {
 	return ans
 }
 ```
+
+#### TypeScript
 
 ```ts
 function countTheNumOfKFreeSubsets(nums: number[], k: number): number {
@@ -202,4 +228,6 @@ function countTheNumOfKFreeSubsets(nums: number[], k: number): number {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

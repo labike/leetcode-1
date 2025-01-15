@@ -1,16 +1,31 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/3000-3099/3043.Find%20the%20Length%20of%20the%20Longest%20Common%20Prefix/README_EN.md
+rating: 1688
+source: Weekly Contest 385 Q2
+tags:
+    - Trie
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [3043. Find the Length of the Longest Common Prefix](https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix)
 
 [中文文档](/solution/3000-3099/3043.Find%20the%20Length%20of%20the%20Longest%20Common%20Prefix/README.md)
 
-<!-- tags:Trie,Array,Hash Table,String -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two arrays with <strong>positive</strong> integers <code>arr1</code> and <code>arr2</code>.</p>
 
 <p>A <strong>prefix</strong> of a positive integer is an integer formed by one or more of its digits, starting from its <strong>leftmost</strong> digit. For example, <code>123</code> is a prefix of the integer <code>12345</code>, while <code>234</code> is <strong>not</strong>.</p>
 
-<p>A <strong>common prefix</strong> of two integers <code>a</code> and <code>b</code> is an integer <code>c</code>, such that <code>c</code> is a prefix of both <code>a</code> and <code>b</code>. For example, <code>5655359</code> and <code>56554</code> have a common prefix <code>565</code> while <code>1223</code> and <code>43456</code> <strong>do not</strong> have a common prefix.</p>
+<p>A <strong>common prefix</strong> of two integers <code>a</code> and <code>b</code> is an integer <code>c</code>, such that <code>c</code> is a prefix of both <code>a</code> and <code>b</code>. For example, <code>5655359</code> and <code>56554</code> have common prefixes <code>565</code> and <code>5655</code> while <code>1223</code> and <code>43456</code> <strong>do not</strong> have a common prefix.</p>
 
 <p>You need to find the length of the <strong>longest common prefix</strong> between all pairs of integers <code>(x, y)</code> such that <code>x</code> belongs to <code>arr1</code> and <code>y</code> belongs to <code>arr2</code>.</p>
 
@@ -46,7 +61,11 @@ Note that common prefixes between elements of the same array do not count.
 	<li><code>1 &lt;= arr1[i], arr2[i] &lt;= 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Hash Table
 
@@ -55,6 +74,8 @@ We can use a hash table to store all the prefixes of the numbers in `arr1`. Then
 The time complexity is $O(m \times \log M + n \times \log N)$, and the space complexity is $O(m \times \log M)$. Here, $m$ and $n$ are the lengths of `arr1` and `arr2` respectively, and $M$ and $N$ are the maximum values in `arr1` and `arr2` respectively.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -73,6 +94,8 @@ class Solution:
                 x //= 10
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -96,6 +119,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -121,6 +146,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func longestCommonPrefix(arr1 []int, arr2 []int) (ans int) {
 	s := map[int]bool{}
@@ -141,18 +168,20 @@ func longestCommonPrefix(arr1 []int, arr2 []int) (ans int) {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function longestCommonPrefix(arr1: number[], arr2: number[]): number {
     const s: Set<number> = new Set<number>();
     for (let x of arr1) {
-        for (; x; x = (x / 10) | 0) {
-            s.add(x % 10);
+        for (; x; x = Math.floor(x / 10)) {
+            s.add(x);
         }
     }
     let ans: number = 0;
     for (let x of arr2) {
-        for (; x; x = (x / 10) | 0) {
-            if (s.has(x % 10)) {
+        for (; x; x = Math.floor(x / 10)) {
+            if (s.has(x)) {
                 ans = Math.max(ans, Math.floor(Math.log10(x)) + 1);
             }
         }
@@ -161,6 +190,35 @@ function longestCommonPrefix(arr1: number[], arr2: number[]): number {
 }
 ```
 
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number}
+ */
+var longestCommonPrefix = function (arr1, arr2) {
+    const s = new Set();
+    for (let x of arr1) {
+        for (; x; x = Math.floor(x / 10)) {
+            s.add(x);
+        }
+    }
+    let ans = 0;
+    for (let x of arr2) {
+        for (; x; x = Math.floor(x / 10)) {
+            if (s.has(x)) {
+                ans = Math.max(ans, Math.floor(Math.log10(x)) + 1);
+            }
+        }
+    }
+    return ans;
+};
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

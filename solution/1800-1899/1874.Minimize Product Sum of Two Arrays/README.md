@@ -1,12 +1,22 @@
-# [1874. 两个数组的最小乘积和](https://leetcode.cn/problems/minimize-product-sum-of-two-arrays)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1874.Minimize%20Product%20Sum%20of%20Two%20Arrays/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [1874. 两个数组的最小乘积和 🔒](https://leetcode.cn/problems/minimize-product-sum-of-two-arrays)
 
 [English Version](/solution/1800-1899/1874.Minimize%20Product%20Sum%20of%20Two%20Arrays/README_EN.md)
 
-<!-- tags:贪心,数组,排序 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个<strong>长度相等</strong>的数组<code>a</code>和<code>b</code>，它们的<strong>乘积和</strong>为数组中所有的<code>a[i] * b[i]</code>之和，其中<code>0 &lt;= i &lt; a.length</code>。</p>
 
@@ -40,64 +50,96 @@
 	<li><code>1 &lt;= nums1[i], nums2[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-### 方法一
+<!-- solution:start -->
+
+### 方法一：贪心 + 排序
+
+由于两个数组都是正整数，要使得乘积和最小，我们可以将两个数组中的最大值和最小值相乘，次大值和次小值相乘，以此类推。
+
+因此，我们将数组 $\textit{nums1}$ 按照升序排序，将数组 $\textit{nums2}$ 按照降序排序，然后将两个数组对应位置的元素相乘，累加即可。
+
+时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 是数组 $\textit{nums1}$ 的长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
     def minProductSum(self, nums1: List[int], nums2: List[int]) -> int:
         nums1.sort()
-        nums2.sort()
-        n, res = len(nums1), 0
-        for i in range(n):
-            res += nums1[i] * nums2[n - i - 1]
-        return res
+        nums2.sort(reverse=True)
+        return sum(x * y for x, y in zip(nums1, nums2))
 ```
+
+#### Java
 
 ```java
 class Solution {
     public int minProductSum(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
-        int n = nums1.length, res = 0;
+        int n = nums1.length;
+        int ans = 0;
         for (int i = 0; i < n; ++i) {
-            res += nums1[i] * nums2[n - i - 1];
+            ans += nums1[i] * nums2[n - i - 1];
         }
-        return res;
+        return ans;
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
 public:
     int minProductSum(vector<int>& nums1, vector<int>& nums2) {
-        sort(nums1.begin(), nums1.end());
-        sort(nums2.begin(), nums2.end());
-        int n = nums1.size(), res = 0;
+        ranges::sort(nums1);
+        ranges::sort(nums2, greater<int>());
+        int n = nums1.size();
+        int ans = 0;
         for (int i = 0; i < n; ++i) {
-            res += nums1[i] * nums2[n - i - 1];
+            ans += nums1[i] * nums2[i];
         }
-        return res;
+        return ans;
     }
 };
 ```
 
+#### Go
+
 ```go
-func minProductSum(nums1 []int, nums2 []int) int {
+func minProductSum(nums1 []int, nums2 []int) (ans int) {
 	sort.Ints(nums1)
 	sort.Ints(nums2)
-	res, n := 0, len(nums1)
-	for i, num := range nums1 {
-		res += num * nums2[n-i-1]
+	for i, x := range nums1 {
+		ans += x * nums2[len(nums2)-1-i]
 	}
-	return res
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function minProductSum(nums1: number[], nums2: number[]): number {
+    nums1.sort((a, b) => a - b);
+    nums2.sort((a, b) => b - a);
+    let ans = 0;
+    for (let i = 0; i < nums1.length; ++i) {
+        ans += nums1[i] * nums2[i];
+    }
+    return ans;
 }
 ```
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

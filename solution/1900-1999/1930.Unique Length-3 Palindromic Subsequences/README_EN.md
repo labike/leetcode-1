@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1930.Unique%20Length-3%20Palindromic%20Subsequences/README_EN.md
+rating: 1533
+source: Weekly Contest 249 Q2
+tags:
+    - Bit Manipulation
+    - Hash Table
+    - String
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1930. Unique Length-3 Palindromic Subsequences](https://leetcode.com/problems/unique-length-3-palindromic-subsequences)
 
 [中文文档](/solution/1900-1999/1930.Unique%20Length-3%20Palindromic%20Subsequences/README.md)
 
-<!-- tags:Bit Manipulation,Hash Table,String,Prefix Sum -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, return <em>the number of <strong>unique palindromes of length three</strong> that are a <strong>subsequence</strong> of </em><code>s</code>.</p>
 
@@ -58,11 +73,17 @@
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -74,6 +95,8 @@ class Solution:
                 ans += len(set(s[l + 1 : r]))
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -92,6 +115,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -108,6 +133,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func countPalindromicSubsequence(s string) (ans int) {
 	for c := 'a'; c <= 'z'; c++ {
@@ -121,6 +148,8 @@ func countPalindromicSubsequence(s string) (ans int) {
 	return
 }
 ```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -139,6 +168,56 @@ public class Solution {
 }
 ```
 
+#### TypeScript
+
+```ts
+export function countPalindromicSubsequence(s: string): number {
+    const cnt = new Map<string, [number, number]>();
+    const n = s.length;
+    let ans = 0;
+
+    for (let i = 0; i < n; i++) {
+        const ch = s[i];
+        if (cnt.has(ch)) cnt.get(ch)![1] = i;
+        else cnt.set(ch, [i, i]);
+    }
+
+    for (const [_, [i, j]] of cnt) {
+        if (i !== j) {
+            ans += new Set(s.slice(i + 1, j)).size;
+        }
+    }
+
+    return ans;
+}
+```
+
+#### JavaScript
+
+```js
+export function countPalindromicSubsequence(s) {
+    const cnt = new Map();
+    const n = s.length;
+    let ans = 0;
+
+    for (let i = 0; i < n; i++) {
+        const ch = s[i];
+        if (cnt.has(ch)) cnt.get(ch)[1] = i;
+        else cnt.set(ch, [i, i]);
+    }
+
+    for (const [_, [i, j]] of cnt) {
+        if (i !== j) {
+            ans += new Set(s.slice(i + 1, j)).size;
+        }
+    }
+
+    return ans;
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

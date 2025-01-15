@@ -1,10 +1,22 @@
-# [1852. Distinct Numbers in Each Subarray](https://leetcode.com/problems/distinct-numbers-in-each-subarray)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1852.Distinct%20Numbers%20in%20Each%20Subarray/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
+# [1852. Distinct Numbers in Each Subarray 🔒](https://leetcode.com/problems/distinct-numbers-in-each-subarray)
 
 [中文文档](/solution/1800-1899/1852.Distinct%20Numbers%20in%20Each%20Subarray/README.md)
 
-<!-- tags:Array,Hash Table,Sliding Window -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> and an integer <code>k</code>, you are asked to construct the array <code>ans</code> of size <code>n-k+1</code> where <code>ans[i]</code> is the number of <strong>distinct</strong> numbers in the subarray <code>nums[i:i+k-1] = [nums[i], nums[i+1], ..., nums[i+k-1]]</code>.</p>
 
@@ -66,21 +78,27 @@
 
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-### Solution 1: Sliding Window + Hash Table or Array
+<!-- solution:start -->
 
-We use a hash table or array $cnt$ to record the occurrence of each number in each subarray of length $k$.
+### Solution 1: Sliding Window + Hash Table
 
-Next, we first traverse the first $k$ elements of the array, record the occurrence of each element, and update the number of types $v$. After traversing, we first add $v$ to the answer array.
+We use a hash table $cnt$ to record the occurrence times of each number in the subarray of length $k$.
 
-Then, we continue to traverse the array from index $k$. Each time we traverse, we increase the occurrence of the current element by one, and decrease the occurrence of the element on the left of the current element by one. If the occurrence after decrementing is $0$, we remove it from the hash table or array, then update the number of types $v$, and add it to the answer array.
+Next, we first traverse the first $k$ elements of the array, record the occurrence times of each element, and after the traversal, we take the size of the hash table as the first element of the answer array.
 
-After the traversal is over, we return the answer array.
+Then, we continue to traverse the array from the index $k$. Each time we traverse, we increase the occurrence times of the current element by one, and decrease the occurrence times of the element on the left of the current element by one. If the occurrence times of the left element become $0$ after subtraction, we remove it from the hash table. Then we take the size of the hash table as the next element of the answer array, and continue to traverse.
 
-The time complexity is $O(n)$, and the space complexity is $O(n)$ or $O(M)$. Where $n$ is the length of the array $nums$; and $M$ is the maximum value in the array $nums$, in this problem $M \le 10^5$.
+After the traversal, we return the answer array.
+
+The time complexity is $O(n)$, and the space complexity is $O(k)$. Where $n$ is the length of the array $nums$, and $k$ is the parameter given by the problem.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -95,6 +113,8 @@ class Solution:
             ans.append(len(cnt))
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -117,6 +137,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -141,6 +163,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func distinctNumbers(nums []int, k int) []int {
 	cnt := map[int]int{}
@@ -159,6 +183,8 @@ func distinctNumbers(nums []int, k int) []int {
 	return ans
 }
 ```
+
+#### TypeScript
 
 ```ts
 function distinctNumbers(nums: number[], k: number): number[] {
@@ -181,9 +207,19 @@ function distinctNumbers(nums: number[], k: number): number[] {
 
 <!-- tabs:end -->
 
-### Solution 2
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Sliding Window + Array
+
+We can also use an array to replace the hash table, which can improve performance to some extent.
+
+The time complexity is $O(n)$, and the space complexity is $O(M)$. Where $n$ is the length of the array $nums$, and $M$ is the maximum value in the array $nums$. In this problem, $M \leq 10^5$.
 
 <!-- tabs:start -->
+
+#### Java
 
 ```java
 class Solution {
@@ -216,6 +252,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -246,6 +284,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func distinctNumbers(nums []int, k int) (ans []int) {
 	m := slices.Max(nums)
@@ -273,6 +313,8 @@ func distinctNumbers(nums []int, k int) (ans []int) {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function distinctNumbers(nums: number[], k: number): number[] {
     const m = Math.max(...nums);
@@ -299,4 +341,6 @@ function distinctNumbers(nums: number[], k: number): number[] {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

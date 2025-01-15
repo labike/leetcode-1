@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0884.Uncommon%20Words%20from%20Two%20Sentences/README_EN.md
+tags:
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [884. Uncommon Words from Two Sentences](https://leetcode.com/problems/uncommon-words-from-two-sentences)
 
 [中文文档](/solution/0800-0899/0884.Uncommon%20Words%20from%20Two%20Sentences/README.md)
 
-<!-- tags:Hash Table,String -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>sentence</strong> is a string of single-space separated words where each word consists only of lowercase letters.</p>
 
@@ -14,12 +26,25 @@
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<pre><strong>Input:</strong> s1 = "this apple is sweet", s2 = "this apple is sour"
-<strong>Output:</strong> ["sweet","sour"]
-</pre><p><strong class="example">Example 2:</strong></p>
-<pre><strong>Input:</strong> s1 = "apple apple", s2 = "banana"
-<strong>Output:</strong> ["banana"]
-</pre>
+
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">s1 = &quot;this apple is sweet&quot;, s2 = &quot;this apple is sour&quot;</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[&quot;sweet&quot;,&quot;sour&quot;]</span></p>
+
+<p><strong>Explanation:</strong></p>
+
+<p>The word <code>&quot;sweet&quot;</code> appears only in <code>s1</code>, while the word <code>&quot;sour&quot;</code> appears only in <code>s2</code>.</p>
+</div>
+
+<p><strong class="example">Example 2:</strong></p>
+
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">s1 = &quot;apple apple&quot;, s2 = &quot;banana&quot;</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[&quot;banana&quot;]</span></p>
+</div>
+
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
@@ -30,7 +55,11 @@
 	<li>All the words in <code>s1</code> and <code>s2</code> are separated by a single space.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Hash Table
 
@@ -42,12 +71,16 @@ The time complexity is $O(m + n)$, and the space complexity is $O(m + n)$. Here,
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
         cnt = Counter(s1.split()) + Counter(s2.split())
         return [s for s, v in cnt.items() if v == 1]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -70,6 +103,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -90,6 +125,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func uncommonFromSentences(s1 string, s2 string) (ans []string) {
 	cnt := map[string]int{}
@@ -108,6 +145,8 @@ func uncommonFromSentences(s1 string, s2 string) (ans []string) {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function uncommonFromSentences(s1: string, s2: string): string[] {
     const cnt: Map<string, number> = new Map();
@@ -123,6 +162,8 @@ function uncommonFromSentences(s1: string, s2: string): string[] {
     return ans;
 }
 ```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -147,6 +188,8 @@ impl Solution {
 }
 ```
 
+#### JavaScript
+
 ```js
 /**
  * @param {string} s1
@@ -170,4 +213,6 @@ var uncommonFromSentences = function (s1, s2) {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

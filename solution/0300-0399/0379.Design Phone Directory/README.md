@@ -1,48 +1,56 @@
-# [379. 电话目录管理系统](https://leetcode.cn/problems/design-phone-directory)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0379.Design%20Phone%20Directory/README.md
+tags:
+    - 设计
+    - 队列
+    - 数组
+    - 哈希表
+    - 链表
+---
+
+<!-- problem:start -->
+
+# [379. 电话目录管理系统 🔒](https://leetcode.cn/problems/design-phone-directory)
 
 [English Version](/solution/0300-0399/0379.Design%20Phone%20Directory/README_EN.md)
 
-<!-- tags:设计,队列,数组,哈希表,链表 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>设计一个电话目录管理系统，让它支持以下功能：</p>
+<p>设计一个电话目录管理系统，一开始有&nbsp;<code>maxNumbers</code>&nbsp;个位置能够储存号码。系统应该存储号码，检查某个位置是否为空，并清空给定的位置。</p>
 
-<ol>
-	<li><code>get</code>: 分配给用户一个未被使用的电话号码，获取失败请返回 -1</li>
-	<li><code>check</code>: 检查指定的电话号码是否被使用</li>
-	<li><code>release</code>: 释放掉一个电话号码，使其能够重新被分配</li>
-</ol>
+<p>实现&nbsp;<code>PhoneDirectory</code>&nbsp;类：</p>
+
+<ul>
+	<li><code>PhoneDirectory(int maxNumbers)</code>&nbsp;电话目录初始有 <code>maxNumbers</code> 个可用位置。</li>
+	<li><code>int get()</code> 提供一个未分配给任何人的号码。如果没有可用号码则返回&nbsp;<code>-1</code>。</li>
+	<li><code>bool check(int number)</code>&nbsp;如果位置&nbsp;<code>number</code>&nbsp;可用返回 <code>true</code>&nbsp;否则返回&nbsp;<code>false</code>。</li>
+	<li><code>void release(int number)</code> 回收或释放位置&nbsp;<code>number</code>。</li>
+</ul>
 
 <p>&nbsp;</p>
 
-<p><strong>示例：</strong></p>
+<p><strong class="example">示例 1：</strong></p>
 
-<pre>// 初始化电话目录，包括 3 个电话号码：0，1 和 2。
-PhoneDirectory directory = new PhoneDirectory(3);
+<pre>
+<strong>输入：</strong>
+["PhoneDirectory", "get", "get", "check", "get", "check", "release", "check"]
+[[3], [], [], [2], [], [2], [2], [2]]
+<strong>输出：</strong>
+[null, 0, 1, true, 2, false, null, true]
 
-// 可以返回任意未分配的号码，这里我们假设它返回 0。
-directory.get();
-
-// 假设，函数返回 1。
-directory.get();
-
-// 号码 2 未分配，所以返回为 true。
-directory.check(2);
-
-// 返回 2，分配后，只剩一个号码未被分配。
-directory.get();
-
-// 此时，号码 2 已经被分配，所以返回 false。
-directory.check(2);
-
-// 释放号码 2，将该号码变回未分配状态。
-directory.release(2);
-
-// 号码 2 现在是未分配状态，所以返回 true。
-directory.check(2);
+<strong>解释：</strong>
+PhoneDirectory phoneDirectory = new PhoneDirectory(3);
+phoneDirectory.get();      // 它可以返回任意可用的数字。这里我们假设它返回 0。
+phoneDirectory.get();      // 假设它返回 1。
+phoneDirectory.check(2);   // 数字 2 可用，所以返回 true。
+phoneDirectory.get();      // 返回剩下的唯一一个数字 2。
+phoneDirectory.check(2);   // 数字 2 不再可用，所以返回 false。
+phoneDirectory.release(2); // 将数字 2 释放回号码池。
+phoneDirectory.check(2);   // 数字 2 重新可用，返回 true。
 </pre>
 
 <p>&nbsp;</p>
@@ -50,48 +58,49 @@ directory.check(2);
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>1 &lt;=&nbsp;maxNumbers &lt;= 10^4</code></li>
+	<li><code>1 &lt;= maxNumbers &lt;= 10<sup>4</sup></code></li>
 	<li><code>0 &lt;= number &lt; maxNumbers</code></li>
-	<li>调用方法的总数处于区间 <code>[0 - 20000]</code> 之内</li>
+	<li><code>get</code>，<code>check</code>&nbsp;和&nbsp;<code>release</code>&nbsp;最多被调用&nbsp;<code>2 * 10<sup>4</sup></code>&nbsp;次。</li>
 </ul>
+
+<!-- description:end -->
 
 ## 解法
 
-### 方法一
+<!-- solution:start -->
+
+### 方法一：哈希表
+
+我们可以使用一个哈希集合 `available` 来存储未被分配的电话号码，初始时，哈希表中存储的是 `[0, 1, 2, ..., maxNumbers - 1]`。
+
+调用 `get` 方法时，我们从 `available` 中取出一个未被分配的电话号码，如果 `available` 为空，则返回 `-1`。时间复杂度 $O(1)$。
+
+调用 `check` 方法时，我们只需要判断 `number` 是否在 `available` 中即可。时间复杂度 $O(1)$。
+
+调用 `release` 方法时，我们将 `number` 添加到 `available` 中。时间复杂度 $O(1)$。
+
+空间复杂度 $O(n)$，其中 $n$ 是 `maxNumbers` 的值。
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class PhoneDirectory:
+
     def __init__(self, maxNumbers: int):
-        """
-        Initialize your data structure here
-        @param maxNumbers - The maximum numbers that can be stored in the phone directory.
-        """
-        self.provided = [False] * maxNumbers
+        self.available = set(range(maxNumbers))
 
     def get(self) -> int:
-        """
-        Provide a number which is not assigned to anyone.
-        @return - Return an available number. Return -1 if none is available.
-        """
-        for i in range(len(self.provided)):
-            if not self.provided[i]:
-                self.provided[i] = True
-                return i
-        return -1
+        if not self.available:
+            return -1
+        return self.available.pop()
 
     def check(self, number: int) -> bool:
-        """
-        Check if a number is available or not.
-        """
-        return not self.provided[number]
+        return number in self.available
 
     def release(self, number: int) -> None:
-        """
-        Recycle or release a number.
-        """
-        self.provided[number] = False
+        self.available.add(number)
 
 
 # Your PhoneDirectory object will be instantiated and called as such:
@@ -101,41 +110,33 @@ class PhoneDirectory:
 # obj.release(number)
 ```
 
+#### Java
+
 ```java
 class PhoneDirectory {
+    private Set<Integer> available = new HashSet<>();
 
-    private boolean[] provided;
-
-    /**
-       Initialize your data structure here
-        @param maxNumbers - The maximum numbers that can be stored in the phone directory.
-     */
     public PhoneDirectory(int maxNumbers) {
-        provided = new boolean[maxNumbers];
-    }
-
-    /**
-       Provide a number which is not assigned to anyone.
-        @return - Return an available number. Return -1 if none is available.
-     */
-    public int get() {
-        for (int i = 0; i < provided.length; ++i) {
-            if (!provided[i]) {
-                provided[i] = true;
-                return i;
-            }
+        for (int i = 0; i < maxNumbers; ++i) {
+            available.add(i);
         }
-        return -1;
     }
 
-    /** Check if a number is available or not. */
+    public int get() {
+        if (available.isEmpty()) {
+            return -1;
+        }
+        int x = available.iterator().next();
+        available.remove(x);
+        return x;
+    }
+
     public boolean check(int number) {
-        return !provided[number];
+        return available.contains(number);
     }
 
-    /** Recycle or release a number. */
     public void release(int number) {
-        provided[number] = false;
+        available.add(number);
     }
 }
 
@@ -148,6 +149,129 @@ class PhoneDirectory {
  */
 ```
 
+#### C++
+
+```cpp
+class PhoneDirectory {
+public:
+    PhoneDirectory(int maxNumbers) {
+        for (int i = 0; i < maxNumbers; ++i) {
+            available.insert(i);
+        }
+    }
+
+    int get() {
+        if (available.empty()) {
+            return -1;
+        }
+        int x = *available.begin();
+        available.erase(x);
+        return x;
+    }
+
+    bool check(int number) {
+        return available.contains(number);
+    }
+
+    void release(int number) {
+        available.insert(number);
+    }
+
+private:
+    unordered_set<int> available;
+};
+
+/**
+ * Your PhoneDirectory object will be instantiated and called as such:
+ * PhoneDirectory* obj = new PhoneDirectory(maxNumbers);
+ * int param_1 = obj->get();
+ * bool param_2 = obj->check(number);
+ * obj->release(number);
+ */
+```
+
+#### Go
+
+```go
+type PhoneDirectory struct {
+	available map[int]bool
+}
+
+func Constructor(maxNumbers int) PhoneDirectory {
+	available := make(map[int]bool)
+	for i := 0; i < maxNumbers; i++ {
+		available[i] = true
+	}
+	return PhoneDirectory{available}
+}
+
+func (this *PhoneDirectory) Get() int {
+	for k := range this.available {
+		delete(this.available, k)
+		return k
+	}
+	return -1
+}
+
+func (this *PhoneDirectory) Check(number int) bool {
+	_, ok := this.available[number]
+	return ok
+}
+
+func (this *PhoneDirectory) Release(number int) {
+	this.available[number] = true
+}
+
+/**
+ * Your PhoneDirectory object will be instantiated and called as such:
+ * obj := Constructor(maxNumbers);
+ * param_1 := obj.Get();
+ * param_2 := obj.Check(number);
+ * obj.Release(number);
+ */
+```
+
+#### TypeScript
+
+```ts
+class PhoneDirectory {
+    private available: Set<number> = new Set();
+
+    constructor(maxNumbers: number) {
+        for (let i = 0; i < maxNumbers; ++i) {
+            this.available.add(i);
+        }
+    }
+
+    get(): number {
+        const [x] = this.available;
+        if (x === undefined) {
+            return -1;
+        }
+        this.available.delete(x);
+        return x;
+    }
+
+    check(number: number): boolean {
+        return this.available.has(number);
+    }
+
+    release(number: number): void {
+        this.available.add(number);
+    }
+}
+
+/**
+ * Your PhoneDirectory object will be instantiated and called as such:
+ * var obj = new PhoneDirectory(maxNumbers)
+ * var param_1 = obj.get()
+ * var param_2 = obj.check(number)
+ * obj.release(number)
+ */
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

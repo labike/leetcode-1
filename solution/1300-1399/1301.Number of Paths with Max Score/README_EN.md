@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1301.Number%20of%20Paths%20with%20Max%20Score/README_EN.md
+rating: 1853
+source: Biweekly Contest 16 Q4
+tags:
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1301. Number of Paths with Max Score](https://leetcode.com/problems/number-of-paths-with-max-score)
 
 [中文文档](/solution/1300-1399/1301.Number%20of%20Paths%20with%20Max%20Score/README.md)
 
-<!-- tags:Array,Dynamic Programming,Matrix -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a square <code>board</code>&nbsp;of characters. You can move on the board starting at the bottom right square marked with the character&nbsp;<code>&#39;S&#39;</code>.</p>
 
@@ -46,11 +60,25 @@
 
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-### Solution 1
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
+
+We define $f[i][j]$ to represent the maximum score from the starting point $(n - 1, n - 1)$ to $(i, j)$, and $g[i][j]$ to represent the number of ways to achieve the maximum score from the starting point $(n - 1, n - 1)$ to $(i, j)$. Initially, $f[n - 1][n - 1] = 0$ and $g[n - 1][n - 1] = 1$. The other positions of $f[i][j]$ are all $-1$, and $g[i][j]$ are all $0$.
+
+For the current position $(i, j)$, it can be transferred from three positions: $(i + 1, j)$, $(i, j + 1)$, and $(i + 1, j + 1)$. Therefore, we can enumerate these three positions to update the values of $f[i][j]$ and $g[i][j]$. If the current position $(i, j)$ has an obstacle, or the current position is the starting point, or other positions are out of bounds, no update is performed. Otherwise, if another position $(x, y)$ satisfies $f[x][y] \gt f[i][j]$, then we update $f[i][j] = f[x][y]$ and $g[i][j] = g[x][y]$. If $f[x][y] = f[i][j]$, then we update $g[i][j] = g[i][j] + g[x][y]$. Finally, if the current position $(i, j)$ is reachable and is a number, we update $f[i][j] = f[i][j] + board[i][j]$.
+
+Finally, if $f[0][0] \lt 0$, it means there is no path to reach the endpoint, return $[0, 0]$. Otherwise, return $[f[0][0], g[0][0]]$. Note that the result needs to be taken modulo $10^9 + 7$.
+
+Time complexity $O(n^2)$, space complexity $O(n^2)$. Where $n$ is the side length of the array.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -78,6 +106,8 @@ class Solution:
         mod = 10**9 + 7
         return [0, 0] if f[0][0] == -1 else [f[0][0], g[0][0] % mod]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -133,6 +163,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -179,6 +211,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func pathsWithMaxScore(board []string) []int {
@@ -227,4 +261,6 @@ func pathsWithMaxScore(board []string) []int {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

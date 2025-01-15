@@ -1,12 +1,22 @@
-# [634. 寻找数组的错位排列](https://leetcode.cn/problems/find-the-derangement-of-an-array)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0634.Find%20the%20Derangement%20of%20An%20Array/README.md
+tags:
+    - 数学
+    - 动态规划
+    - 组合数学
+---
+
+<!-- problem:start -->
+
+# [634. 寻找数组的错位排列 🔒](https://leetcode.cn/problems/find-the-derangement-of-an-array)
 
 [English Version](/solution/0600-0699/0634.Find%20the%20Derangement%20of%20An%20Array/README_EN.md)
 
-<!-- tags:数学,动态规划 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在组合数学中，如果一个排列中所有元素都不在原先的位置上，那么这个排列就被称为 <strong>错位排列</strong> 。</p>
 
@@ -37,7 +47,11 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：动态规划
 
@@ -56,11 +70,11 @@ $$
 
 最终答案即为 $f[n]$。注意答案的取模操作。
 
-我们发现，状态转移方程中只与 $f[i - 1]$ 和 $f[i - 2]$ 有关，因此我们可以使用两个变量 $a$ 和 $b$ 来分别表示 $f[i - 1]$ 和 $f[i - 2]$，从而将空间复杂度降低到 $O(1)$。
-
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组的长度。
+时间复杂度 $O(n)$，其中 $n$ 为数组的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -71,6 +85,8 @@ class Solution:
             f[i] = (i - 1) * (f[i - 1] + f[i - 2]) % mod
         return f[n]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -85,6 +101,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -102,6 +120,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func findDerangement(n int) int {
 	f := make([]int, n+1)
@@ -116,9 +136,17 @@ func findDerangement(n int) int {
 
 <!-- tabs:end -->
 
-### 方法二
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：动态规划（空间优化）
+
+我们发现，状态转移方程中只与 $f[i - 1]$ 和 $f[i - 2]$ 有关，因此我们可以使用两个变量 $a$ 和 $b$ 来分别表示 $f[i - 1]$ 和 $f[i - 2]$，从而将空间复杂度降低到 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -129,6 +157,8 @@ class Solution:
             a, b = b, ((i - 1) * (a + b)) % mod
         return b
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -144,6 +174,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -161,6 +193,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func findDerangement(n int) int {
 	a, b := 1, 0
@@ -174,4 +208,6 @@ func findDerangement(n int) int {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,12 +1,20 @@
-# [2758. 下一天](https://leetcode.cn/problems/next-day)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2758.Next%20Day/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2758. 下一天 🔒](https://leetcode.cn/problems/next-day)
 
 [English Version](/solution/2700-2799/2758.Next%20Day/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写一个有关日期对象的方法，使得任何日期对象都可以调用 <code>date.nextDay()</code> 方法，然后返回调用日期对象的下一天，格式为 YYYY-MM-DD 。</p>
 
@@ -38,11 +46,17 @@ date.nextDay(); // "2014-06-21"
 	<li><code>new Date(date)</code> 是一个有效的日期对象</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 declare global {
@@ -65,4 +79,6 @@ Date.prototype.nextDay = function () {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

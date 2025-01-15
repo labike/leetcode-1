@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # LeetCode Contest
 
 [中文文档](/solution/CONTEST_README.md)
@@ -21,9 +25,471 @@ For top 10 users (excluding LCCN users), your LeetCode ID will be colored orange
 
 ## Rating Predictor
 
-Get your rating changes right after the completion of LeetCode contests, https://lccn.lbao.site
+If you want to estimate your score changes after the contest ends, you can visit the website [LeetCode Contest Rating Predictor](https://lccn.lbao.site/).
 
 ## Past Contests
+
+#### Weekly Contest 432
+
+- [3417. Zigzag Grid Traversal With Skip](/solution/3400-3499/3417.Zigzag%20Grid%20Traversal%20With%20Skip/README_EN.md)
+- [3418. Maximum Amount of Money Robot Can Earn](/solution/3400-3499/3418.Maximum%20Amount%20of%20Money%20Robot%20Can%20Earn/README_EN.md)
+- [3419. Minimize the Maximum Edge Weight of Graph](/solution/3400-3499/3419.Minimize%20the%20Maximum%20Edge%20Weight%20of%20Graph/README_EN.md)
+- [3420. Count Non-Decreasing Subarrays After K Operations](/solution/3400-3499/3420.Count%20Non-Decreasing%20Subarrays%20After%20K%20Operations/README_EN.md)
+
+#### Weekly Contest 431
+
+- [3411. Maximum Subarray With Equal Products](/solution/3400-3499/3411.Maximum%20Subarray%20With%20Equal%20Products/README_EN.md)
+- [3412. Find Mirror Score of a String](/solution/3400-3499/3412.Find%20Mirror%20Score%20of%20a%20String/README_EN.md)
+- [3413. Maximum Coins From K Consecutive Bags](/solution/3400-3499/3413.Maximum%20Coins%20From%20K%20Consecutive%20Bags/README_EN.md)
+- [3414. Maximum Score of Non-overlapping Intervals](/solution/3400-3499/3414.Maximum%20Score%20of%20Non-overlapping%20Intervals/README_EN.md)
+
+#### Biweekly Contest 147
+
+- [3407. Substring Matching Pattern](/solution/3400-3499/3407.Substring%20Matching%20Pattern/README_EN.md)
+- [3408. Design Task Manager](/solution/3400-3499/3408.Design%20Task%20Manager/README_EN.md)
+- [3409. Longest Subsequence With Decreasing Adjacent Difference](/solution/3400-3499/3409.Longest%20Subsequence%20With%20Decreasing%20Adjacent%20Difference/README_EN.md)
+- [3410. Maximize Subarray Sum After Removing All Occurrences of One Element](/solution/3400-3499/3410.Maximize%20Subarray%20Sum%20After%20Removing%20All%20Occurrences%20of%20One%20Element/README_EN.md)
+
+#### Weekly Contest 430
+
+- [3402. Minimum Operations to Make Columns Strictly Increasing](/solution/3400-3499/3402.Minimum%20Operations%20to%20Make%20Columns%20Strictly%20Increasing/README_EN.md)
+- [3403. Find the Lexicographically Largest String From the Box I](/solution/3400-3499/3403.Find%20the%20Lexicographically%20Largest%20String%20From%20the%20Box%20I/README_EN.md)
+- [3404. Count Special Subsequences](/solution/3400-3499/3404.Count%20Special%20Subsequences/README_EN.md)
+- [3405. Count the Number of Arrays with K Matching Adjacent Elements](/solution/3400-3499/3405.Count%20the%20Number%20of%20Arrays%20with%20K%20Matching%20Adjacent%20Elements/README_EN.md)
+
+#### Weekly Contest 429
+
+- [3396. Minimum Number of Operations to Make Elements in Array Distinct](/solution/3300-3399/3396.Minimum%20Number%20of%20Operations%20to%20Make%20Elements%20in%20Array%20Distinct/README_EN.md)
+- [3397. Maximum Number of Distinct Elements After Operations](/solution/3300-3399/3397.Maximum%20Number%20of%20Distinct%20Elements%20After%20Operations/README_EN.md)
+- [3398. Smallest Substring With Identical Characters I](/solution/3300-3399/3398.Smallest%20Substring%20With%20Identical%20Characters%20I/README_EN.md)
+- [3399. Smallest Substring With Identical Characters II](/solution/3300-3399/3399.Smallest%20Substring%20With%20Identical%20Characters%20II/README_EN.md)
+
+#### Biweekly Contest 146
+
+- [3392. Count Subarrays of Length Three With a Condition](/solution/3300-3399/3392.Count%20Subarrays%20of%20Length%20Three%20With%20a%20Condition/README_EN.md)
+- [3393. Count Paths With the Given XOR Value](/solution/3300-3399/3393.Count%20Paths%20With%20the%20Given%20XOR%20Value/README_EN.md)
+- [3394. Check if Grid can be Cut into Sections](/solution/3300-3399/3394.Check%20if%20Grid%20can%20be%20Cut%20into%20Sections/README_EN.md)
+- [3395. Subsequences with a Unique Middle Mode I](/solution/3300-3399/3395.Subsequences%20with%20a%20Unique%20Middle%20Mode%20I/README_EN.md)
+
+#### Weekly Contest 428
+
+- [3386. Button with Longest Push Time](/solution/3300-3399/3386.Button%20with%20Longest%20Push%20Time/README_EN.md)
+- [3387. Maximize Amount After Two Days of Conversions](/solution/3300-3399/3387.Maximize%20Amount%20After%20Two%20Days%20of%20Conversions/README_EN.md)
+- [3388. Count Beautiful Splits in an Array](/solution/3300-3399/3388.Count%20Beautiful%20Splits%20in%20an%20Array/README_EN.md)
+- [3389. Minimum Operations to Make Character Frequencies Equal](/solution/3300-3399/3389.Minimum%20Operations%20to%20Make%20Character%20Frequencies%20Equal/README_EN.md)
+
+#### Weekly Contest 427
+
+- [3379. Transformed Array](/solution/3300-3399/3379.Transformed%20Array/README_EN.md)
+- [3380. Maximum Area Rectangle With Point Constraints I](/solution/3300-3399/3380.Maximum%20Area%20Rectangle%20With%20Point%20Constraints%20I/README_EN.md)
+- [3381. Maximum Subarray Sum With Length Divisible by K](/solution/3300-3399/3381.Maximum%20Subarray%20Sum%20With%20Length%20Divisible%20by%20K/README_EN.md)
+- [3382. Maximum Area Rectangle With Point Constraints II](/solution/3300-3399/3382.Maximum%20Area%20Rectangle%20With%20Point%20Constraints%20II/README_EN.md)
+
+#### Biweekly Contest 145
+
+- [3375. Minimum Operations to Make Array Values Equal to K](/solution/3300-3399/3375.Minimum%20Operations%20to%20Make%20Array%20Values%20Equal%20to%20K/README_EN.md)
+- [3376. Minimum Time to Break Locks I](/solution/3300-3399/3376.Minimum%20Time%20to%20Break%20Locks%20I/README_EN.md)
+- [3377. Digit Operations to Make Two Integers Equal](/solution/3300-3399/3377.Digit%20Operations%20to%20Make%20Two%20Integers%20Equal/README_EN.md)
+- [3378. Count Connected Components in LCM Graph](/solution/3300-3399/3378.Count%20Connected%20Components%20in%20LCM%20Graph/README_EN.md)
+
+#### Weekly Contest 426
+
+- [3370. Smallest Number With All Set Bits](/solution/3300-3399/3370.Smallest%20Number%20With%20All%20Set%20Bits/README_EN.md)
+- [3371. Identify the Largest Outlier in an Array](/solution/3300-3399/3371.Identify%20the%20Largest%20Outlier%20in%20an%20Array/README_EN.md)
+- [3372. Maximize the Number of Target Nodes After Connecting Trees I](/solution/3300-3399/3372.Maximize%20the%20Number%20of%20Target%20Nodes%20After%20Connecting%20Trees%20I/README_EN.md)
+- [3373. Maximize the Number of Target Nodes After Connecting Trees II](/solution/3300-3399/3373.Maximize%20the%20Number%20of%20Target%20Nodes%20After%20Connecting%20Trees%20II/README_EN.md)
+
+#### Weekly Contest 425
+
+- [3364. Minimum Positive Sum Subarray](/solution/3300-3399/3364.Minimum%20Positive%20Sum%20Subarray/README_EN.md)
+- [3365. Rearrange K Substrings to Form Target String](/solution/3300-3399/3365.Rearrange%20K%20Substrings%20to%20Form%20Target%20String/README_EN.md)
+- [3366. Minimum Array Sum](/solution/3300-3399/3366.Minimum%20Array%20Sum/README_EN.md)
+- [3367. Maximize Sum of Weights after Edge Removals](/solution/3300-3399/3367.Maximize%20Sum%20of%20Weights%20after%20Edge%20Removals/README_EN.md)
+
+#### Biweekly Contest 144
+
+- [3360. Stone Removal Game](/solution/3300-3399/3360.Stone%20Removal%20Game/README_EN.md)
+- [3361. Shift Distance Between Two Strings](/solution/3300-3399/3361.Shift%20Distance%20Between%20Two%20Strings/README_EN.md)
+- [3362. Zero Array Transformation III](/solution/3300-3399/3362.Zero%20Array%20Transformation%20III/README_EN.md)
+- [3363. Find the Maximum Number of Fruits Collected](/solution/3300-3399/3363.Find%20the%20Maximum%20Number%20of%20Fruits%20Collected/README_EN.md)
+
+#### Weekly Contest 424
+
+- [3354. Make Array Elements Equal to Zero](/solution/3300-3399/3354.Make%20Array%20Elements%20Equal%20to%20Zero/README_EN.md)
+- [3355. Zero Array Transformation I](/solution/3300-3399/3355.Zero%20Array%20Transformation%20I/README_EN.md)
+- [3356. Zero Array Transformation II](/solution/3300-3399/3356.Zero%20Array%20Transformation%20II/README_EN.md)
+- [3357. Minimize the Maximum Adjacent Element Difference](/solution/3300-3399/3357.Minimize%20the%20Maximum%20Adjacent%20Element%20Difference/README_EN.md)
+
+#### Weekly Contest 423
+
+- [3349. Adjacent Increasing Subarrays Detection I](/solution/3300-3399/3349.Adjacent%20Increasing%20Subarrays%20Detection%20I/README_EN.md)
+- [3350. Adjacent Increasing Subarrays Detection II](/solution/3300-3399/3350.Adjacent%20Increasing%20Subarrays%20Detection%20II/README_EN.md)
+- [3351. Sum of Good Subsequences](/solution/3300-3399/3351.Sum%20of%20Good%20Subsequences/README_EN.md)
+- [3352. Count K-Reducible Numbers Less Than N](/solution/3300-3399/3352.Count%20K-Reducible%20Numbers%20Less%20Than%20N/README_EN.md)
+
+#### Biweekly Contest 143
+
+- [3345. Smallest Divisible Digit Product I](/solution/3300-3399/3345.Smallest%20Divisible%20Digit%20Product%20I/README_EN.md)
+- [3346. Maximum Frequency of an Element After Performing Operations I](/solution/3300-3399/3346.Maximum%20Frequency%20of%20an%20Element%20After%20Performing%20Operations%20I/README_EN.md)
+- [3347. Maximum Frequency of an Element After Performing Operations II](/solution/3300-3399/3347.Maximum%20Frequency%20of%20an%20Element%20After%20Performing%20Operations%20II/README_EN.md)
+- [3348. Smallest Divisible Digit Product II](/solution/3300-3399/3348.Smallest%20Divisible%20Digit%20Product%20II/README_EN.md)
+
+#### Weekly Contest 422
+
+- [3340. Check Balanced String](/solution/3300-3399/3340.Check%20Balanced%20String/README_EN.md)
+- [3341. Find Minimum Time to Reach Last Room I](/solution/3300-3399/3341.Find%20Minimum%20Time%20to%20Reach%20Last%20Room%20I/README_EN.md)
+- [3342. Find Minimum Time to Reach Last Room II](/solution/3300-3399/3342.Find%20Minimum%20Time%20to%20Reach%20Last%20Room%20II/README_EN.md)
+- [3343. Count Number of Balanced Permutations](/solution/3300-3399/3343.Count%20Number%20of%20Balanced%20Permutations/README_EN.md)
+
+#### Weekly Contest 421
+
+- [3334. Find the Maximum Factor Score of Array](/solution/3300-3399/3334.Find%20the%20Maximum%20Factor%20Score%20of%20Array/README_EN.md)
+- [3335. Total Characters in String After Transformations I](/solution/3300-3399/3335.Total%20Characters%20in%20String%20After%20Transformations%20I/README_EN.md)
+- [3336. Find the Number of Subsequences With Equal GCD](/solution/3300-3399/3336.Find%20the%20Number%20of%20Subsequences%20With%20Equal%20GCD/README_EN.md)
+- [3337. Total Characters in String After Transformations II](/solution/3300-3399/3337.Total%20Characters%20in%20String%20After%20Transformations%20II/README_EN.md)
+
+#### Biweekly Contest 142
+
+- [3330. Find the Original Typed String I](/solution/3300-3399/3330.Find%20the%20Original%20Typed%20String%20I/README_EN.md)
+- [3331. Find Subtree Sizes After Changes](/solution/3300-3399/3331.Find%20Subtree%20Sizes%20After%20Changes/README_EN.md)
+- [3332. Maximum Points Tourist Can Earn](/solution/3300-3399/3332.Maximum%20Points%20Tourist%20Can%20Earn/README_EN.md)
+- [3333. Find the Original Typed String II](/solution/3300-3399/3333.Find%20the%20Original%20Typed%20String%20II/README_EN.md)
+
+#### Weekly Contest 420
+
+- [3324. Find the Sequence of Strings Appeared on the Screen](/solution/3300-3399/3324.Find%20the%20Sequence%20of%20Strings%20Appeared%20on%20the%20Screen/README_EN.md)
+- [3325. Count Substrings With K-Frequency Characters I](/solution/3300-3399/3325.Count%20Substrings%20With%20K-Frequency%20Characters%20I/README_EN.md)
+- [3326. Minimum Division Operations to Make Array Non Decreasing](/solution/3300-3399/3326.Minimum%20Division%20Operations%20to%20Make%20Array%20Non%20Decreasing/README_EN.md)
+- [3327. Check if DFS Strings Are Palindromes](/solution/3300-3399/3327.Check%20if%20DFS%20Strings%20Are%20Palindromes/README_EN.md)
+
+#### Weekly Contest 419
+
+- [3318. Find X-Sum of All K-Long Subarrays I](/solution/3300-3399/3318.Find%20X-Sum%20of%20All%20K-Long%20Subarrays%20I/README_EN.md)
+- [3319. K-th Largest Perfect Subtree Size in Binary Tree](/solution/3300-3399/3319.K-th%20Largest%20Perfect%20Subtree%20Size%20in%20Binary%20Tree/README_EN.md)
+- [3320. Count The Number of Winning Sequences](/solution/3300-3399/3320.Count%20The%20Number%20of%20Winning%20Sequences/README_EN.md)
+- [3321. Find X-Sum of All K-Long Subarrays II](/solution/3300-3399/3321.Find%20X-Sum%20of%20All%20K-Long%20Subarrays%20II/README_EN.md)
+
+#### Biweekly Contest 141
+
+- [3314. Construct the Minimum Bitwise Array I](/solution/3300-3399/3314.Construct%20the%20Minimum%20Bitwise%20Array%20I/README_EN.md)
+- [3315. Construct the Minimum Bitwise Array II](/solution/3300-3399/3315.Construct%20the%20Minimum%20Bitwise%20Array%20II/README_EN.md)
+- [3316. Find Maximum Removals From Source String](/solution/3300-3399/3316.Find%20Maximum%20Removals%20From%20Source%20String/README_EN.md)
+- [3317. Find the Number of Possible Ways for an Event](/solution/3300-3399/3317.Find%20the%20Number%20of%20Possible%20Ways%20for%20an%20Event/README_EN.md)
+
+#### Weekly Contest 418
+
+- [3309. Maximum Possible Number by Binary Concatenation](/solution/3300-3399/3309.Maximum%20Possible%20Number%20by%20Binary%20Concatenation/README_EN.md)
+- [3310. Remove Methods From Project](/solution/3300-3399/3310.Remove%20Methods%20From%20Project/README_EN.md)
+- [3311. Construct 2D Grid Matching Graph Layout](/solution/3300-3399/3311.Construct%202D%20Grid%20Matching%20Graph%20Layout/README_EN.md)
+- [3312. Sorted GCD Pair Queries](/solution/3300-3399/3312.Sorted%20GCD%20Pair%20Queries/README_EN.md)
+
+#### Weekly Contest 417
+
+- [3304. Find the K-th Character in String Game I](/solution/3300-3399/3304.Find%20the%20K-th%20Character%20in%20String%20Game%20I/README_EN.md)
+- [3305. Count of Substrings Containing Every Vowel and K Consonants I](/solution/3300-3399/3305.Count%20of%20Substrings%20Containing%20Every%20Vowel%20and%20K%20Consonants%20I/README_EN.md)
+- [3306. Count of Substrings Containing Every Vowel and K Consonants II](/solution/3300-3399/3306.Count%20of%20Substrings%20Containing%20Every%20Vowel%20and%20K%20Consonants%20II/README_EN.md)
+- [3307. Find the K-th Character in String Game II](/solution/3300-3399/3307.Find%20the%20K-th%20Character%20in%20String%20Game%20II/README_EN.md)
+
+#### Biweekly Contest 140
+
+- [3300. Minimum Element After Replacement With Digit Sum](/solution/3300-3399/3300.Minimum%20Element%20After%20Replacement%20With%20Digit%20Sum/README_EN.md)
+- [3301. Maximize the Total Height of Unique Towers](/solution/3300-3399/3301.Maximize%20the%20Total%20Height%20of%20Unique%20Towers/README_EN.md)
+- [3302. Find the Lexicographically Smallest Valid Sequence](/solution/3300-3399/3302.Find%20the%20Lexicographically%20Smallest%20Valid%20Sequence/README_EN.md)
+- [3303. Find the Occurrence of First Almost Equal Substring](/solution/3300-3399/3303.Find%20the%20Occurrence%20of%20First%20Almost%20Equal%20Substring/README_EN.md)
+
+#### Weekly Contest 416
+
+- [3295. Report Spam Message](/solution/3200-3299/3295.Report%20Spam%20Message/README_EN.md)
+- [3296. Minimum Number of Seconds to Make Mountain Height Zero](/solution/3200-3299/3296.Minimum%20Number%20of%20Seconds%20to%20Make%20Mountain%20Height%20Zero/README_EN.md)
+- [3297. Count Substrings That Can Be Rearranged to Contain a String I](/solution/3200-3299/3297.Count%20Substrings%20That%20Can%20Be%20Rearranged%20to%20Contain%20a%20String%20I/README_EN.md)
+- [3298. Count Substrings That Can Be Rearranged to Contain a String II](/solution/3200-3299/3298.Count%20Substrings%20That%20Can%20Be%20Rearranged%20to%20Contain%20a%20String%20II/README_EN.md)
+
+#### Weekly Contest 415
+
+- [3289. The Two Sneaky Numbers of Digitville](/solution/3200-3299/3289.The%20Two%20Sneaky%20Numbers%20of%20Digitville/README_EN.md)
+- [3290. Maximum Multiplication Score](/solution/3200-3299/3290.Maximum%20Multiplication%20Score/README_EN.md)
+- [3291. Minimum Number of Valid Strings to Form Target I](/solution/3200-3299/3291.Minimum%20Number%20of%20Valid%20Strings%20to%20Form%20Target%20I/README_EN.md)
+- [3292. Minimum Number of Valid Strings to Form Target II](/solution/3200-3299/3292.Minimum%20Number%20of%20Valid%20Strings%20to%20Form%20Target%20II/README_EN.md)
+
+#### Biweekly Contest 139
+
+- [3285. Find Indices of Stable Mountains](/solution/3200-3299/3285.Find%20Indices%20of%20Stable%20Mountains/README_EN.md)
+- [3286. Find a Safe Walk Through a Grid](/solution/3200-3299/3286.Find%20a%20Safe%20Walk%20Through%20a%20Grid/README_EN.md)
+- [3287. Find the Maximum Sequence Value of Array](/solution/3200-3299/3287.Find%20the%20Maximum%20Sequence%20Value%20of%20Array/README_EN.md)
+- [3288. Length of the Longest Increasing Path](/solution/3200-3299/3288.Length%20of%20the%20Longest%20Increasing%20Path/README_EN.md)
+
+#### Weekly Contest 414
+
+- [3280. Convert Date to Binary](/solution/3200-3299/3280.Convert%20Date%20to%20Binary/README_EN.md)
+- [3281. Maximize Score of Numbers in Ranges](/solution/3200-3299/3281.Maximize%20Score%20of%20Numbers%20in%20Ranges/README_EN.md)
+- [3282. Reach End of Array With Max Score](/solution/3200-3299/3282.Reach%20End%20of%20Array%20With%20Max%20Score/README_EN.md)
+- [3283. Maximum Number of Moves to Kill All Pawns](/solution/3200-3299/3283.Maximum%20Number%20of%20Moves%20to%20Kill%20All%20Pawns/README_EN.md)
+
+#### Weekly Contest 413
+
+- [3274. Check if Two Chessboard Squares Have the Same Color](/solution/3200-3299/3274.Check%20if%20Two%20Chessboard%20Squares%20Have%20the%20Same%20Color/README_EN.md)
+- [3275. K-th Nearest Obstacle Queries](/solution/3200-3299/3275.K-th%20Nearest%20Obstacle%20Queries/README_EN.md)
+- [3276. Select Cells in Grid With Maximum Score](/solution/3200-3299/3276.Select%20Cells%20in%20Grid%20With%20Maximum%20Score/README_EN.md)
+- [3277. Maximum XOR Score Subarray Queries](/solution/3200-3299/3277.Maximum%20XOR%20Score%20Subarray%20Queries/README_EN.md)
+
+#### Biweekly Contest 138
+
+- [3270. Find the Key of the Numbers](/solution/3200-3299/3270.Find%20the%20Key%20of%20the%20Numbers/README_EN.md)
+- [3271. Hash Divided String](/solution/3200-3299/3271.Hash%20Divided%20String/README_EN.md)
+- [3272. Find the Count of Good Integers](/solution/3200-3299/3272.Find%20the%20Count%20of%20Good%20Integers/README_EN.md)
+- [3273. Minimum Amount of Damage Dealt to Bob](/solution/3200-3299/3273.Minimum%20Amount%20of%20Damage%20Dealt%20to%20Bob/README_EN.md)
+
+#### Weekly Contest 412
+
+- [3264. Final Array State After K Multiplication Operations I](/solution/3200-3299/3264.Final%20Array%20State%20After%20K%20Multiplication%20Operations%20I/README_EN.md)
+- [3265. Count Almost Equal Pairs I](/solution/3200-3299/3265.Count%20Almost%20Equal%20Pairs%20I/README_EN.md)
+- [3266. Final Array State After K Multiplication Operations II](/solution/3200-3299/3266.Final%20Array%20State%20After%20K%20Multiplication%20Operations%20II/README_EN.md)
+- [3267. Count Almost Equal Pairs II](/solution/3200-3299/3267.Count%20Almost%20Equal%20Pairs%20II/README_EN.md)
+
+#### Weekly Contest 411
+
+- [3258. Count Substrings That Satisfy K-Constraint I](/solution/3200-3299/3258.Count%20Substrings%20That%20Satisfy%20K-Constraint%20I/README_EN.md)
+- [3259. Maximum Energy Boost From Two Drinks](/solution/3200-3299/3259.Maximum%20Energy%20Boost%20From%20Two%20Drinks/README_EN.md)
+- [3260. Find the Largest Palindrome Divisible by K](/solution/3200-3299/3260.Find%20the%20Largest%20Palindrome%20Divisible%20by%20K/README_EN.md)
+- [3261. Count Substrings That Satisfy K-Constraint II](/solution/3200-3299/3261.Count%20Substrings%20That%20Satisfy%20K-Constraint%20II/README_EN.md)
+
+#### Biweekly Contest 137
+
+- [3254. Find the Power of K-Size Subarrays I](/solution/3200-3299/3254.Find%20the%20Power%20of%20K-Size%20Subarrays%20I/README_EN.md)
+- [3255. Find the Power of K-Size Subarrays II](/solution/3200-3299/3255.Find%20the%20Power%20of%20K-Size%20Subarrays%20II/README_EN.md)
+- [3256. Maximum Value Sum by Placing Three Rooks I](/solution/3200-3299/3256.Maximum%20Value%20Sum%20by%20Placing%20Three%20Rooks%20I/README_EN.md)
+- [3257. Maximum Value Sum by Placing Three Rooks II](/solution/3200-3299/3257.Maximum%20Value%20Sum%20by%20Placing%20Three%20Rooks%20II/README_EN.md)
+
+#### Weekly Contest 410
+
+- [3248. Snake in Matrix](/solution/3200-3299/3248.Snake%20in%20Matrix/README_EN.md)
+- [3249. Count the Number of Good Nodes](/solution/3200-3299/3249.Count%20the%20Number%20of%20Good%20Nodes/README_EN.md)
+- [3250. Find the Count of Monotonic Pairs I](/solution/3200-3299/3250.Find%20the%20Count%20of%20Monotonic%20Pairs%20I/README_EN.md)
+- [3251. Find the Count of Monotonic Pairs II](/solution/3200-3299/3251.Find%20the%20Count%20of%20Monotonic%20Pairs%20II/README_EN.md)
+
+#### Weekly Contest 409
+
+- [3242. Design Neighbor Sum Service](/solution/3200-3299/3242.Design%20Neighbor%20Sum%20Service/README_EN.md)
+- [3243. Shortest Distance After Road Addition Queries I](/solution/3200-3299/3243.Shortest%20Distance%20After%20Road%20Addition%20Queries%20I/README_EN.md)
+- [3244. Shortest Distance After Road Addition Queries II](/solution/3200-3299/3244.Shortest%20Distance%20After%20Road%20Addition%20Queries%20II/README_EN.md)
+- [3245. Alternating Groups III](/solution/3200-3299/3245.Alternating%20Groups%20III/README_EN.md)
+
+#### Biweekly Contest 136
+
+- [3238. Find the Number of Winning Players](/solution/3200-3299/3238.Find%20the%20Number%20of%20Winning%20Players/README_EN.md)
+- [3239. Minimum Number of Flips to Make Binary Grid Palindromic I](/solution/3200-3299/3239.Minimum%20Number%20of%20Flips%20to%20Make%20Binary%20Grid%20Palindromic%20I/README_EN.md)
+- [3240. Minimum Number of Flips to Make Binary Grid Palindromic II](/solution/3200-3299/3240.Minimum%20Number%20of%20Flips%20to%20Make%20Binary%20Grid%20Palindromic%20II/README_EN.md)
+- [3241. Time Taken to Mark All Nodes](/solution/3200-3299/3241.Time%20Taken%20to%20Mark%20All%20Nodes/README_EN.md)
+
+#### Weekly Contest 408
+
+- [3232. Find if Digit Game Can Be Won](/solution/3200-3299/3232.Find%20if%20Digit%20Game%20Can%20Be%20Won/README_EN.md)
+- [3233. Find the Count of Numbers Which Are Not Special](/solution/3200-3299/3233.Find%20the%20Count%20of%20Numbers%20Which%20Are%20Not%20Special/README_EN.md)
+- [3234. Count the Number of Substrings With Dominant Ones](/solution/3200-3299/3234.Count%20the%20Number%20of%20Substrings%20With%20Dominant%20Ones/README_EN.md)
+- [3235. Check if the Rectangle Corner Is Reachable](/solution/3200-3299/3235.Check%20if%20the%20Rectangle%20Corner%20Is%20Reachable/README_EN.md)
+
+#### Weekly Contest 407
+
+- [3226. Number of Bit Changes to Make Two Integers Equal](/solution/3200-3299/3226.Number%20of%20Bit%20Changes%20to%20Make%20Two%20Integers%20Equal/README_EN.md)
+- [3227. Vowels Game in a String](/solution/3200-3299/3227.Vowels%20Game%20in%20a%20String/README_EN.md)
+- [3228. Maximum Number of Operations to Move Ones to the End](/solution/3200-3299/3228.Maximum%20Number%20of%20Operations%20to%20Move%20Ones%20to%20the%20End/README_EN.md)
+- [3229. Minimum Operations to Make Array Equal to Target](/solution/3200-3299/3229.Minimum%20Operations%20to%20Make%20Array%20Equal%20to%20Target/README_EN.md)
+
+#### Biweekly Contest 135
+
+- [3222. Find the Winning Player in Coin Game](/solution/3200-3299/3222.Find%20the%20Winning%20Player%20in%20Coin%20Game/README_EN.md)
+- [3223. Minimum Length of String After Operations](/solution/3200-3299/3223.Minimum%20Length%20of%20String%20After%20Operations/README_EN.md)
+- [3224. Minimum Array Changes to Make Differences Equal](/solution/3200-3299/3224.Minimum%20Array%20Changes%20to%20Make%20Differences%20Equal/README_EN.md)
+- [3225. Maximum Score From Grid Operations](/solution/3200-3299/3225.Maximum%20Score%20From%20Grid%20Operations/README_EN.md)
+
+#### Weekly Contest 406
+
+- [3216. Lexicographically Smallest String After a Swap](/solution/3200-3299/3216.Lexicographically%20Smallest%20String%20After%20a%20Swap/README_EN.md)
+- [3217. Delete Nodes From Linked List Present in Array](/solution/3200-3299/3217.Delete%20Nodes%20From%20Linked%20List%20Present%20in%20Array/README_EN.md)
+- [3218. Minimum Cost for Cutting Cake I](/solution/3200-3299/3218.Minimum%20Cost%20for%20Cutting%20Cake%20I/README_EN.md)
+- [3219. Minimum Cost for Cutting Cake II](/solution/3200-3299/3219.Minimum%20Cost%20for%20Cutting%20Cake%20II/README_EN.md)
+
+#### Weekly Contest 405
+
+- [3210. Find the Encrypted String](/solution/3200-3299/3210.Find%20the%20Encrypted%20String/README_EN.md)
+- [3211. Generate Binary Strings Without Adjacent Zeros](/solution/3200-3299/3211.Generate%20Binary%20Strings%20Without%20Adjacent%20Zeros/README_EN.md)
+- [3212. Count Submatrices With Equal Frequency of X and Y](/solution/3200-3299/3212.Count%20Submatrices%20With%20Equal%20Frequency%20of%20X%20and%20Y/README_EN.md)
+- [3213. Construct String with Minimum Cost](/solution/3200-3299/3213.Construct%20String%20with%20Minimum%20Cost/README_EN.md)
+
+#### Biweekly Contest 134
+
+- [3206. Alternating Groups I](/solution/3200-3299/3206.Alternating%20Groups%20I/README_EN.md)
+- [3207. Maximum Points After Enemy Battles](/solution/3200-3299/3207.Maximum%20Points%20After%20Enemy%20Battles/README_EN.md)
+- [3208. Alternating Groups II](/solution/3200-3299/3208.Alternating%20Groups%20II/README_EN.md)
+- [3209. Number of Subarrays With AND Value of K](/solution/3200-3299/3209.Number%20of%20Subarrays%20With%20AND%20Value%20of%20K/README_EN.md)
+
+#### Weekly Contest 404
+
+- [3200. Maximum Height of a Triangle](/solution/3200-3299/3200.Maximum%20Height%20of%20a%20Triangle/README_EN.md)
+- [3201. Find the Maximum Length of Valid Subsequence I](/solution/3200-3299/3201.Find%20the%20Maximum%20Length%20of%20Valid%20Subsequence%20I/README_EN.md)
+- [3202. Find the Maximum Length of Valid Subsequence II](/solution/3200-3299/3202.Find%20the%20Maximum%20Length%20of%20Valid%20Subsequence%20II/README_EN.md)
+- [3203. Find Minimum Diameter After Merging Two Trees](/solution/3200-3299/3203.Find%20Minimum%20Diameter%20After%20Merging%20Two%20Trees/README_EN.md)
+
+#### Weekly Contest 403
+
+- [3194. Minimum Average of Smallest and Largest Elements](/solution/3100-3199/3194.Minimum%20Average%20of%20Smallest%20and%20Largest%20Elements/README_EN.md)
+- [3195. Find the Minimum Area to Cover All Ones I](/solution/3100-3199/3195.Find%20the%20Minimum%20Area%20to%20Cover%20All%20Ones%20I/README_EN.md)
+- [3196. Maximize Total Cost of Alternating Subarrays](/solution/3100-3199/3196.Maximize%20Total%20Cost%20of%20Alternating%20Subarrays/README_EN.md)
+- [3197. Find the Minimum Area to Cover All Ones II](/solution/3100-3199/3197.Find%20the%20Minimum%20Area%20to%20Cover%20All%20Ones%20II/README_EN.md)
+
+#### Biweekly Contest 133
+
+- [3190. Find Minimum Operations to Make All Elements Divisible by Three](/solution/3100-3199/3190.Find%20Minimum%20Operations%20to%20Make%20All%20Elements%20Divisible%20by%20Three/README_EN.md)
+- [3191. Minimum Operations to Make Binary Array Elements Equal to One I](/solution/3100-3199/3191.Minimum%20Operations%20to%20Make%20Binary%20Array%20Elements%20Equal%20to%20One%20I/README_EN.md)
+- [3192. Minimum Operations to Make Binary Array Elements Equal to One II](/solution/3100-3199/3192.Minimum%20Operations%20to%20Make%20Binary%20Array%20Elements%20Equal%20to%20One%20II/README_EN.md)
+- [3193. Count the Number of Inversions](/solution/3100-3199/3193.Count%20the%20Number%20of%20Inversions/README_EN.md)
+
+#### Weekly Contest 402
+
+- [3184. Count Pairs That Form a Complete Day I](/solution/3100-3199/3184.Count%20Pairs%20That%20Form%20a%20Complete%20Day%20I/README_EN.md)
+- [3185. Count Pairs That Form a Complete Day II](/solution/3100-3199/3185.Count%20Pairs%20That%20Form%20a%20Complete%20Day%20II/README_EN.md)
+- [3186. Maximum Total Damage With Spell Casting](/solution/3100-3199/3186.Maximum%20Total%20Damage%20With%20Spell%20Casting/README_EN.md)
+- [3187. Peaks in Array](/solution/3100-3199/3187.Peaks%20in%20Array/README_EN.md)
+
+#### Weekly Contest 401
+
+- [3178. Find the Child Who Has the Ball After K Seconds](/solution/3100-3199/3178.Find%20the%20Child%20Who%20Has%20the%20Ball%20After%20K%20Seconds/README_EN.md)
+- [3179. Find the N-th Value After K Seconds](/solution/3100-3199/3179.Find%20the%20N-th%20Value%20After%20K%20Seconds/README_EN.md)
+- [3180. Maximum Total Reward Using Operations I](/solution/3100-3199/3180.Maximum%20Total%20Reward%20Using%20Operations%20I/README_EN.md)
+- [3181. Maximum Total Reward Using Operations II](/solution/3100-3199/3181.Maximum%20Total%20Reward%20Using%20Operations%20II/README_EN.md)
+
+#### Biweekly Contest 132
+
+- [3174. Clear Digits](/solution/3100-3199/3174.Clear%20Digits/README_EN.md)
+- [3175. Find The First Player to win K Games in a Row](/solution/3100-3199/3175.Find%20The%20First%20Player%20to%20win%20K%20Games%20in%20a%20Row/README_EN.md)
+- [3176. Find the Maximum Length of a Good Subsequence I](/solution/3100-3199/3176.Find%20the%20Maximum%20Length%20of%20a%20Good%20Subsequence%20I/README_EN.md)
+- [3177. Find the Maximum Length of a Good Subsequence II](/solution/3100-3199/3177.Find%20the%20Maximum%20Length%20of%20a%20Good%20Subsequence%20II/README_EN.md)
+
+#### Weekly Contest 400
+
+- [3168. Minimum Number of Chairs in a Waiting Room](/solution/3100-3199/3168.Minimum%20Number%20of%20Chairs%20in%20a%20Waiting%20Room/README_EN.md)
+- [3169. Count Days Without Meetings](/solution/3100-3199/3169.Count%20Days%20Without%20Meetings/README_EN.md)
+- [3170. Lexicographically Minimum String After Removing Stars](/solution/3100-3199/3170.Lexicographically%20Minimum%20String%20After%20Removing%20Stars/README_EN.md)
+- [3171. Find Subarray With Bitwise OR Closest to K](/solution/3100-3199/3171.Find%20Subarray%20With%20Bitwise%20OR%20Closest%20to%20K/README_EN.md)
+
+#### Weekly Contest 399
+
+- [3162. Find the Number of Good Pairs I](/solution/3100-3199/3162.Find%20the%20Number%20of%20Good%20Pairs%20I/README_EN.md)
+- [3163. String Compression III](/solution/3100-3199/3163.String%20Compression%20III/README_EN.md)
+- [3164. Find the Number of Good Pairs II](/solution/3100-3199/3164.Find%20the%20Number%20of%20Good%20Pairs%20II/README_EN.md)
+- [3165. Maximum Sum of Subsequence With Non-adjacent Elements](/solution/3100-3199/3165.Maximum%20Sum%20of%20Subsequence%20With%20Non-adjacent%20Elements/README_EN.md)
+
+#### Biweekly Contest 131
+
+- [3158. Find the XOR of Numbers Which Appear Twice](/solution/3100-3199/3158.Find%20the%20XOR%20of%20Numbers%20Which%20Appear%20Twice/README_EN.md)
+- [3159. Find Occurrences of an Element in an Array](/solution/3100-3199/3159.Find%20Occurrences%20of%20an%20Element%20in%20an%20Array/README_EN.md)
+- [3160. Find the Number of Distinct Colors Among the Balls](/solution/3100-3199/3160.Find%20the%20Number%20of%20Distinct%20Colors%20Among%20the%20Balls/README_EN.md)
+- [3161. Block Placement Queries](/solution/3100-3199/3161.Block%20Placement%20Queries/README_EN.md)
+
+#### Weekly Contest 398
+
+- [3151. Special Array I](/solution/3100-3199/3151.Special%20Array%20I/README_EN.md)
+- [3152. Special Array II](/solution/3100-3199/3152.Special%20Array%20II/README_EN.md)
+- [3153. Sum of Digit Differences of All Pairs](/solution/3100-3199/3153.Sum%20of%20Digit%20Differences%20of%20All%20Pairs/README_EN.md)
+- [3154. Find Number of Ways to Reach the K-th Stair](/solution/3100-3199/3154.Find%20Number%20of%20Ways%20to%20Reach%20the%20K-th%20Stair/README_EN.md)
+
+#### Weekly Contest 397
+
+- [3146. Permutation Difference between Two Strings](/solution/3100-3199/3146.Permutation%20Difference%20between%20Two%20Strings/README_EN.md)
+- [3147. Taking Maximum Energy From the Mystic Dungeon](/solution/3100-3199/3147.Taking%20Maximum%20Energy%20From%20the%20Mystic%20Dungeon/README_EN.md)
+- [3148. Maximum Difference Score in a Grid](/solution/3100-3199/3148.Maximum%20Difference%20Score%20in%20a%20Grid/README_EN.md)
+- [3149. Find the Minimum Cost Array Permutation](/solution/3100-3199/3149.Find%20the%20Minimum%20Cost%20Array%20Permutation/README_EN.md)
+
+#### Biweekly Contest 130
+
+- [3142. Check if Grid Satisfies Conditions](/solution/3100-3199/3142.Check%20if%20Grid%20Satisfies%20Conditions/README_EN.md)
+- [3143. Maximum Points Inside the Square](/solution/3100-3199/3143.Maximum%20Points%20Inside%20the%20Square/README_EN.md)
+- [3144. Minimum Substring Partition of Equal Character Frequency](/solution/3100-3199/3144.Minimum%20Substring%20Partition%20of%20Equal%20Character%20Frequency/README_EN.md)
+- [3145. Find Products of Elements of Big Array](/solution/3100-3199/3145.Find%20Products%20of%20Elements%20of%20Big%20Array/README_EN.md)
+
+#### Weekly Contest 396
+
+- [3136. Valid Word](/solution/3100-3199/3136.Valid%20Word/README_EN.md)
+- [3137. Minimum Number of Operations to Make Word K-Periodic](/solution/3100-3199/3137.Minimum%20Number%20of%20Operations%20to%20Make%20Word%20K-Periodic/README_EN.md)
+- [3138. Minimum Length of Anagram Concatenation](/solution/3100-3199/3138.Minimum%20Length%20of%20Anagram%20Concatenation/README_EN.md)
+- [3139. Minimum Cost to Equalize Array](/solution/3100-3199/3139.Minimum%20Cost%20to%20Equalize%20Array/README_EN.md)
+
+#### Weekly Contest 395
+
+- [3131. Find the Integer Added to Array I](/solution/3100-3199/3131.Find%20the%20Integer%20Added%20to%20Array%20I/README_EN.md)
+- [3132. Find the Integer Added to Array II](/solution/3100-3199/3132.Find%20the%20Integer%20Added%20to%20Array%20II/README_EN.md)
+- [3133. Minimum Array End](/solution/3100-3199/3133.Minimum%20Array%20End/README_EN.md)
+- [3134. Find the Median of the Uniqueness Array](/solution/3100-3199/3134.Find%20the%20Median%20of%20the%20Uniqueness%20Array/README_EN.md)
+
+#### Biweekly Contest 129
+
+- [3127. Make a Square with the Same Color](/solution/3100-3199/3127.Make%20a%20Square%20with%20the%20Same%20Color/README_EN.md)
+- [3128. Right Triangles](/solution/3100-3199/3128.Right%20Triangles/README_EN.md)
+- [3129. Find All Possible Stable Binary Arrays I](/solution/3100-3199/3129.Find%20All%20Possible%20Stable%20Binary%20Arrays%20I/README_EN.md)
+- [3130. Find All Possible Stable Binary Arrays II](/solution/3100-3199/3130.Find%20All%20Possible%20Stable%20Binary%20Arrays%20II/README_EN.md)
+
+#### Weekly Contest 394
+
+- [3120. Count the Number of Special Characters I](/solution/3100-3199/3120.Count%20the%20Number%20of%20Special%20Characters%20I/README_EN.md)
+- [3121. Count the Number of Special Characters II](/solution/3100-3199/3121.Count%20the%20Number%20of%20Special%20Characters%20II/README_EN.md)
+- [3122. Minimum Number of Operations to Satisfy Conditions](/solution/3100-3199/3122.Minimum%20Number%20of%20Operations%20to%20Satisfy%20Conditions/README_EN.md)
+- [3123. Find Edges in Shortest Paths](/solution/3100-3199/3123.Find%20Edges%20in%20Shortest%20Paths/README_EN.md)
+
+#### Weekly Contest 393
+
+- [3114. Latest Time You Can Obtain After Replacing Characters](/solution/3100-3199/3114.Latest%20Time%20You%20Can%20Obtain%20After%20Replacing%20Characters/README_EN.md)
+- [3115. Maximum Prime Difference](/solution/3100-3199/3115.Maximum%20Prime%20Difference/README_EN.md)
+- [3116. Kth Smallest Amount With Single Denomination Combination](/solution/3100-3199/3116.Kth%20Smallest%20Amount%20With%20Single%20Denomination%20Combination/README_EN.md)
+- [3117. Minimum Sum of Values by Dividing Array](/solution/3100-3199/3117.Minimum%20Sum%20of%20Values%20by%20Dividing%20Array/README_EN.md)
+
+#### Biweekly Contest 128
+
+- [3110. Score of a String](/solution/3100-3199/3110.Score%20of%20a%20String/README_EN.md)
+- [3111. Minimum Rectangles to Cover Points](/solution/3100-3199/3111.Minimum%20Rectangles%20to%20Cover%20Points/README_EN.md)
+- [3112. Minimum Time to Visit Disappearing Nodes](/solution/3100-3199/3112.Minimum%20Time%20to%20Visit%20Disappearing%20Nodes/README_EN.md)
+- [3113. Find the Number of Subarrays Where Boundary Elements Are Maximum](/solution/3100-3199/3113.Find%20the%20Number%20of%20Subarrays%20Where%20Boundary%20Elements%20Are%20Maximum/README_EN.md)
+
+#### Weekly Contest 392
+
+- [3105. Longest Strictly Increasing or Strictly Decreasing Subarray](/solution/3100-3199/3105.Longest%20Strictly%20Increasing%20or%20Strictly%20Decreasing%20Subarray/README_EN.md)
+- [3106. Lexicographically Smallest String After Operations With Constraint](/solution/3100-3199/3106.Lexicographically%20Smallest%20String%20After%20Operations%20With%20Constraint/README_EN.md)
+- [3107. Minimum Operations to Make Median of Array Equal to K](/solution/3100-3199/3107.Minimum%20Operations%20to%20Make%20Median%20of%20Array%20Equal%20to%20K/README_EN.md)
+- [3108. Minimum Cost Walk in Weighted Graph](/solution/3100-3199/3108.Minimum%20Cost%20Walk%20in%20Weighted%20Graph/README_EN.md)
+
+#### Weekly Contest 391
+
+- [3099. Harshad Number](/solution/3000-3099/3099.Harshad%20Number/README_EN.md)
+- [3100. Water Bottles II](/solution/3100-3199/3100.Water%20Bottles%20II/README_EN.md)
+- [3101. Count Alternating Subarrays](/solution/3100-3199/3101.Count%20Alternating%20Subarrays/README_EN.md)
+- [3102. Minimize Manhattan Distances](/solution/3100-3199/3102.Minimize%20Manhattan%20Distances/README_EN.md)
+
+#### Biweekly Contest 127
+
+- [3095. Shortest Subarray With OR at Least K I](/solution/3000-3099/3095.Shortest%20Subarray%20With%20OR%20at%20Least%20K%20I/README_EN.md)
+- [3096. Minimum Levels to Gain More Points](/solution/3000-3099/3096.Minimum%20Levels%20to%20Gain%20More%20Points/README_EN.md)
+- [3097. Shortest Subarray With OR at Least K II](/solution/3000-3099/3097.Shortest%20Subarray%20With%20OR%20at%20Least%20K%20II/README_EN.md)
+- [3098. Find the Sum of Subsequence Powers](/solution/3000-3099/3098.Find%20the%20Sum%20of%20Subsequence%20Powers/README_EN.md)
+
+#### Weekly Contest 390
+
+- [3090. Maximum Length Substring With Two Occurrences](/solution/3000-3099/3090.Maximum%20Length%20Substring%20With%20Two%20Occurrences/README_EN.md)
+- [3091. Apply Operations to Make Sum of Array Greater Than or Equal to k](/solution/3000-3099/3091.Apply%20Operations%20to%20Make%20Sum%20of%20Array%20Greater%20Than%20or%20Equal%20to%20k/README_EN.md)
+- [3092. Most Frequent IDs](/solution/3000-3099/3092.Most%20Frequent%20IDs/README_EN.md)
+- [3093. Longest Common Suffix Queries](/solution/3000-3099/3093.Longest%20Common%20Suffix%20Queries/README_EN.md)
+
+#### Weekly Contest 389
+
+- [3083. Existence of a Substring in a String and Its Reverse](/solution/3000-3099/3083.Existence%20of%20a%20Substring%20in%20a%20String%20and%20Its%20Reverse/README_EN.md)
+- [3084. Count Substrings Starting and Ending with Given Character](/solution/3000-3099/3084.Count%20Substrings%20Starting%20and%20Ending%20with%20Given%20Character/README_EN.md)
+- [3085. Minimum Deletions to Make String K-Special](/solution/3000-3099/3085.Minimum%20Deletions%20to%20Make%20String%20K-Special/README_EN.md)
+- [3086. Minimum Moves to Pick K Ones](/solution/3000-3099/3086.Minimum%20Moves%20to%20Pick%20K%20Ones/README_EN.md)
+
+#### Biweekly Contest 126
+
+- [3079. Find the Sum of Encrypted Integers](/solution/3000-3099/3079.Find%20the%20Sum%20of%20Encrypted%20Integers/README_EN.md)
+- [3080. Mark Elements on Array by Performing Queries](/solution/3000-3099/3080.Mark%20Elements%20on%20Array%20by%20Performing%20Queries/README_EN.md)
+- [3081. Replace Question Marks in String to Minimize Its Value](/solution/3000-3099/3081.Replace%20Question%20Marks%20in%20String%20to%20Minimize%20Its%20Value/README_EN.md)
+- [3082. Find the Sum of the Power of All Subsequences](/solution/3000-3099/3082.Find%20the%20Sum%20of%20the%20Power%20of%20All%20Subsequences/README_EN.md)
 
 #### Weekly Contest 388
 

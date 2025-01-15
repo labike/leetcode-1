@@ -1,12 +1,20 @@
-# [2803. 阶乘生成器](https://leetcode.cn/problems/factorial-generator)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2803.Factorial%20Generator/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2803. 阶乘生成器 🔒](https://leetcode.cn/problems/factorial-generator)
 
 [English Version](/solution/2800-2899/2803.Factorial%20Generator/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>编写一个生成器函数，该函数以一个整数 <code>n</code> 作为参数，并返回一个生成器对象，该生成器对象可以生成 <strong>阶乘序列</strong> 。</p>
 
@@ -59,11 +67,17 @@ gen.next().value // 1
 	<li><code>0 &lt;= n &lt;= 18</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function* factorial(n: number): Generator<number> {
@@ -86,4 +100,6 @@ function* factorial(n: number): Generator<number> {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

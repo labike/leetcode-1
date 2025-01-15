@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2725.Interval%20Cancellation/README_EN.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
 # [2725. Interval Cancellation](https://leetcode.com/problems/interval-cancellation)
 
 [中文文档](/solution/2700-2799/2725.Interval%20Cancellation/README.md)
 
-<!-- tags: -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Given a function <code>fn</code>, an array of arguments&nbsp;<code>args</code>, and&nbsp;an interval time <code>t</code>, return a cancel function <code>cancelFn</code>.</p>
 
@@ -15,8 +25,6 @@ setTimeout(cancelFn, cancelTimeMs)
 </pre>
 
 <p>The function <code>fn</code> should be called with <code>args</code> immediately and then called again every&nbsp;<code>t</code> milliseconds&nbsp;until&nbsp;<code>cancelFn</code>&nbsp;is called at <code>cancelTimeMs</code> ms.</p>
-
-<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -110,11 +118,17 @@ Cancelled at 180ms
 	<li><code><font face="monospace">10 &lt;= </font>cancelTimeMs<font face="monospace"> &lt;= 500</font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function cancellable(fn: Function, args: any[], t: number): Function {
@@ -151,4 +165,6 @@ function cancellable(fn: Function, args: any[], t: number): Function {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

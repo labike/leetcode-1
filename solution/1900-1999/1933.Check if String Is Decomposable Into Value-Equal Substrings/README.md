@@ -1,12 +1,20 @@
-# [1933. 判断字符串是否可分解为值均等的子串](https://leetcode.cn/problems/check-if-string-is-decomposable-into-value-equal-substrings)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1933.Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings/README.md
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [1933. 判断字符串是否可分解为值均等的子串 🔒](https://leetcode.cn/problems/check-if-string-is-decomposable-into-value-equal-substrings)
 
 [English Version](/solution/1900-1999/1933.Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings/README_EN.md)
 
-<!-- tags:字符串 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个字符串的所有字符都是一样的，被称作等值字符串。</p>
 
@@ -53,7 +61,11 @@
 	<li><code>s</code> 仅包含数字。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：双指针
 
@@ -65,23 +77,23 @@
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def isDecomposable(self, s: str) -> bool:
-        i, n = 0, len(s)
         cnt2 = 0
-        while i < n:
-            j = i
-            while j < n and s[j] == s[i]:
-                j += 1
-            if (j - i) % 3 == 1:
+        for _, g in groupby(s):
+            m = len(list(g))
+            if m % 3 == 1:
                 return False
-            cnt2 += (j - i) % 3 == 2
+            cnt2 += m % 3 == 2
             if cnt2 > 1:
                 return False
-            i = j
         return cnt2 == 1
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -105,6 +117,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -130,6 +144,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func isDecomposable(s string) bool {
 	i, n := 0, len(s)
@@ -154,6 +170,8 @@ func isDecomposable(s string) bool {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function isDecomposable(s: string): boolean {
     const n = s.length;
@@ -177,24 +195,6 @@ function isDecomposable(s: string): boolean {
 
 <!-- tabs:end -->
 
-### 方法二
+<!-- solution:end -->
 
-<!-- tabs:start -->
-
-```python
-class Solution:
-    def isDecomposable(self, s: str) -> bool:
-        cnt2 = 0
-        for _, g in groupby(s):
-            m = len(list(g))
-            if m % 3 == 1:
-                return False
-            cnt2 += m % 3 == 2
-            if cnt2 > 1:
-                return False
-        return cnt2 == 1
-```
-
-<!-- tabs:end -->
-
-<!-- end -->
+<!-- problem:end -->

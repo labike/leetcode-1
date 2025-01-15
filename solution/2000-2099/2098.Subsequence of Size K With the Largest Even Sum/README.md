@@ -1,12 +1,22 @@
-# [2098. 长度为 K 的最大偶数和子序列](https://leetcode.cn/problems/subsequence-of-size-k-with-the-largest-even-sum)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2098.Subsequence%20of%20Size%20K%20With%20the%20Largest%20Even%20Sum/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2098. 长度为 K 的最大偶数和子序列 🔒](https://leetcode.cn/problems/subsequence-of-size-k-with-the-largest-even-sum)
 
 [English Version](/solution/2000-2099/2098.Subsequence%20of%20Size%20K%20With%20the%20Largest%20Even%20Sum/README_EN.md)
 
-<!-- tags:贪心,数组,排序 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> 。找出&nbsp;<code>nums</code> 长度为 <code>k</code> 的所有子序列中的 <strong>最大偶数和</strong> 。<br />
 返回<strong>此总和</strong>，如果此总和不存在，则返回 <code>-1</code>。<br />
@@ -51,7 +61,11 @@
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：贪心 + 排序
 
@@ -69,6 +83,8 @@
 时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 为数组长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -91,8 +107,10 @@ class Solution:
             else:
                 mi1 = x
         ans = max(ans - mi1 + mx1, ans - mi2 + mx2, -1)
-        return -1 if ans % 2 else ans
+        return -1 if ans < 0 else ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -123,11 +141,13 @@ class Solution {
                 mi1 = nums[i];
             }
         }
-        ans = Math.max(-1, Math.max(ans - mi1 + mx1, ans - mi2 + mx2));
-        return ans % 2 != 0 ? -1 : ans;
+        ans = Math.max(ans - mi1 + mx1, ans - mi2 + mx2);
+        return ans < 0 ? -1 : ans;
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -160,10 +180,12 @@ public:
             }
         }
         ans = max(ans - mi1 + mx1, ans - mi2 + mx2);
-        return ans % 2 || ans < 0 ? -1 : ans;
+        return ans < 0 ? -1 : ans;
     }
 };
 ```
+
+#### Go
 
 ```go
 func largestEvenSum(nums []int, k int) int64 {
@@ -194,13 +216,52 @@ func largestEvenSum(nums []int, k int) int64 {
 		}
 	}
 	ans = max(-1, max(ans-mi1+mx1, ans-mi2+mx2))
-	if ans%2 != 0 {
+	if ans%2 < 0 {
 		return -1
 	}
 	return int64(ans)
 }
 ```
 
+#### TypeScript
+
+```ts
+function largestEvenSum(nums: number[], k: number): number {
+    nums.sort((a, b) => a - b);
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < k; ++i) {
+        ans += nums[n - i - 1];
+    }
+    if (ans % 2 === 0) {
+        return ans;
+    }
+    const inf = 1 << 29;
+    let mx1 = -inf,
+        mx2 = -inf;
+    for (let i = 0; i < n - k; ++i) {
+        if (nums[i] % 2 === 1) {
+            mx1 = nums[i];
+        } else {
+            mx2 = nums[i];
+        }
+    }
+    let mi1 = inf,
+        mi2 = inf;
+    for (let i = n - 1; i >= n - k; --i) {
+        if (nums[i] % 2 === 1) {
+            mi2 = nums[i];
+        } else {
+            mi1 = nums[i];
+        }
+    }
+    ans = Math.max(ans - mi1 + mx1, ans - mi2 + mx2);
+    return ans < 0 ? -1 : ans;
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

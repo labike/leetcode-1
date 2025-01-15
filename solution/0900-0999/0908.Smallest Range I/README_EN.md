@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0908.Smallest%20Range%20I/README_EN.md
+tags:
+    - Array
+    - Math
+---
+
+<!-- problem:start -->
+
 # [908. Smallest Range I](https://leetcode.com/problems/smallest-range-i)
 
 [中文文档](/solution/0900-0999/0908.Smallest%20Range%20I/README.md)
 
-<!-- tags:Array,Math -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and an integer <code>k</code>.</p>
 
@@ -48,17 +59,23 @@
 	<li><code>0 &lt;= k &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Mathematics
 
-According to the problem description, we can add $k$ to the maximum value in the array and subtract $k$ from the minimum value. This can reduce the difference between the maximum and minimum values in the array.
+According to the problem description, we can subtract $k$ from the maximum value in the array and add $k$ to the minimum value in the array, which can reduce the difference between the maximum and minimum values in the array.
 
-Therefore, the final answer is $\max(nums) - \min(nums) - 2 \times k$.
+Therefore, the final answer is the larger value between $\max(\textit{nums}) - \min(\textit{nums}) - 2 \times k$ and $0$.
 
-The time complexity is $O(n)$, where $n$ is the length of the array `nums`. The space complexity is $O(1)$.
+The time complexity is $O(n)$, where $n$ is the length of the array $\textit{nums}$. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -66,6 +83,8 @@ class Solution:
         mx, mi = max(nums), min(nums)
         return max(0, mx - mi - k * 2)
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -81,6 +100,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -91,6 +112,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func smallestRangeI(nums []int, k int) int {
 	mi, mx := slices.Min(nums), slices.Max(nums)
@@ -98,13 +121,17 @@ func smallestRangeI(nums []int, k int) int {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function smallestRangeI(nums: number[], k: number): number {
-    const max = nums.reduce((r, v) => Math.max(r, v));
-    const min = nums.reduce((r, v) => Math.min(r, v));
-    return Math.max(max - min - k * 2, 0);
+    const mx = Math.max(...nums);
+    const mi = Math.min(...nums);
+    return Math.max(mx - mi - k * 2, 0);
 }
 ```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -118,4 +145,6 @@ impl Solution {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

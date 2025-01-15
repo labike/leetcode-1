@@ -1,10 +1,20 @@
-# [2690. Infinite Method Object](https://leetcode.com/problems/infinite-method-object)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2690.Infinite%20Method%20Object/README_EN.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2690. Infinite Method Object 🔒](https://leetcode.com/problems/infinite-method-object)
 
 [中文文档](/solution/2600-2699/2690.Infinite%20Method%20Object/README.md)
 
-<!-- tags: -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Write a function that&nbsp;returns an&nbsp;<strong>infinite-method</strong><strong>&nbsp;object</strong>.</p>
 
@@ -37,11 +47,17 @@ The returned string should always match the method name.</pre>
 	<li><code>0 &lt;= method.length &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function createInfiniteObject(): Record<string, () => string> {
@@ -61,4 +77,6 @@ function createInfiniteObject(): Record<string, () => string> {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

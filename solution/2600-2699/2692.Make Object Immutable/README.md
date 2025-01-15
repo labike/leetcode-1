@@ -1,12 +1,20 @@
-# [2692. 使对象不可变](https://leetcode.cn/problems/make-object-immutable)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2692.Make%20Object%20Immutable/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2692. 使对象不可变 🔒](https://leetcode.cn/problems/make-object-immutable)
 
 [English Version](/solution/2600-2699/2692.Make%20Object%20Immutable/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写一个函数，该函数接收一个对象 <code>obj</code> ，并返回该对象的一个新的 <strong>不可变</strong> 版本。</p>
 
@@ -92,11 +100,17 @@ fn = (obj) =&gt; {
 	<li><code>2 &lt;= JSON.stringify(obj).length &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 type Obj = Array<any> | Record<any, any>;
@@ -141,4 +155,6 @@ function makeImmutable(obj: Obj): Obj {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

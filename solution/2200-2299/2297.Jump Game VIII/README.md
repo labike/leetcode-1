@@ -1,12 +1,25 @@
-# [2297. 跳跃游戏 VIII](https://leetcode.cn/problems/jump-game-viii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2297.Jump%20Game%20VIII/README.md
+tags:
+    - 栈
+    - 图
+    - 数组
+    - 动态规划
+    - 最短路
+    - 单调栈
+---
+
+<!-- problem:start -->
+
+# [2297. 跳跃游戏 VIII 🔒](https://leetcode.cn/problems/jump-game-viii)
 
 [English Version](/solution/2200-2299/2297.Jump%20Game%20VIII/README_EN.md)
 
-<!-- tags:栈,图,数组,动态规划,最短路,单调栈 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个长度为 n 的下标从 <strong>0</strong>&nbsp;开始的整数数组 <code>nums</code>。初始位置为下标 <code>0</code>。当 <code>i &lt; j</code> 时，你可以从下标 <code>i</code> 跳转到下标 <code>j</code>:</p>
 
@@ -53,17 +66,23 @@
 	<li><code>0 &lt;= nums[i], costs[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：单调栈 + 动态规划
 
-根据题目描述，我们实际上需要找到 $nums[i]$ 的下一个大于等于 $nums[i]$ 的位置 $j$，以及下一个小于 $nums[i]$ 的位置 $j$。我们利用单调栈可以在 $O(n)$ 的时间内找到这两个位置，然后构建邻接表 $g$，其中 $g[i]$ 表示下标 $i$ 可以跳转到的下标。
+根据题目描述，我们实际上需要找到 $\textit{nums}[i]$ 的下一个大于等于 $\textit{nums}[i]$ 的位置 $j$，以及下一个小于 $\textit{nums}[i]$ 的位置 $j$。我们利用单调栈可以在 $O(n)$ 的时间内找到这两个位置，然后构建邻接表 $g$，其中 $g[i]$ 表示下标 $i$ 可以跳转到的下标。
 
-然后我们使用动态规划求解最小代价。设 $f[i]$ 表示跳转到下标 $i$ 的最小代价，初始时 $f[0] = 0$，其余 $f[i] = \infty$。我们从小到大枚举下标 $i$，对于每个 $i$，我们枚举 $g[i]$ 中的每个下标 $j$，进行状态转移 $f[j] = \min(f[j], f[i] + costs[j])$。答案为 $f[n - 1]$。
+然后我们使用动态规划求解最小代价。设 $f[i]$ 表示跳转到下标 $i$ 的最小代价，初始时 $f[0] = 0$，其余 $f[i] = \infty$。我们从小到大枚举下标 $i$，对于每个 $i$，我们枚举 $g[i]$ 中的每个下标 $j$，进行状态转移 $f[j] = \min(f[j], f[i] + \textit{costs}[j])$。答案为 $f[n - 1]$。
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -93,6 +112,8 @@ class Solution:
                 f[j] = min(f[j], f[i] + costs[j])
         return f[n - 1]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -133,6 +154,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -171,6 +194,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func minCost(nums []int, costs []int) int64 {
 	n := len(nums)
@@ -207,6 +232,8 @@ func minCost(nums []int, costs []int) int64 {
 	return f[n-1]
 }
 ```
+
+#### TypeScript
 
 ```ts
 function minCost(nums: number[], costs: number[]): number {
@@ -245,4 +272,6 @@ function minCost(nums: number[], costs: number[]): number {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

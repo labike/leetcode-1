@@ -1,18 +1,31 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/3000-3099/3043.Find%20the%20Length%20of%20the%20Longest%20Common%20Prefix/README.md
+rating: 1688
+source: 第 385 场周赛 Q2
+tags:
+    - 字典树
+    - 数组
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [3043. 最长公共前缀的长度](https://leetcode.cn/problems/find-the-length-of-the-longest-common-prefix)
 
 [English Version](/solution/3000-3099/3043.Find%20the%20Length%20of%20the%20Longest%20Common%20Prefix/README_EN.md)
 
-<!-- tags:字典树,数组,哈希表,字符串 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个 <strong>正整数 </strong>数组 <code>arr1</code> 和 <code>arr2</code> 。</p>
 
 <p>正整数的 <strong>前缀 </strong>是其 <strong>最左边 </strong>的一位或多位数字组成的整数。例如，<code>123</code> 是整数 <code>12345</code> 的前缀，而 <code>234</code><strong> 不是 </strong>。</p>
 
-<p>设若整数 <code>c</code> 是整数 <code>a</code> 和 <code>b</code> 的<strong> 公共前缀 </strong>，那么 <code>c</code> 需要同时是 <code>a</code> 和 <code>b</code> 的前缀。例如，<code>5655359</code> 和 <code>56554</code> 有公共前缀 <code>565</code> ，而 <code>1223</code> 和 <code>43456</code><strong> 没有 </strong>公共前缀。</p>
+<p>设若整数 <code>c</code> 是整数 <code>a</code> 和 <code>b</code> 的<strong> 公共前缀 </strong>，那么 <code>c</code> 需要同时是 <code>a</code> 和 <code>b</code> 的前缀。例如，<code>5655359</code> 和 <code>56554</code> 有公共前缀 <code>565</code>&nbsp;和 <code>5655</code>，而 <code>1223</code> 和 <code>43456</code><strong> 没有 </strong>公共前缀。</p>
 
 <p>你需要找出属于 <code>arr1</code> 的整数 <code>x</code> 和属于 <code>arr2</code> 的整数 <code>y</code> 组成的所有数对 <code>(x, y)</code> 之中最长的公共前缀的长度。</p>
 
@@ -50,7 +63,11 @@
 	<li><code>1 &lt;= arr1[i], arr2[i] &lt;= 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：哈希表
 
@@ -59,6 +76,8 @@
 时间复杂度 $O(m \times \log M + n \times \log N)$，空间复杂度 $O(m \times \log M)$。其中 $m$ 和 $n$ 分别是 `arr1` 和 `arr2` 的长度，而 $M$ 和 $N$ 分别是 `arr1` 和 `arr2` 中的最大值。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -77,6 +96,8 @@ class Solution:
                 x //= 10
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -100,6 +121,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -125,6 +148,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func longestCommonPrefix(arr1 []int, arr2 []int) (ans int) {
 	s := map[int]bool{}
@@ -145,18 +170,20 @@ func longestCommonPrefix(arr1 []int, arr2 []int) (ans int) {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function longestCommonPrefix(arr1: number[], arr2: number[]): number {
     const s: Set<number> = new Set<number>();
     for (let x of arr1) {
-        for (; x; x = (x / 10) | 0) {
-            s.add(x % 10);
+        for (; x; x = Math.floor(x / 10)) {
+            s.add(x);
         }
     }
     let ans: number = 0;
     for (let x of arr2) {
-        for (; x; x = (x / 10) | 0) {
-            if (s.has(x % 10)) {
+        for (; x; x = Math.floor(x / 10)) {
+            if (s.has(x)) {
                 ans = Math.max(ans, Math.floor(Math.log10(x)) + 1);
             }
         }
@@ -165,6 +192,35 @@ function longestCommonPrefix(arr1: number[], arr2: number[]): number {
 }
 ```
 
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number}
+ */
+var longestCommonPrefix = function (arr1, arr2) {
+    const s = new Set();
+    for (let x of arr1) {
+        for (; x; x = Math.floor(x / 10)) {
+            s.add(x);
+        }
+    }
+    let ans = 0;
+    for (let x of arr2) {
+        for (; x; x = Math.floor(x / 10)) {
+            if (s.has(x)) {
+                ans = Math.max(ans, Math.floor(Math.log10(x)) + 1);
+            }
+        }
+    }
+    return ans;
+};
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

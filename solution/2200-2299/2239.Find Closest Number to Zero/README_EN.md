@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2239.Find%20Closest%20Number%20to%20Zero/README_EN.md
+rating: 1256
+source: Biweekly Contest 76 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2239. Find Closest Number to Zero](https://leetcode.com/problems/find-closest-number-to-zero)
 
 [中文文档](/solution/2200-2299/2239.Find%20Closest%20Number%20to%20Zero/README.md)
 
-<!-- tags:Array -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> of size <code>n</code>, return <em>the number with the value <strong>closest</strong> to </em><code>0</code><em> in </em><code>nums</code>. If there are multiple answers, return <em>the number with the <strong>largest</strong> value</em>.</p>
 <p>&nbsp;</p>
@@ -38,11 +50,23 @@ Thus, the closest number to 0 in the array is 1.
 	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-### Solution 1
+<!-- solution:start -->
+
+### Solution 1: One Pass
+
+We define a variable $d$ to record the current minimum distance, initially $d=\infty$. Then we traverse the array, for each element $x$, we calculate $y=|x|$. If $y \lt d$ or $y=d$ and $x \gt ans$, we update the answer $ans=x$ and $d=y$.
+
+After the traversal, return the answer.
+
+Time complexity is $O(n)$, where $n$ is the length of the array. Space complexity is $O(1)$.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -53,6 +77,8 @@ class Solution:
                 ans, d = x, y
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -70,6 +96,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -86,6 +114,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func findClosestNumber(nums []int) int {
@@ -106,6 +136,8 @@ func abs(x int) int {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function findClosestNumber(nums: number[]): number {
     let [ans, d] = [0, 1 << 30];
@@ -121,4 +153,6 @@ function findClosestNumber(nums: number[]): number {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

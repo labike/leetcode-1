@@ -1,10 +1,20 @@
-# [2675. Array of Objects to Matrix](https://leetcode.com/problems/array-of-objects-to-matrix)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2675.Array%20of%20Objects%20to%20Matrix/README_EN.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2675. Array of Objects to Matrix 🔒](https://leetcode.com/problems/array-of-objects-to-matrix)
 
 [中文文档](/solution/2600-2699/2675.Array%20of%20Objects%20to%20Matrix/README.md)
 
-<!-- tags: -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Write a function that converts an array of objects&nbsp;<code>arr</code> into a matrix <code>m</code>.</p>
 
@@ -133,11 +143,17 @@ There are no keys so every row is an empty array.</pre>
 	<li><code>unique keys &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function jsonToMatrix(arr: any[]): (string | number | boolean | null)[] {
@@ -182,4 +198,6 @@ function jsonToMatrix(arr: any[]): (string | number | boolean | null)[] {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

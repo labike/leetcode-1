@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0860.Lemonade%20Change/README_EN.md
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [860. Lemonade Change](https://leetcode.com/problems/lemonade-change)
 
 [中文文档](/solution/0800-0899/0860.Lemonade%20Change/README.md)
 
-<!-- tags:Greedy,Array -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>At a lemonade stand, each lemonade costs <code>$5</code>. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills). Each customer will only buy one lemonade and pay with either a <code>$5</code>, <code>$10</code>, or <code>$20</code> bill. You must provide the correct change to each customer so that the net transaction is that the customer pays <code>$5</code>.</p>
 
@@ -45,11 +56,17 @@ Since not every customer received the correct change, the answer is false.
 	<li><code>bills[i]</code> is either <code>5</code>, <code>10</code>, or <code>20</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -71,6 +88,8 @@ class Solution:
                 return False
         return True
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -101,6 +120,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -129,6 +150,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func lemonadeChange(bills []int) bool {
 	five, ten := 0, 0
@@ -154,12 +177,13 @@ func lemonadeChange(bills []int) bool {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function lemonadeChange(bills: number[]): boolean {
-    let five = 0;
-    let ten = 0;
-    for (let bill of bills) {
-        switch (bill) {
+    let [five, ten] = [0, 0];
+    for (const x of bills) {
+        switch (x) {
             case 5:
                 five++;
                 break;
@@ -168,11 +192,12 @@ function lemonadeChange(bills: number[]): boolean {
                 ten++;
                 break;
             case 20:
-                if (ten !== 0) {
-                    ten -= 1;
-                    bill -= 10;
+                if (ten) {
+                    ten--;
+                    five--;
+                } else {
+                    five -= 3;
                 }
-                five -= bill / 5 - 1;
                 break;
         }
 
@@ -183,6 +208,40 @@ function lemonadeChange(bills: number[]): boolean {
     return true;
 }
 ```
+
+#### JavaScript
+
+```js
+function lemonadeChange(bills) {
+    let [five, ten] = [0, 0];
+    for (const x of bills) {
+        switch (x) {
+            case 5:
+                five++;
+                break;
+            case 10:
+                five--;
+                ten++;
+                break;
+            case 20:
+                if (ten) {
+                    ten--;
+                    five--;
+                } else {
+                    five -= 3;
+                }
+                break;
+        }
+
+        if (five < 0) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -218,4 +277,44 @@ impl Solution {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: One-liner
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+const lemonadeChange = (bills: number[], f = 0, t = 0): boolean =>
+    bills.every(
+        x => (
+            (!(x ^ 5) && ++f) ||
+                (!(x ^ 10) && (--f, ++t)) ||
+                (!(x ^ 20) && (t ? (f--, t--) : (f -= 3), 1)),
+            f >= 0
+        ),
+    );
+```
+
+#### JavaScript
+
+```js
+const lemonadeChange = (bills, f = 0, t = 0) =>
+    bills.every(
+        x => (
+            (!(x ^ 5) && ++f) ||
+                (!(x ^ 10) && (--f, ++t)) ||
+                (!(x ^ 20) && (t ? (f--, t--) : (f -= 3), 1)),
+            f >= 0
+        ),
+    );
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

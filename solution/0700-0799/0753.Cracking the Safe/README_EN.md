@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0753.Cracking%20the%20Safe/README_EN.md
+tags:
+    - Depth-First Search
+    - Graph
+    - Eulerian Circuit
+---
+
+<!-- problem:start -->
+
 # [753. Cracking the Safe](https://leetcode.com/problems/cracking-the-safe)
 
 [中文文档](/solution/0700-0799/0753.Cracking%20the%20Safe/README.md)
 
-<!-- tags:Depth-First Search,Graph,Eulerian Circuit -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>There is a safe protected by a password. The password is a sequence of <code>n</code> digits where each digit can be in the range <code>[0, k - 1]</code>.</p>
 
@@ -58,11 +70,23 @@ Thus &quot;01100&quot; will unlock the safe. &quot;10011&quot;, and &quot;11001&
 	<li><code>1 &lt;= k<sup>n</sup> &lt;= 4096</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-### Solution 1
+<!-- solution:start -->
+
+### Solution 1: Eulerian Circuit
+
+We can construct a directed graph based on the description in the problem: each point is considered as a length $n-1$ $k$-string, and each edge carries a character from $0$ to $k-1$. If there is a directed edge $e$ from point $u$ to point $v$, and the character carried by $e$ is $c$, then the last $k-1$ characters of $u+c$ form the string $v$. At this point, the edge $u+c$ represents a password of length $n$.
+
+In this directed graph, there are $k^{n-1}$ points, each point has $k$ outgoing edges and $k$ incoming edges. Therefore, this directed graph has an Eulerian circuit, and the path traversed by the Eulerian circuit is the answer to the problem.
+
+The time complexity is $O(k^n)$, and the space complexity is $O(k^n)$.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -83,6 +107,8 @@ class Solution:
         ans.append("0" * (n - 1))
         return "".join(ans)
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -110,6 +136,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -134,6 +162,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func crackSafe(n int, k int) string {
 	mod := int(math.Pow(10, float64(n-1)))
@@ -157,6 +187,34 @@ func crackSafe(n int, k int) string {
 }
 ```
 
+#### TypeScript
+
+```ts
+function crackSafe(n: number, k: number): string {
+    function dfs(u: number): void {
+        for (let x = 0; x < k; x++) {
+            const e = u * 10 + x;
+            if (!vis.has(e)) {
+                vis.add(e);
+                const v = e % mod;
+                dfs(v);
+                ans.push(x.toString());
+            }
+        }
+    }
+
+    const mod = Math.pow(10, n - 1);
+    const vis = new Set<number>();
+    const ans: string[] = [];
+
+    dfs(0);
+    ans.push('0'.repeat(n - 1));
+    return ans.join('');
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

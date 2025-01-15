@@ -1,12 +1,24 @@
-# [1152. 用户网站访问行为分析](https://leetcode.cn/problems/analyze-user-website-visit-pattern)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1152.Analyze%20User%20Website%20Visit%20Pattern/README.md
+rating: 1850
+source: 第 6 场双周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [1152. 用户网站访问行为分析 🔒](https://leetcode.cn/problems/analyze-user-website-visit-pattern)
 
 [English Version](/solution/1100-1199/1152.Analyze%20User%20Website%20Visit%20Pattern/README_EN.md)
 
-<!-- tags:数组,哈希表,排序 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个字符串数组&nbsp;<code>username</code>&nbsp;和&nbsp;<code>website</code>&nbsp;和一个整数数组&nbsp;<code>timestamp</code>&nbsp;。给定的数组长度相同，其中元组&nbsp;<code>[username[i], website[i], timestamp[i]]</code>&nbsp;表示用户&nbsp;<code>username[i]</code>&nbsp;在时间&nbsp;<code>timestamp[i]</code>&nbsp;访问了网站&nbsp;<code>website[i]</code>&nbsp;。</p>
 
@@ -26,23 +38,25 @@
 
 <p>返回<em> <strong>得分</strong> 最大的 <strong>访问</strong><strong>模式</strong></em> 。如果有多个访问模式具有相同的最大分数，则返回字典序最小的。</p>
 
+<p>请注意，模式中的网站不需要连续访问，只需按照模式中出现的顺序访问即可。</p>
+
 <p>&nbsp;</p>
 
-<p><strong>示例 1：</strong></p>
+<p><strong class="example">示例 1：</strong></p>
 
 <pre>
 <strong>输入：</strong>username = ["joe","joe","joe","james","james","james","james","mary","mary","mary"], timestamp = [1,2,3,4,5,6,7,8,9,10], website = ["home","about","career","home","cart","maps","home","home","about","career"]
 <strong>输出：</strong>["home","about","career"]
 <strong>解释：</strong>本例中的元组是:
-["joe","home",1],["joe","about",2],["joe","career",3],["james","home",4],["james","cart",5],["james","maps",6],["james","home",7],["mary","home",8],["mary","about",9], and ["mary","career",10].
-模式("home", "about", "career") has score 2 (joe and mary).
-模式("home", "cart", "maps") 的得分为 1 (james).
+["joe","home",1],["joe","about",2],["joe","career",3],["james","home",4],["james","cart",5],["james","maps",6],["james","home",7],["mary","home",8],["mary","about",9] 和 ["mary","career",10]。
+模式 ("home", "about", "career") 的得分为 2（joe 和 mary）。
+模式 ("home", "cart", "maps") 的得分为 1 (james).
 模式 ("home", "cart", "home") 的得分为 1 (james).
 模式 ("home", "maps", "home") 的得分为 1 (james).
 模式 ("cart", "maps", "home") 的得分为 1 (james).
-模式 ("home", "home", "home") 的得分为 0(没有用户访问过home 3次)。</pre>
+模式 ("home", "home", "home") 的得分为 0(没有用户访问过 home 3次)。</pre>
 
-<p><strong>示例 2：</strong></p>
+<p><strong class="example">示例 2：</strong></p>
 
 <pre>
 <strong>输入:</strong> username = ["ua","ua","ua","ub","ub","ub"], timestamp = [1,2,3,4,5,6], website = ["a","b","a","a","b","c"]
@@ -65,7 +79,11 @@
 	<li>所有元组&nbsp;<code>[username[i]， timestamp[i]， website[i]</code>&nbsp;均<strong>&nbsp;不重复</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：哈希表 + 排序
 
@@ -74,6 +92,8 @@
 时间复杂度 $O(n^3)$，空间复杂度 $O(n^3)$。其中 $n$ 是 `username` 的长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -99,6 +119,8 @@ class Solution:
                 cnt[t] += 1
         return sorted(cnt.items(), key=lambda x: (-x[1], x[0]))[0][0]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -155,6 +177,8 @@ class Node {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -208,6 +232,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func mostVisitedPattern(username []string, timestamp []int, website []string) []string {
 	d := map[string][]pair{}
@@ -252,4 +278,6 @@ type pair struct {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

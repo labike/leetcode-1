@@ -1,12 +1,23 @@
-# [490. 迷宫](https://leetcode.cn/problems/the-maze)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0490.The%20Maze/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [490. 迷宫 🔒](https://leetcode.cn/problems/the-maze)
 
 [English Version](/solution/0400-0499/0490.The%20Maze/README_EN.md)
 
-<!-- tags:深度优先搜索,广度优先搜索,数组,矩阵 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 由空地（用 <code>0</code> 表示）和墙（用 <code>1</code> 表示）组成的迷宫 <code>maze</code> 中有一个球。球可以途经空地向<strong> 上、下、左、右 </strong>四个方向滚动，且在遇到墙壁前不会停止滚动。当球停下时，可以选择向下一个方向滚动。
 
@@ -17,14 +28,14 @@
 
 <p>你可以 <strong>假定迷宫的边缘都是墙壁</strong>（参考示例）。</p>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 <img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0490.The%20Maze/images/maze1-1-grid.jpg" style="width: 573px; height: 573px;" />
 <pre>
 <strong>输入：</strong>maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [4,4]
 <strong>输出：</strong>true
-<strong>解释：</strong>一种可能的路径是 : 左 -> 下 -> 左 -> 下 -> 右 -> 下 -> 右。
+<strong>解释：</strong>一种可能的路径是 : 左 -&gt; 下 -&gt; 左 -&gt; 下 -&gt; 右 -&gt; 下 -&gt; 右。
 </pre>
 
 <p><strong>示例 2：</strong></p>
@@ -42,19 +53,19 @@
 <strong>输出：</strong>false
 </pre>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
 	<li><code>m == maze.length</code></li>
 	<li><code>n == maze[i].length</code></li>
-	<li><code>1 <= m, n <= 100</code></li>
+	<li><code>1 &lt;= m, n &lt;= 100</code></li>
 	<li><code>maze[i][j]</code> is <code>0</code> or <code>1</code>.</li>
 	<li><code>start.length == 2</code></li>
 	<li><code>destination.length == 2</code></li>
-	<li><code>0 <= start<sub>row</sub>, destination<sub>row</sub> <= m</code></li>
-	<li><code>0 <= start<sub>col</sub>, destination<sub>col</sub> <= n</code></li>
+	<li><code>0 &lt;= start<sub>row</sub>, destination<sub>row</sub> &lt;&nbsp;m</code></li>
+	<li><code>0 &lt;= start<sub>col</sub>, destination<sub>col</sub> &lt;&nbsp;n</code></li>
 	<li>球和目的地都在空地上，且初始时它们不在同一位置</li>
 	<li>迷宫 <strong>至少包括 2 块空地</strong></li>
 </ul>
@@ -62,11 +73,17 @@
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -90,6 +107,8 @@ class Solution:
         dfs(start[0], start[1])
         return vis[destination[0]][destination[1]]
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -131,6 +150,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -168,6 +189,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func hasPath(maze [][]int, start []int, destination []int) bool {
 	m, n := len(maze), len(maze[0])
@@ -202,9 +225,15 @@ func hasPath(maze [][]int, start []int, destination []int) bool {
 
 <!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
 ### 方法二
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -228,6 +257,8 @@ class Solution:
                     q.append((x, y))
         return False
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -264,6 +295,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -296,6 +329,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func hasPath(maze [][]int, start []int, destination []int) bool {
@@ -332,4 +367,6 @@ func hasPath(maze [][]int, start []int, destination []int) bool {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

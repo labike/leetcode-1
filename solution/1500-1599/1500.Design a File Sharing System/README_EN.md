@@ -1,10 +1,24 @@
-# [1500. Design a File Sharing System](https://leetcode.com/problems/design-a-file-sharing-system)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1500.Design%20a%20File%20Sharing%20System/README_EN.md
+tags:
+    - Design
+    - Hash Table
+    - Data Stream
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
+# [1500. Design a File Sharing System 🔒](https://leetcode.com/problems/design-a-file-sharing-system)
 
 [中文文档](/solution/1500-1599/1500.Design%20a%20File%20Sharing%20System/README.md)
 
-<!-- tags:Design,Hash Table,Data Stream,Heap (Priority Queue) -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>We will use a file-sharing system to share a very large file which consists of <code>m</code> small <b>chunks</b> with IDs from <code>1</code> to <code>m</code>.</p>
 
@@ -77,11 +91,17 @@ fileSharing.join([]);        // A user who doesn&#39;t have any chunks joined th
 	<li>If the system will be used to share <code>n</code> files where the <code>ith</code> file consists of <code>m[i]</code>, what are the changes you have to make?</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class FileSharing:
@@ -122,6 +142,8 @@ class FileSharing:
 # obj.leave(userID)
 # param_3 = obj.request(userID,chunkID)
 ```
+
+#### Java
 
 ```java
 class FileSharing {
@@ -182,4 +204,6 @@ class FileSharing {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

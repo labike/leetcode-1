@@ -1,10 +1,20 @@
-# [2636. Promise Pool](https://leetcode.com/problems/promise-pool)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2636.Promise%20Pool/README_EN.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2636. Promise Pool 🔒](https://leetcode.com/problems/promise-pool)
 
 [中文文档](/solution/2600-2699/2636.Promise%20Pool/README.md)
 
-<!-- tags: -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array&nbsp;of asynchronous functions&nbsp;<code>functions</code>&nbsp;and a <strong>pool limit</strong>&nbsp;<code>n</code>, return an asynchronous function&nbsp;<code>promisePool</code>. It should return&nbsp;a promise that resolves when all the input&nbsp;functions resolve.</p>
 
@@ -83,11 +93,17 @@ At t=900, the 3rd function resolves. Pool size is 0 so the returned promise reso
 	<li><code><font face="monospace">1 &lt;= n &lt;= 10</font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 type F = () => Promise<any>;
@@ -107,4 +123,6 @@ function promisePool(functions: F[], n: number): Promise<any> {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,12 +1,20 @@
-# [2821. 延迟每个 Promise 对象的解析](https://leetcode.cn/problems/delay-the-resolution-of-each-promise)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2821.Delay%20the%20Resolution%20of%20Each%20Promise/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2821. 延迟每个 Promise 对象的解析 🔒](https://leetcode.cn/problems/delay-the-resolution-of-each-promise)
 
 [English Version](/solution/2800-2899/2821.Delay%20the%20Resolution%20of%20Each%20Promise/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个函数数组 <code>functions</code> 和一个数字 <code>ms</code>，返回一个新的函数数组。</p>
 
@@ -54,11 +62,17 @@ ms = 70
 	<li><code>1 &lt;= functions.length &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function delayAll(functions: Function[], ms: number): Function[] {
@@ -73,4 +87,6 @@ function delayAll(functions: Function[], ms: number): Function[] {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

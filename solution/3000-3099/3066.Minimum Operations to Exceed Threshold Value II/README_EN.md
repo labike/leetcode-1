@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/3000-3099/3066.Minimum%20Operations%20to%20Exceed%20Threshold%20Value%20II/README_EN.md
+rating: 1399
+source: Biweekly Contest 125 Q2
+tags:
+    - Array
+    - Simulation
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [3066. Minimum Operations to Exceed Threshold Value II](https://leetcode.com/problems/minimum-operations-to-exceed-threshold-value-ii)
 
 [中文文档](/solution/3000-3099/3066.Minimum%20Operations%20to%20Exceed%20Threshold%20Value%20II/README.md)
 
-<!-- tags:Array,Simulation,Heap (Priority Queue) -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>, and an integer <code>k</code>.</p>
 
@@ -54,7 +68,11 @@ It can be shown that 4 is the minimum number of operations needed so that all el
 	<li>The input is generated such that an answer always exists. That is, there exists some sequence of operations after which all elements of the array are greater than or equal to <code>k</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Priority Queue (Min Heap)
 
@@ -66,6 +84,8 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$,
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def minOperations(self, nums: List[int], k: int) -> int:
@@ -73,10 +93,12 @@ class Solution:
         ans = 0
         while len(nums) > 1 and nums[0] < k:
             x, y = heappop(nums), heappop(nums)
-            heappush(nums, min(x, y) * 2 + max(x, y))
+            heappush(nums, x * 2 + y)
             ans += 1
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -88,12 +110,14 @@ class Solution {
         int ans = 0;
         for (; pq.size() > 1 && pq.peek() < k; ++ans) {
             long x = pq.poll(), y = pq.poll();
-            pq.offer(Math.min(x, y) * 2 + Math.max(x, y));
+            pq.offer(x * 2 + y);
         }
         return ans;
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -110,12 +134,14 @@ public:
             pq.pop();
             ll y = pq.top();
             pq.pop();
-            pq.push(min(x, y) * 2 + max(x, y));
+            pq.push(x * 2 + y);
         }
         return ans;
     }
 };
 ```
+
+#### Go
 
 ```go
 func minOperations(nums []int, k int) (ans int) {
@@ -123,7 +149,7 @@ func minOperations(nums []int, k int) (ans int) {
 	heap.Init(pq)
 	for ; pq.Len() > 1 && pq.IntSlice[0] < k; ans++ {
 		x, y := heap.Pop(pq).(int), heap.Pop(pq).(int)
-		heap.Push(pq, min(x, y)*2+max(x, y))
+		heap.Push(pq, x*2+y)
 	}
 	return
 }
@@ -143,6 +169,8 @@ func (h *hp) Push(x interface{}) {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function minOperations(nums: number[], k: number): number {
     const pq = new MinPriorityQueue();
@@ -153,12 +181,41 @@ function minOperations(nums: number[], k: number): number {
     for (; pq.size() > 1 && pq.front().element < k; ++ans) {
         const x = pq.dequeue().element;
         const y = pq.dequeue().element;
-        pq.enqueue(Math.min(x, y) * 2 + Math.max(x, y));
+        pq.enqueue(x * 2 + y);
     }
     return ans;
 }
 ```
 
+#### Rust
+
+```rust
+use std::collections::BinaryHeap;
+
+impl Solution {
+    pub fn min_operations(nums: Vec<i32>, k: i32) -> i32 {
+        let mut pq = BinaryHeap::new();
+
+        for &x in &nums {
+            pq.push(-(x as i64));
+        }
+
+        let mut ans = 0;
+
+        while pq.len() > 1 && -pq.peek().unwrap() < k as i64 {
+            let x = -pq.pop().unwrap();
+            let y = -pq.pop().unwrap();
+            pq.push(-(x * 2 + y));
+            ans += 1;
+        }
+
+        ans
+    }
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

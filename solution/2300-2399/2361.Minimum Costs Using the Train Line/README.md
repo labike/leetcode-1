@@ -1,12 +1,21 @@
-# [2361. 乘坐火车路线的最少费用](https://leetcode.cn/problems/minimum-costs-using-the-train-line)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2361.Minimum%20Costs%20Using%20the%20Train%20Line/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [2361. 乘坐火车路线的最少费用 🔒](https://leetcode.cn/problems/minimum-costs-using-the-train-line)
 
 [English Version](/solution/2300-2399/2361.Minimum%20Costs%20Using%20the%20Train%20Line/README_EN.md)
 
-<!-- tags:数组,动态规划 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>城市中的火车有两条路线，分别是常规路线和特快路线。两条路线经过 <strong>相同 </strong>的 <code>n + 1</code> 个车站，车站编号从 <code>0</code> 到 <code>n</code>。初始时，你位于车站 <code>0</code> 的常规路线。</p>
 
@@ -37,7 +46,7 @@
 - 乘坐常规路线从车站 0 到车站 1，费用是 1。
 - 乘坐特快路线从车站 1 到车站 2，费用是 8 + 2 = 10。
 - 乘坐特快路线从车站 2 到车站 3，费用是 3。
-- 乘坐特快路线从车站 3 到车站 4，费用是 5。
+- 乘坐常规路线从车站 3 到车站 4，费用是 5。
 总费用是 1 + 10 + 3 + 5 + 19。
 注意到达其他车站的最少费用方法可以选择不同的路线。
 </pre>
@@ -65,7 +74,11 @@
 	<li><code>1 &lt;= regular[i], express[i], expressCost &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：动态规划
 
@@ -97,6 +110,8 @@ $$
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def minimumCosts(
@@ -112,6 +127,8 @@ class Solution:
             cost[i - 1] = min(f[i], g[i])
         return cost
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -132,6 +149,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -155,6 +174,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func minimumCosts(regular []int, express []int, expressCost int) []int64 {
 	n := len(regular)
@@ -171,6 +192,8 @@ func minimumCosts(regular []int, express []int, expressCost int) []int64 {
 	return cost
 }
 ```
+
+#### TypeScript
 
 ```ts
 function minimumCosts(regular: number[], express: number[], expressCost: number): number[] {
@@ -195,6 +218,8 @@ function minimumCosts(regular: number[], express: number[], expressCost: number)
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def minimumCosts(
@@ -210,6 +235,8 @@ class Solution:
             cost[i - 1] = min(f, g)
         return cost
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -231,6 +258,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -254,6 +283,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func minimumCosts(regular []int, express []int, expressCost int) []int64 {
 	f, g := 0, 1<<30
@@ -268,6 +299,8 @@ func minimumCosts(regular []int, express []int, expressCost int) []int64 {
 	return cost
 }
 ```
+
+#### TypeScript
 
 ```ts
 function minimumCosts(regular: number[], express: number[], expressCost: number): number[] {
@@ -288,4 +321,6 @@ function minimumCosts(regular: number[], express: number[], expressCost: number)
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

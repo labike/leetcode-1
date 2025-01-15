@@ -1,12 +1,24 @@
-# [588. 设计内存文件系统](https://leetcode.cn/problems/design-in-memory-file-system)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0588.Design%20In-Memory%20File%20System/README.md
+tags:
+    - 设计
+    - 字典树
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [588. 设计内存文件系统 🔒](https://leetcode.cn/problems/design-in-memory-file-system)
 
 [English Version](/solution/0500-0599/0588.Design%20In-Memory%20File%20System/README_EN.md)
 
-<!-- tags:设计,字典树,哈希表,字符串 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个内存文件系统，模拟以下功能：</p>
 
@@ -69,13 +81,19 @@ fileSystem.readContentFromFile("/a/b/c/d"); // 返回 "hello"</pre>
 	<li><code>ls</code>,&nbsp;<code>mkdir</code>,&nbsp;<code>addContentToFile</code>, and&nbsp;<code>readContentFromFile</code>&nbsp;最多被调用&nbsp;<code>300</code>&nbsp;次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：前缀树
 
 哈希表实现前缀树。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Trie:
@@ -140,6 +158,8 @@ class FileSystem:
 # obj.addContentToFile(filePath,content)
 # param_4 = obj.readContentFromFile(filePath)
 ```
+
+#### Java
 
 ```java
 class Trie {
@@ -226,6 +246,8 @@ class FileSystem {
  * String param_4 = obj.readContentFromFile(filePath);
  */
 ```
+
+#### Go
 
 ```go
 type Trie struct {
@@ -323,4 +345,6 @@ func (this *FileSystem) ReadContentFromFile(filePath string) string {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

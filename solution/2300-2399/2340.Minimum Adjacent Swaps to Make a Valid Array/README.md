@@ -1,12 +1,21 @@
-# [2340. 生成有效数组的最少交换次数](https://leetcode.cn/problems/minimum-adjacent-swaps-to-make-a-valid-array)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2340.Minimum%20Adjacent%20Swaps%20to%20Make%20a%20Valid%20Array/README.md
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
+# [2340. 生成有效数组的最少交换次数 🔒](https://leetcode.cn/problems/minimum-adjacent-swaps-to-make-a-valid-array)
 
 [English Version](/solution/2300-2399/2340.Minimum%20Adjacent%20Swaps%20to%20Make%20a%20Valid%20Array/README_EN.md)
 
-<!-- tags:贪心,数组 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个<strong>&nbsp;下标从 0 开始</strong>&nbsp;的整数数组 <code>nums</code>。</p>
 
@@ -54,21 +63,27 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：维护最值下标 + 分类讨论
 
-我们可以用下标 $i$ 和 $j$ 分别记录数组 `nums` 第一个最小值和最后一个最大值的下标，遍历数组 `nums`，更新 $i$ 和 $j$ 的值。
+我们可以用下标 $i$ 和 $j$ 分别记录数组 $\textit{nums}$ 第一个最小值和最后一个最大值的下标，遍历数组 $\textit{nums}$，更新 $i$ 和 $j$ 的值。
 
 接下来，我们需要考虑交换的次数。
 
--   如果 $i = j$，说明数组 `nums` 已经是有效数组，不需要交换，返回 $0$；
--   如果 $i < j$，说明数组 `nums` 中最小值在最大值的左边，需要交换 $i + n - 1 - j$ 次，其中 $n$ 为数组 `nums` 的长度；
--   如果 $i > j$，说明数组 `nums` 中最小值在最大值的右边，需要交换 $i + n - 1 - j - 1$ 次。
+-   如果 $i = j$，说明数组 $\textit{nums}$ 已经是有效数组，不需要交换，返回 $0$；
+-   如果 $i < j$，说明数组 $\textit{nums}$ 中最小值在最大值的左边，需要交换 $i + n - 1 - j$ 次，其中 $n$ 为数组 $\textit{nums}$ 的长度；
+-   如果 $i > j$，说明数组 $\textit{nums}$ 中最小值在最大值的右边，需要交换 $i + n - 1 - j - 1$ 次。
 
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组 `nums` 的长度。
+时间复杂度 $O(n)$，其中 $n$ 为数组 $\textit{nums}$ 的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -81,6 +96,8 @@ class Solution:
                 j = k
         return 0 if i == j else i + len(nums) - 1 - j - (i > j)
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -102,6 +119,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -125,6 +144,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func minimumSwaps(nums []int) int {
 	var i, j int
@@ -146,6 +167,8 @@ func minimumSwaps(nums []int) int {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function minimumSwaps(nums: number[]): number {
     let i = 0;
@@ -165,4 +188,6 @@ function minimumSwaps(nums: number[]): number {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

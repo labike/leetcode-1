@@ -1,12 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0791.Custom%20Sort%20String/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [791. 自定义字符串排序](https://leetcode.cn/problems/custom-sort-string)
 
 [English Version](/solution/0700-0799/0791.Custom%20Sort%20String/README_EN.md)
 
-<!-- tags:哈希表,字符串,排序 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个字符串 <code>order</code> 和 <code>s</code> 。<code>order</code> 的所有字母都是 <strong>唯一</strong> 的，并且以前按照一些自定义的顺序排序。</p>
 
@@ -32,7 +42,7 @@
 <strong>输出:</strong> "cbad"
 解释：字符 "b"、"c" 和 "a" 规定了 s 中字符的顺序。s 中的字符 "d" 没有在 order 中出现，所以它的位置是弹性的。
 
-按照出现的顺序，s 中的 "b"、"c"、"a" 应排列为"b"、"c"、"a"。"d" 可以放在任何位置，因为它没有按顺序排列。输出 "bcad" 遵循这一规则。其他排序如 "bacd" 或 "bcda" 也是有效的，只要维持 "b"、"c"、"a" 的顺序。
+按照出现的顺序，s 中的 "b"、"c"、"a" 应排列为"b"、"c"、"a"。"d" 可以放在任何位置，因为它没有按顺序排列。输出 "bcad" 遵循这一规则。其他排序如 "dbca" 或 "bcda" 也是有效的，只要维持 "b"、"c"、"a" 的顺序。
 </pre>
 
 <p>&nbsp;</p>
@@ -46,7 +56,11 @@
 	<li><code>order</code>&nbsp;中的所有字符都 <strong>不同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：自定义排序
 
@@ -56,12 +70,16 @@
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         d = {c: i for i, c in enumerate(order)}
         return ''.join(sorted(s, key=lambda x: d.get(x, 0)))
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -80,6 +98,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -91,6 +111,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func customSortString(order string, s string) string {
@@ -104,6 +126,8 @@ func customSortString(order string, s string) string {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function customSortString(order: string, s: string): string {
     const toIndex = (c: string) => c.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -116,6 +140,8 @@ function customSortString(order: string, s: string): string {
 }
 ```
 
+#### Rust
+
 ```rust
 impl Solution {
     pub fn custom_sort_string(order: String, s: String) -> String {
@@ -125,15 +151,19 @@ impl Solution {
             d[(c - b'a') as usize] = i;
         }
         let mut ans = s.chars().collect::<Vec<_>>();
-        ans.sort_by(|&a, &b|
+        ans.sort_by(|&a, &b| {
             d[((a as u8) - ('a' as u8)) as usize].cmp(&d[((b as u8) - ('a' as u8)) as usize])
-        );
+        });
         ans.into_iter().collect()
     }
 }
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
 
 ### 方法二：字符计数
 
@@ -144,6 +174,8 @@ impl Solution {
 时间复杂度 $O(m+n)$，空间复杂度 $O(m)$。其中 $m$ 和 $n$ 分别是字符串 $order$ 和 $s$ 的长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -157,6 +189,8 @@ class Solution:
             ans.append(c * v)
         return ''.join(ans)
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -182,6 +216,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -197,6 +233,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func customSortString(order string, s string) string {
@@ -220,6 +258,8 @@ func customSortString(order string, s string) string {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function customSortString(order: string, s: string): string {
     const toIndex = (c: string) => c.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -240,6 +280,8 @@ function customSortString(order: string, s: string): string {
     return ans.join('');
 }
 ```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -267,4 +309,6 @@ impl Solution {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,12 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/3000-3099/3066.Minimum%20Operations%20to%20Exceed%20Threshold%20Value%20II/README.md
+rating: 1399
+source: 第 125 场双周赛 Q2
+tags:
+    - 数组
+    - 模拟
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [3066. 超过阈值的最少操作数 II](https://leetcode.cn/problems/minimum-operations-to-exceed-threshold-value-ii)
 
 [English Version](/solution/3000-3099/3066.Minimum%20Operations%20to%20Exceed%20Threshold%20Value%20II/README_EN.md)
 
-<!-- tags:数组,模拟,堆（优先队列） -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -58,7 +70,11 @@
 	<li>输入保证答案一定存在，也就是说一定存在一个操作序列使数组中所有元素都大于等于&nbsp;<code>k</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：优先队列（小根堆）
 
@@ -70,6 +86,8 @@
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def minOperations(self, nums: List[int], k: int) -> int:
@@ -77,10 +95,12 @@ class Solution:
         ans = 0
         while len(nums) > 1 and nums[0] < k:
             x, y = heappop(nums), heappop(nums)
-            heappush(nums, min(x, y) * 2 + max(x, y))
+            heappush(nums, x * 2 + y)
             ans += 1
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -92,12 +112,14 @@ class Solution {
         int ans = 0;
         for (; pq.size() > 1 && pq.peek() < k; ++ans) {
             long x = pq.poll(), y = pq.poll();
-            pq.offer(Math.min(x, y) * 2 + Math.max(x, y));
+            pq.offer(x * 2 + y);
         }
         return ans;
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -114,12 +136,14 @@ public:
             pq.pop();
             ll y = pq.top();
             pq.pop();
-            pq.push(min(x, y) * 2 + max(x, y));
+            pq.push(x * 2 + y);
         }
         return ans;
     }
 };
 ```
+
+#### Go
 
 ```go
 func minOperations(nums []int, k int) (ans int) {
@@ -127,7 +151,7 @@ func minOperations(nums []int, k int) (ans int) {
 	heap.Init(pq)
 	for ; pq.Len() > 1 && pq.IntSlice[0] < k; ans++ {
 		x, y := heap.Pop(pq).(int), heap.Pop(pq).(int)
-		heap.Push(pq, min(x, y)*2+max(x, y))
+		heap.Push(pq, x*2+y)
 	}
 	return
 }
@@ -147,6 +171,8 @@ func (h *hp) Push(x interface{}) {
 }
 ```
 
+#### TypeScript
+
 ```ts
 function minOperations(nums: number[], k: number): number {
     const pq = new MinPriorityQueue();
@@ -157,12 +183,41 @@ function minOperations(nums: number[], k: number): number {
     for (; pq.size() > 1 && pq.front().element < k; ++ans) {
         const x = pq.dequeue().element;
         const y = pq.dequeue().element;
-        pq.enqueue(Math.min(x, y) * 2 + Math.max(x, y));
+        pq.enqueue(x * 2 + y);
     }
     return ans;
 }
 ```
 
+#### Rust
+
+```rust
+use std::collections::BinaryHeap;
+
+impl Solution {
+    pub fn min_operations(nums: Vec<i32>, k: i32) -> i32 {
+        let mut pq = BinaryHeap::new();
+
+        for &x in &nums {
+            pq.push(-(x as i64));
+        }
+
+        let mut ans = 0;
+
+        while pq.len() > 1 && -pq.peek().unwrap() < k as i64 {
+            let x = -pq.pop().unwrap();
+            let y = -pq.pop().unwrap();
+            pq.push(-(x * 2 + y));
+            ans += 1;
+        }
+
+        ans
+    }
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

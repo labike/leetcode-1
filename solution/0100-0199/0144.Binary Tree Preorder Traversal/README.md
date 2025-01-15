@@ -1,66 +1,86 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/README.md
+tags:
+    - 栈
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [144. 二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal)
 
 [English Version](/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/README_EN.md)
 
-<!-- tags:栈,树,深度优先搜索,二叉树 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你二叉树的根节点 <code>root</code> ，返回它节点值的 <strong>前序</strong><em> </em>遍历。</p>
+<p>给你二叉树的根节点 <code>root</code> ，返回它节点值的&nbsp;<strong>前序</strong><em>&nbsp;</em>遍历。</p>
 
-<p> </p>
+<p>&nbsp;</p>
 
-<p><strong>示例 1：</strong></p>
-<img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/images/inorder_1.jpg" style="width: 202px; height: 324px;" />
-<pre>
-<strong>输入：</strong>root = [1,null,2,3]
-<strong>输出：</strong>[1,2,3]
-</pre>
+<p><strong class="example">示例 1：</strong></p>
 
-<p><strong>示例 2：</strong></p>
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">root = [1,null,2,3]</span></p>
 
-<pre>
-<strong>输入：</strong>root = []
-<strong>输出：</strong>[]
-</pre>
+<p><strong>输出：</strong><span class="example-io">[1,2,3]</span></p>
 
-<p><strong>示例 3：</strong></p>
+<p><strong>解释：</strong></p>
 
-<pre>
-<strong>输入：</strong>root = [1]
-<strong>输出：</strong>[1]
-</pre>
+<p><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/images/screenshot-2024-08-29-202743.png" style="width: 200px; height: 264px;" /></p>
+</div>
 
-<p><strong>示例 4：</strong></p>
-<img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/images/inorder_5.jpg" style="width: 202px; height: 202px;" />
-<pre>
-<strong>输入：</strong>root = [1,2]
-<strong>输出：</strong>[1,2]
-</pre>
+<p><strong class="example">示例 2：</strong></p>
 
-<p><strong>示例 5：</strong></p>
-<img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/images/inorder_4.jpg" style="width: 202px; height: 202px;" />
-<pre>
-<strong>输入：</strong>root = [1,null,2]
-<strong>输出：</strong>[1,2]
-</pre>
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>root = [1,2,3,4,5,null,8,null,null,6,7,9]</span></p>
 
-<p> </p>
+<p><span class="example-io"><b>输出：</b>[1,2,4,5,6,7,3,8,9]</span></p>
+
+<p><strong>解释：</strong></p>
+
+<p><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0144.Binary%20Tree%20Preorder%20Traversal/images/tree_2.png" style="width: 350px; height: 286px;" /></p>
+</div>
+
+<p><strong class="example">示例 3：</strong></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>root = []</span></p>
+
+<p><span class="example-io"><b>输出：</b>[]</span></p>
+</div>
+
+<p><strong class="example">示例 4：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">root = [1]</span></p>
+
+<p><span class="example-io"><b>输出：</b>[1]</span></p>
+</div>
+
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
 	<li>树中节点数目在范围 <code>[0, 100]</code> 内</li>
-	<li><code>-100 <= Node.val <= 100</code></li>
+	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
 </ul>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>进阶：</strong>递归算法很简单，你可以通过迭代算法完成吗？</p>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：递归遍历
 
@@ -69,6 +89,8 @@
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是二叉树的节点数，空间复杂度主要取决于递归调用的栈空间。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -90,6 +112,8 @@ class Solution:
         dfs(root)
         return ans
 ```
+
+#### Java
 
 ```java
 /**
@@ -126,6 +150,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -156,6 +182,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 /**
  * Definition for a binary tree node.
@@ -179,6 +207,8 @@ func preorderTraversal(root *TreeNode) (ans []int) {
 	return
 }
 ```
+
+#### TypeScript
 
 ```ts
 /**
@@ -210,6 +240,8 @@ function preorderTraversal(root: TreeNode | null): number[] {
 }
 ```
 
+#### Rust
+
 ```rust
 // Definition for a binary tree node.
 // #[derive(Debug, PartialEq, Eq)]
@@ -229,8 +261,8 @@ function preorderTraversal(root: TreeNode | null): number[] {
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, ans: &mut Vec<i32>) {
         if root.is_none() {
@@ -252,6 +284,10 @@ impl Solution {
 
 <!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
 ### 方法二：栈实现非递归遍历
 
 栈实现非递归遍历的思路如下：
@@ -266,6 +302,8 @@ impl Solution {
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是二叉树的节点数，空间复杂度主要取决于栈空间。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -289,6 +327,8 @@ class Solution:
                 stk.append(node.left)
         return ans
 ```
+
+#### Java
 
 ```java
 /**
@@ -329,6 +369,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -366,6 +408,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 /**
  * Definition for a binary tree node.
@@ -394,6 +438,8 @@ func preorderTraversal(root *TreeNode) (ans []int) {
 	return
 }
 ```
+
+#### TypeScript
 
 ```ts
 /**
@@ -428,6 +474,10 @@ function preorderTraversal(root: TreeNode | null): number[] {
 
 <!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
 ### 方法三：Morris 实现前序遍历
 
 Morris 遍历无需使用栈，空间复杂度为 $O(1)$。核心思想是：
@@ -443,6 +493,8 @@ Morris 遍历无需使用栈，空间复杂度为 $O(1)$。核心思想是：
 时间复杂度 $O(n)$，其中 $n$ 是二叉树的节点数。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -471,6 +523,8 @@ class Solution:
                     root = root.right
         return ans
 ```
+
+#### Java
 
 ```java
 /**
@@ -515,6 +569,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -555,6 +611,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 /**
  * Definition for a binary tree node.
@@ -587,6 +645,8 @@ func preorderTraversal(root *TreeNode) (ans []int) {
 	return
 }
 ```
+
+#### TypeScript
 
 ```ts
 /**
@@ -631,4 +691,6 @@ function preorderTraversal(root: TreeNode | null): number[] {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

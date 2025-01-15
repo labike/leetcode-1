@@ -1,12 +1,22 @@
-# [2387. 行排序矩阵的中位数](https://leetcode.cn/problems/median-of-a-row-wise-sorted-matrix)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2387.Median%20of%20a%20Row%20Wise%20Sorted%20Matrix/README.md
+tags:
+    - 数组
+    - 二分查找
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [2387. 行排序矩阵的中位数 🔒](https://leetcode.cn/problems/median-of-a-row-wise-sorted-matrix)
 
 [English Version](/solution/2300-2399/2387.Median%20of%20a%20Row%20Wise%20Sorted%20Matrix/README_EN.md)
 
-<!-- tags:数组,二分查找,矩阵 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个包含&nbsp;<strong>奇数&nbsp;</strong>个整数的&nbsp;<code>m x n</code> 矩阵&nbsp;<code>grid</code>，其中每一行按 <strong>非递减 </strong>的顺序排序，返回矩阵的&nbsp;<strong>中位数</strong>。</p>
 
@@ -43,7 +53,11 @@
 	<li><code>grid[i]</code> 按非递减顺序排序</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一：两次二分查找
 
@@ -51,9 +65,11 @@
 
 我们二分枚举矩阵的元素 $x$，统计网格中大于该元素的个数 $cnt$，如果 $cnt \ge target$，说明中位数在 $x$ 的左侧（包含 $x$），否则在右侧。
 
-时间复杂度 $O(m\times \log n \times log M)$，空间复杂度 $O(1)$。其中 $m$ 和 $n$ 分别为网格的行数和列数；而 $M$ 为网格中的最大元素。
+时间复杂度 $O(m\times \log n \times log M)$，其中 $m$ 和 $n$ 分别为网格的行数和列数，而 $M$ 为网格中的最大元素。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -65,6 +81,8 @@ class Solution:
         target = (m * n + 1) >> 1
         return bisect_left(range(10**6 + 1), target, key=count)
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -105,6 +123,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -131,6 +151,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func matrixMedian(grid [][]int) int {
@@ -168,4 +190,6 @@ func matrixMedian(grid [][]int) int {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

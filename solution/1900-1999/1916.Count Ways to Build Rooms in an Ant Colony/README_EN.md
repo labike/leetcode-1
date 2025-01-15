@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1916.Count%20Ways%20to%20Build%20Rooms%20in%20an%20Ant%20Colony/README_EN.md
+rating: 2486
+source: Weekly Contest 247 Q4
+tags:
+    - Tree
+    - Graph
+    - Topological Sort
+    - Math
+    - Dynamic Programming
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
 # [1916. Count Ways to Build Rooms in an Ant Colony](https://leetcode.com/problems/count-ways-to-build-rooms-in-an-ant-colony)
 
 [中文文档](/solution/1900-1999/1916.Count%20Ways%20to%20Build%20Rooms%20in%20an%20Ant%20Colony/README.md)
 
-<!-- tags:Tree,Graph,Topological Sort,Math,Dynamic Programming,Combinatorics -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are an ant tasked with adding <code>n</code> new rooms numbered <code>0</code> to <code>n-1</code> to your colony. You are given the expansion plan as a <strong>0-indexed</strong> integer array of length <code>n</code>, <code>prevRoom</code>, where <code>prevRoom[i]</code> indicates that you must build room <code>prevRoom[i]</code> before building room <code>i</code>, and these two rooms must be connected <strong>directly</strong>. Room <code>0</code> is already built, so <code>prevRoom[0] = -1</code>. The expansion&nbsp;plan is given such that once all the rooms are built, every room will be reachable from room <code>0</code>.</p>
 
@@ -74,6 +91,67 @@
 
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-<!-- end -->
+<!-- solution:start -->
+
+### Solution 1
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def waysToBuildRooms(self, prevRoom: List[int]) -> int:
+        modulo = 10**9 + 7
+        ingoing = defaultdict(set)
+        outgoing = defaultdict(set)
+
+        for i in range(1, len(prevRoom)):
+            ingoing[i].add(prevRoom[i])
+            outgoing[prevRoom[i]].add(i)
+        ans = [1]
+
+        def recurse(i):
+            if len(outgoing[i]) == 0:
+                return 1
+
+            nodes_in_tree = 0
+            for v in outgoing[i]:
+                cn = recurse(v)
+                if nodes_in_tree != 0:
+                    ans[0] *= comb(nodes_in_tree + cn, cn)
+                    ans[0] %= modulo
+                nodes_in_tree += cn
+            return nodes_in_tree + 1
+
+        recurse(0)
+        return ans[0] % modulo
+```
+
+#### Java
+
+```java
+
+```
+
+#### C++
+
+```cpp
+
+```
+
+#### Go
+
+```go
+
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

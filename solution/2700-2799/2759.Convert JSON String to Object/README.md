@@ -1,12 +1,20 @@
-# [2759. 将 JSON 字符串转换为对象](https://leetcode.cn/problems/convert-json-string-to-object)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2759.Convert%20JSON%20String%20to%20Object/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2759. 将 JSON 字符串转换为对象 🔒](https://leetcode.cn/problems/convert-json-string-to-object)
 
 [English Version](/solution/2700-2799/2759.Convert%20JSON%20String%20to%20Object/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串 <code>str</code> ，返回 JSON 解析后的 <code>parsedStr</code> 。你可以假设 <code>str</code> 是一个有效的 JSON 字符串，因此它只包含字符串、数字、数组、对象、布尔值和 null。<code>str</code> 不会包含不可见字符和转义字符。</p>
 
@@ -44,11 +52,17 @@
 	<li><code>1 &lt;= str.length &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function jsonParse(str: string): any {
@@ -170,4 +184,6 @@ function jsonParse(str: string): any {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

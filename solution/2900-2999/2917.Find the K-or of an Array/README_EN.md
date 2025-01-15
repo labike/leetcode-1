@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2917.Find%20the%20K-or%20of%20an%20Array/README_EN.md
+rating: 1388
+source: Weekly Contest 369 Q1
+tags:
+    - Bit Manipulation
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2917. Find the K-or of an Array](https://leetcode.com/problems/find-the-k-or-of-an-array)
 
 [中文文档](/solution/2900-2999/2917.Find%20the%20K-or%20of%20an%20Array/README.md)
 
-<!-- tags:Bit Manipulation,Array -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code>, and an integer <code>k</code>. Let&#39;s introduce&nbsp;<strong>K-or</strong> operation by extending the standard bitwise OR. In K-or, a bit position in the result is set to <code>1</code>&nbsp;if at least <code>k</code> numbers in <code>nums</code> have a <code>1</code> in that position.</p>
 
@@ -14,15 +27,15 @@
 <p><strong class="example">Example 1: </strong></p>
 
 <div class="example-block" style="border-color: var(--border-tertiary); border-left-width: 2px; color: var(--text-secondary); font-size: .875rem; margin-bottom: 1rem; margin-top: 1rem; overflow: visible; padding-left: 1rem;">
-<p><strong>Input: </strong> <span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> nums = [7,12,9,8,9,15], k = 4 </span></p>
+<p><strong>Input:</strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> nums = [7,12,9,8,9,15], k = 4 </span></p>
 
-<p><strong>Output: </strong> <span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> 9 </span></p>
+<p><strong>Output:</strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> 9 </span></p>
 
 <p><strong>Explanation: </strong></p>
 
 <p>Represent numbers in binary:</p>
 
-<table border="1">
+<table style="text-indent:10px; margin-bottom=20px;">
 	<tbody>
 		<tr>
 			<th><b>Number</b></th>
@@ -90,9 +103,9 @@ Only bits 0 and 3 qualify. The result is <code>(1001)<sub>2</sub> = 9</code>.</p
 <p><strong class="example">Example 2: </strong></p>
 
 <div class="example-block" style="border-color: var(--border-tertiary); border-left-width: 2px; color: var(--text-secondary); font-size: .875rem; margin-bottom: 1rem; margin-top: 1rem; overflow: visible; padding-left: 1rem;">
-<p><strong>Input: </strong> <span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> nums = [2,12,1,11,4,5], k = 6 </span></p>
+<p><strong>Input:</strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> nums = [2,12,1,11,4,5], k = 6 </span></p>
 
-<p><strong>Output: </strong> <span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> 0 </span></p>
+<p><strong>Output:</strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> 0 </span></p>
 
 <p><strong>Explanation:&nbsp;</strong>No bit appears as 1 in all six array numbers, as required for K-or with <code>k = 6</code>. Thus, the result is 0.</p>
 </div>
@@ -100,9 +113,9 @@ Only bits 0 and 3 qualify. The result is <code>(1001)<sub>2</sub> = 9</code>.</p
 <p><strong class="example">Example 3: </strong></p>
 
 <div class="example-block" style="border-color: var(--border-tertiary); border-left-width: 2px; color: var(--text-secondary); font-size: .875rem; margin-bottom: 1rem; margin-top: 1rem; overflow: visible; padding-left: 1rem;">
-<p><strong>Input: </strong> <span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> nums = [10,8,5,9,11,6,8], k = 1 </span></p>
+<p><strong>Input:</strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> nums = [10,8,5,9,11,6,8], k = 1 </span></p>
 
-<p><strong>Output: </strong> <span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> 15 </span></p>
+<p><strong>Output:</strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;"> 15 </span></p>
 
 <p><strong>Explanation: </strong> Since <code>k == 1</code>, the 1-or of the array is equal to the bitwise OR of all its elements. Hence, the answer is <code>10 OR 8 OR 5 OR 9 OR 11 OR 6 OR 8 = 15</code>.</p>
 </div>
@@ -116,7 +129,11 @@ Only bits 0 and 3 qualify. The result is <code>(1001)<sub>2</sub> = 9</code>.</p
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Enumeration
 
@@ -128,6 +145,8 @@ The time complexity is $O(n \times \log M)$, where $n$ and $M$ are the length of
 
 <!-- tabs:start -->
 
+#### Python3
+
 ```python
 class Solution:
     def findKOr(self, nums: List[int], k: int) -> int:
@@ -138,6 +157,8 @@ class Solution:
                 ans |= 1 << i
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -156,6 +177,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -176,6 +199,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func findKOr(nums []int, k int) (ans int) {
 	for i := 0; i < 32; i++ {
@@ -190,6 +215,8 @@ func findKOr(nums []int, k int) (ans int) {
 	return
 }
 ```
+
+#### TypeScript
 
 ```ts
 function findKOr(nums: number[], k: number): number {
@@ -206,6 +233,8 @@ function findKOr(nums: number[], k: number): number {
     return ans;
 }
 ```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -227,4 +256,6 @@ public class Solution {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,12 +1,20 @@
-# [2691. 不可变辅助工具](https://leetcode.cn/problems/immutability-helper)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2691.Immutability%20Helper/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2691. 不可变辅助工具 🔒](https://leetcode.cn/problems/immutability-helper)
 
 [English Version](/solution/2600-2699/2691.Immutability%20Helper/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>创建带有微小修改的不可变对象的克隆副本是一个繁琐的过程。请你编写一个名为 <code>ImmutableHelper</code> 的类，作为满足这一要求的工具。构造函数接受一个不可变对象 <code>obj</code> ，该对象将是一个 JSON 对象或数组。</p>
 
@@ -106,6 +114,24 @@ mutators = [
 	<li><code>produce() 的总调用次数 &lt; <font face="monospace">10<sup>5</sup></font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- end -->
+<!-- solution:start -->
+
+### 方法一
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,12 +1,20 @@
-# [2687. 自行车的最后使用时间](https://leetcode.cn/problems/bikes-last-time-used)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2687.Bikes%20Last%20Time%20Used/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2687. 自行车的最后使用时间 🔒](https://leetcode.cn/problems/bikes-last-time-used)
 
 [English Version](/solution/2600-2699/2687.Bikes%20Last%20Time%20Used/README_EN.md)
 
-<!-- tags:数据库 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Bikes</code>&nbsp;</p>
 
@@ -20,7 +28,9 @@
 | end_time    | datetime |
 +-------------+----------+
 ride_id 是该表的主键。
-每行包含一个骑行信息，包括 ride_id、自行车编号、骑行的起始和结束时间。</pre>
+每行包含一个骑行信息，包括 ride_id、自行车编号、骑行的起始和结束时间。
+输入保证 start_time 和 end_time 是有效的日期值。
+</pre>
 
 <p>编写一个解决方案，找出每辆自行车 <strong>最近一次被使用</strong> 的时间。</p>
 
@@ -61,11 +71,17 @@ ride_id 是该表的主键。
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -79,4 +95,6 @@ ORDER BY end_time DESC;
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

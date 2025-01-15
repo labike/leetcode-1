@@ -1,12 +1,23 @@
-# [411. 最短独占单词缩写](https://leetcode.cn/problems/minimum-unique-word-abbreviation)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0411.Minimum%20Unique%20Word%20Abbreviation/README.md
+tags:
+    - 位运算
+    - 数组
+    - 字符串
+    - 回溯
+---
+
+<!-- problem:start -->
+
+# [411. 最短独占单词缩写 🔒](https://leetcode.cn/problems/minimum-unique-word-abbreviation)
 
 [English Version](/solution/0400-0499/0411.Minimum%20Unique%20Word%20Abbreviation/README_EN.md)
 
-<!-- tags:位运算,字符串,回溯 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>通过将任意数量的 <strong>不相邻</strong> 子字符串替换为它们的长度，可以完成对字符串的 <strong>缩写</strong> 。 例如，像 <code>"substitution"</code> 这样的字符串可以缩写为（但不限于）：</p>
 
@@ -60,10 +71,47 @@
 	<li><code>1 &lt;= dictionary[i].length&nbsp;&lt;= 100</code></li>
 	<li>如果 <code>n &gt; 0</code> ，那么 <code>log<sub>2</sub>(n) + m &lt;= 21</code></li>
 	<li><code>target</code>&nbsp;和&nbsp;<code>dictionary[i]</code>&nbsp;仅包含小写字符</li>
+	<li><code>dictionary</code>&nbsp;不包含 <code>target</code>。</li>
 </ul>
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- end -->
+<!-- solution:start -->
+
+### 方法一
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+
+```
+
+#### Java
+
+```java
+
+```
+
+#### C++
+
+```cpp
+
+```
+
+#### Go
+
+```go
+
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

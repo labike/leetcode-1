@@ -1,12 +1,20 @@
-# [2797. 带有占位符的部分函数](https://leetcode.cn/problems/partial-function-with-placeholders)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2797.Partial%20Function%20with%20Placeholders/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2797. 带有占位符的部分函数 🔒](https://leetcode.cn/problems/partial-function-with-placeholders)
 
 [English Version](/solution/2700-2799/2797.Partial%20Function%20with%20Placeholders/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定函数 <code>fn</code> 和数组 <code>args</code>，返回一个函数 <code>partialFn</code>。</p>
 
@@ -67,11 +75,17 @@ console.log(result) //&nbsp;-10
 	<li><code>0 &lt;= number of placeholders &lt;= restArgs.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function partial(fn: Function, args: any[]): Function {
@@ -89,6 +103,8 @@ function partial(fn: Function, args: any[]): Function {
     };
 }
 ```
+
+#### JavaScript
 
 ```js
 /**
@@ -114,4 +130,6 @@ var partial = function (fn, args) {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

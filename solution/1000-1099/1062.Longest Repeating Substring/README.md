@@ -1,58 +1,72 @@
-# [1062. 最长重复子串](https://leetcode.cn/problems/longest-repeating-substring)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1062.Longest%20Repeating%20Substring/README.md
+tags:
+    - 字符串
+    - 二分查找
+    - 动态规划
+    - 后缀数组
+    - 哈希函数
+    - 滚动哈希
+---
+
+<!-- problem:start -->
+
+# [1062. 最长重复子串 🔒](https://leetcode.cn/problems/longest-repeating-substring)
 
 [English Version](/solution/1000-1099/1062.Longest%20Repeating%20Substring/README_EN.md)
 
-<!-- tags:字符串,二分查找,动态规划,后缀数组,哈希函数,滚动哈希 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给定字符串&nbsp;<code>S</code>，找出最长重复子串的长度。如果不存在重复子串就返回 <code>0</code>。</p>
+<p>给定字符串&nbsp;<code>s</code>，找出最长重复子串的长度。如果不存在重复子串就返回 <code>0</code>。</p>
 
 <p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 
-<pre><strong>输入：</strong>&quot;abcd&quot;
+<pre>
+<strong>输入：</strong>"abcd"
 <strong>输出：</strong>0
 <strong>解释：</strong>没有重复子串。
 </pre>
 
 <p><strong>示例 2：</strong></p>
 
-<pre><strong>输入：</strong>&quot;abbaba&quot;
+<pre>
+<strong>输入：</strong>"abbaba"
 <strong>输出：</strong>2
-<strong>解释：</strong>最长的重复子串为 &quot;ab&quot; 和 &quot;ba&quot;，每个出现 2 次。
+<strong>解释：</strong>最长的重复子串为 "ab" 和 "ba"，每个出现 2 次。
 </pre>
 
 <p><strong>示例 3：</strong></p>
 
-<pre><strong>输入：</strong>&quot;aabcaabdaab&quot;
+<pre>
+<strong>输入：</strong>"aabcaabdaab"
 <strong>输出：</strong>3
-<strong>解释：</strong>最长的重复子串为 &quot;aab&quot;，出现 3 次。
+<strong>解释：</strong>最长的重复子串为 "aab"，出现 3 次。
 </pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre><strong>输入：</strong>&quot;aaaaa&quot;
-<strong>输出：</strong>4
-<strong>解释：</strong>最长的重复子串为 &quot;aaaa&quot;，出现 2 次。</pre>
 
 <p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
-<ol>
-	<li>字符串&nbsp;<code>S</code>&nbsp;仅包含从&nbsp;<code>&#39;a&#39;</code> 到&nbsp;<code>&#39;z&#39;</code>&nbsp;的小写英文字母。</li>
-	<li><code>1 &lt;= S.length &lt;= 1500</code></li>
-</ol>
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 2000</code></li>
+	<li>字符串&nbsp;<code>s</code>&nbsp;仅包含从&nbsp;<code>'a'</code> 到&nbsp;<code>'z'</code>&nbsp;的小写英文字母。</li>
+</ul>
+
+<!-- description:end -->
 
 ## 解法
 
+<!-- solution:start -->
+
 ### 方法一：动态规划
 
-定义 $dp[i][j]$ 表示以 $s[i]$ 和 $s[j]$ 结尾的最长重复子串的长度。状态转移方程为：
+定义 $dp[i][j]$ 表示以 $s[i]$ 和 $s[j]$ 结尾的最长重复子串 🔒 的长度。状态转移方程为：
 
 $$
 dp[i][j]=
@@ -69,9 +83,11 @@ $$
 
 相似题目：
 
--   [1044. 最长重复子串](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1044.Longest%20Duplicate%20Substring/README.md)
+-   [1044. 最长重复子串 🔒](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1044.Longest%20Duplicate%20Substring/README.md)
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -86,6 +102,8 @@ class Solution:
                     ans = max(ans, dp[i][j])
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -106,6 +124,8 @@ class Solution {
 }
 ```
 
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -125,6 +145,8 @@ public:
     }
 };
 ```
+
+#### Go
 
 ```go
 func longestRepeatingSubstring(s string) int {
@@ -152,4 +174,6 @@ func longestRepeatingSubstring(s string) int {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

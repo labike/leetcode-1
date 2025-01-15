@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/3000-3099/3016.Minimum%20Number%20of%20Pushes%20to%20Type%20Word%20II/README_EN.md
+rating: 1533
+source: Weekly Contest 381 Q3
+tags:
+    - Greedy
+    - Hash Table
+    - String
+    - Counting
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [3016. Minimum Number of Pushes to Type Word II](https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-ii)
 
 [中文文档](/solution/3000-3099/3016.Minimum%20Number%20of%20Pushes%20to%20Type%20Word%20II/README.md)
 
-<!-- tags:Greedy,Hash Table,String,Counting,Sorting -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>word</code> containing lowercase English letters.</p>
 
@@ -33,7 +49,7 @@ It can be shown that no other mapping can provide a lower cost.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/3000-3099/3016.Minimum%20Number%20of%20Pushes%20to%20Type%20Word%20II/images/keypadv2e2.png" style="width: 329px; height: 313px;" />
+<img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/3000-3099/3016.Minimum%20Number%20of%20Pushes%20to%20Type%20Word%20II/images/edited.png" style="width: 329px; height: 313px;" />
 <pre>
 <strong>Input:</strong> word = &quot;xyzxyzxyzxyz&quot;
 <strong>Output:</strong> 12
@@ -73,7 +89,11 @@ It can be shown that no other mapping can provide a lower cost.
 	<li><code>word</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Greedy Algorithm + Sorting
 
@@ -82,6 +102,8 @@ We use a hash table or array $cnt$ to count the number of occurrences of each le
 The time complexity is $O(n + |\Sigma| \times \log |\Sigma|)$, and the space complexity is $O(|\Sigma|)$. Here, $n$ is the length of the string $word$, and $\Sigma$ is the set of letters that appear in the string $word$.
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -92,6 +114,8 @@ class Solution:
             ans += (i // 8 + 1) * x
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
@@ -109,6 +133,8 @@ class Solution {
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -128,6 +154,8 @@ public:
 };
 ```
 
+#### Go
+
 ```go
 func minimumPushes(word string) (ans int) {
 	cnt := make([]int, 26)
@@ -141,6 +169,8 @@ func minimumPushes(word string) (ans int) {
 	return
 }
 ```
+
+#### TypeScript
 
 ```ts
 function minimumPushes(word: string): number {
@@ -157,6 +187,85 @@ function minimumPushes(word: string): number {
 }
 ```
 
+#### JavaScript
+
+```js
+function minimumPushes(word) {
+    const cnt = Array(26).fill(0);
+    for (const c of word) {
+        ++cnt[c.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    cnt.sort((a, b) => b - a);
+    let ans = 0;
+    for (let i = 0; i < 26; ++i) {
+        ans += (((i / 8) | 0) + 1) * cnt[i];
+    }
+    return ans;
+}
+```
+
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Priority Queue
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function minimumPushes(word: string): number {
+    const pq = new MaxPriorityQueue();
+    const cnt = new Map<string, number>();
+    let [i, res] = [0, 0];
+
+    for (const x of word) {
+        cnt.set(x, (cnt.get(x) ?? 0) + 1);
+    }
+
+    for (const [x, c] of cnt) {
+        pq.enqueue(x, c);
+    }
+
+    while (!pq.isEmpty()) {
+        const c = pq.dequeue().priority;
+        res += c * (((i++ / 8) | 0) + 1);
+    }
+
+    return res;
+}
+```
+
+#### JavaScript
+
+```js
+function minimumPushes(word) {
+    const pq = new MaxPriorityQueue();
+    const cnt = new Map();
+    let [i, res] = [0, 0];
+
+    for (const x of word) {
+        cnt.set(x, (cnt.get(x) ?? 0) + 1);
+    }
+
+    for (const [x, c] of cnt) {
+        pq.enqueue(x, c);
+    }
+
+    while (!pq.isEmpty()) {
+        const c = pq.dequeue().priority;
+        res += c * (((i++ / 8) | 0) + 1);
+    }
+
+    return res;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

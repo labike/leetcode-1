@@ -1,12 +1,20 @@
-# [2774. 数组的上界](https://leetcode.cn/problems/array-upper-bound)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2774.Array%20Upper%20Bound/README.md
+tags:
+    - JavaScript
+---
+
+<!-- problem:start -->
+
+# [2774. 数组的上界 🔒](https://leetcode.cn/problems/array-upper-bound)
 
 [English Version](/solution/2700-2799/2774.Array%20Upper%20Bound/README_EN.md)
 
-<!-- tags: -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写代码实现一个数组方法，任何数组都可以调用&nbsp;<code>upperBound()</code>&nbsp;方法，并返回给定目标数字的最后一个索引。<code>nums</code>&nbsp;是一个可能包含重复数字的按升序排序的数组。如果在数组中找不到目标数字，则返回-1。</p>
 
@@ -49,11 +57,17 @@
 
 <p><strong>进阶：</strong>你能编写一个时间复杂度为 O(log n) 的算法吗？</p>
 
+<!-- description:end -->
+
 ## 解法
+
+<!-- solution:start -->
 
 ### 方法一
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 declare global {
@@ -83,9 +97,15 @@ Array.prototype.upperBound = function (target: number) {
 
 <!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
 ### 方法二
 
 <!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 declare global {
@@ -105,4 +125,6 @@ Array.prototype.upperBound = function (target: number) {
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

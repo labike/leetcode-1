@@ -1,12 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2374.Node%20With%20Highest%20Edge%20Score/README.md
+rating: 1418
+source: 第 306 场周赛 Q2
+tags:
+    - 图
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [2374. 边积分最高的节点](https://leetcode.cn/problems/node-with-highest-edge-score)
 
 [English Version](/solution/2300-2399/2374.Node%20With%20Highest%20Edge%20Score/README_EN.md)
 
-<!-- tags:图,哈希表 -->
-
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个有向图，图中有 <code>n</code> 个节点，节点编号从 <code>0</code> 到 <code>n - 1</code> ，其中每个节点都 <strong>恰有一条</strong> 出边。</p>
 
@@ -51,49 +62,59 @@
 	<li><code>edges[i] != i</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-### 方法一：遍历计数
+<!-- solution:start -->
 
-定义 $cnt$，其中每个元素 $cnt[i]$ 表示到节点 $i$ 的所有节点编号之和。
+### 方法一：一次遍历
 
-最后找出 $cnt$ 中最大的元素 $cnt[i]$，返回 $i$。
+我们定义一个长度为 $n$ 的数组 $\textit{cnt}$，其中 $\textit{cnt}[i]$ 表示节点 $i$ 的边积分，初始时所有元素均为 $0$。定义一个答案变量 $\textit{ans}$，初始时为 $0$。
 
-时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是节点的数量。
+接下来，我们遍历数组 $\textit{edges}$，对于每个节点 $i$，以及它的出边节点 $j$，我们更新 $\textit{cnt}[j]$ 为 $\textit{cnt}[j] + i$。如果 $\textit{cnt}[\textit{ans}] < \textit{cnt}[j]$ 或者 $\textit{cnt}[\textit{ans}] = \textit{cnt}[j]$ 且 $j < \textit{ans}$，我们更新 $\textit{ans}$ 为 $j$。
+
+最后，返回 $\textit{ans}$ 即可。
+
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $\textit{edges}$ 的长度。
 
 <!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
     def edgeScore(self, edges: List[int]) -> int:
-        cnt = Counter()
-        for i, v in enumerate(edges):
-            cnt[v] += i
         ans = 0
-        for i in range(len(edges)):
-            if cnt[ans] < cnt[i]:
-                ans = i
+        cnt = [0] * len(edges)
+        for i, j in enumerate(edges):
+            cnt[j] += i
+            if cnt[ans] < cnt[j] or (cnt[ans] == cnt[j] and j < ans):
+                ans = j
         return ans
 ```
+
+#### Java
 
 ```java
 class Solution {
     public int edgeScore(int[] edges) {
         int n = edges.length;
         long[] cnt = new long[n];
-        for (int i = 0; i < n; ++i) {
-            cnt[edges[i]] += i;
-        }
         int ans = 0;
         for (int i = 0; i < n; ++i) {
-            if (cnt[ans] < cnt[i]) {
-                ans = i;
+            int j = edges[i];
+            cnt[j] += i;
+            if (cnt[ans] < cnt[j] || (cnt[ans] == cnt[j] && j < ans)) {
+                ans = j;
             }
         }
         return ans;
     }
 }
 ```
+
+#### C++
 
 ```cpp
 class Solution {
@@ -101,13 +122,12 @@ public:
     int edgeScore(vector<int>& edges) {
         int n = edges.size();
         vector<long long> cnt(n);
-        for (int i = 0; i < n; ++i) {
-            cnt[edges[i]] += i;
-        }
         int ans = 0;
         for (int i = 0; i < n; ++i) {
-            if (cnt[ans] < cnt[i]) {
-                ans = i;
+            int j = edges[i];
+            cnt[j] += i;
+            if (cnt[ans] < cnt[j] || (cnt[ans] == cnt[j] && j < ans)) {
+                ans = j;
             }
         }
         return ans;
@@ -115,40 +135,63 @@ public:
 };
 ```
 
+#### Go
+
 ```go
-func edgeScore(edges []int) int {
-	n := len(edges)
-	cnt := make([]int, n)
-	for i, v := range edges {
-		cnt[v] += i
-	}
-	ans := 0
-	for i, v := range cnt {
-		if cnt[ans] < v {
-			ans = i
+func edgeScore(edges []int) (ans int) {
+	cnt := make([]int, len(edges))
+	for i, j := range edges {
+		cnt[j] += i
+		if cnt[ans] < cnt[j] || (cnt[ans] == cnt[j] && j < ans) {
+			ans = j
 		}
 	}
-	return ans
+	return
 }
 ```
+
+#### TypeScript
 
 ```ts
 function edgeScore(edges: number[]): number {
     const n = edges.length;
-    const sum = new Array(n).fill(0);
-    for (let i = 0; i < n; i++) {
-        sum[edges[i]] += i;
-    }
-    let res = 0;
-    for (let i = 0; i < n; i++) {
-        if (sum[res] < sum[i]) {
-            res = i;
+    const cnt: number[] = Array(n).fill(0);
+    let ans: number = 0;
+    for (let i = 0; i < n; ++i) {
+        const j = edges[i];
+        cnt[j] += i;
+        if (cnt[ans] < cnt[j] || (cnt[ans] === cnt[j] && j < ans)) {
+            ans = j;
         }
     }
-    return res;
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn edge_score(edges: Vec<i32>) -> i32 {
+        let n = edges.len();
+        let mut cnt = vec![0_i64; n];
+        let mut ans = 0;
+
+        for (i, &j) in edges.iter().enumerate() {
+            let j = j as usize;
+            cnt[j] += i as i64;
+            if cnt[ans] < cnt[j] || (cnt[ans] == cnt[j] && j < ans) {
+                ans = j;
+            }
+        }
+
+        ans as i32
+    }
 }
 ```
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->

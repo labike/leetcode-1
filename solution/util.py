@@ -1,6 +1,8 @@
 import json
 import os
 import re
+import requests
+import yaml
 from typing import Tuple, List
 from urllib.parse import quote, unquote
 
@@ -12,6 +14,29 @@ def load_template(template_name: str) -> str:
         end_text = f"<!-- 这里是{template_name}结束位置 -->"
         content = re.search(f"{start_text}(.*?){end_text}", content, re.S).group(1)
         return content.strip()
+
+
+def load_ratings():
+    res = {}
+    if os.path.exists("rating.json"):
+        with open("rating.json", "r", encoding="utf-8") as f:
+            ratings = json.loads(f.read())
+            for item in ratings:
+                res[str(item["ID"])] = item
+
+    url = "https://zerotrac.github.io/leetcode_problem_rating/data.json"
+    try:
+        resp = requests.get(url)
+        if resp.status_code == 200:
+            ratings = resp.json()
+            for item in ratings:
+                res[str(item["ID"])] = item
+    except Exception as e:
+        print(f"Failed to fetch ratings: {e}")
+    return res
+
+
+rating_dict = load_ratings()
 
 
 readme_cn = load_template("readme_template")
@@ -29,9 +54,7 @@ contest_readme_en = load_template("contest_readme_template_en")
 category_readme_cn = load_template("category_readme_template")
 category_readme_en = load_template("category_readme_template_en")
 
-category_dict = {
-    "Database": "数据库",
-}
+category_dict = {"Database": "数据库"}
 
 
 def load_cookies() -> Tuple[str, str]:
@@ -138,6 +161,7 @@ def generate_readme(result):
 def generate_question_readme(result):
     for item in result:
         if not item["content_cn"] and not item["content_en"]:
+            print(f"Skip {item['frontend_question_id']} {item['title_cn']}")
             continue
         path = (
             f'./{item["sub_folder"]}/{item["frontend_question_id"]}.{item["title_en"]}'
@@ -150,29 +174,95 @@ def generate_question_readme(result):
         # choose the readme template
         category = item["category"]
         readme_template_cn, readme_template_en = select_templates(category)
+        paid_only = " 🔒" if item["paid_only"] else ""
+        rating_item = rating_dict.get(str(item["frontend_question_id"]))
+        rating = rating_item.get("Rating", 0) if rating_item else ""
+        source = (
+            rating_item.get("ContestID_zh") + " " + rating_item.get("ProblemIndex")
+            if rating_item
+            else ""
+        )
+        # 生成 metadata
+        """
+        ---
+        tags:
+          - 数组
+          - 哈希表
+        difficulty: 简单
+        rating: 1234
+        comments: true
+        edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0001.Two%20Sum/README.md
+        ---
+        """
+        cat = category_dict.get(category, category)
+        cat = cat.title() if cat and cat[0].islower() else cat
+        metadata = {
+            "tags": item["tags_cn"] or [cat],
+            "difficulty": item["difficulty_cn"],
+            "rating": rating,
+            "comments": True,
+            "edit_url": f'https://github.com/doocs/leetcode/edit/main{item["relative_path_cn"]}',
+            "source": source,
+        }
+        if not item["tags_cn"] or metadata["tags"] == ["Algorithms"]:
+            metadata.pop("tags")
+        if not rating:
+            metadata.pop("rating")
+        if not source:
+            metadata.pop("source")
+        yaml_metadata = yaml.dump(
+            metadata, default_flow_style=False, allow_unicode=True
+        )
+        metadata_section = f"---\n{yaml_metadata}---"
 
         # generate lc-cn problem readme
         with open(f"{path}/README.md", "w", encoding="utf-8") as f1:
             f1.write(
                 readme_template_cn.format(
+                    metadata_section,
                     int(item["frontend_question_id"]),
-                    item["title_cn"],
+                    item["title_cn"].strip() + paid_only,
                     item["url_cn"],
                     item["relative_path_en"],
-                    ",".join(item["tags_cn"]),
                     item["content_cn"].replace("leetcode-cn.com", "leetcode.cn"),
                 )
             )
+
+        source = (
+            rating_item.get("ContestID_en") + " " + rating_item.get("ProblemIndex")
+            if rating_item
+            else ""
+        )
+
+        cat = category.title() if category and category[0].islower() else category
+        metadata = {
+            "tags": item["tags_en"] or [cat],
+            "difficulty": item["difficulty_en"],
+            "rating": rating,
+            "comments": True,
+            "edit_url": f'https://github.com/doocs/leetcode/edit/main{item["relative_path_en"]}',
+            "source": source,
+        }
+        if not item["tags_cn"] or metadata["tags"] == ["Algorithms"]:
+            metadata.pop("tags")
+        if not rating:
+            metadata.pop("rating")
+        if not source:
+            metadata.pop("source")
+        yaml_metadata = yaml.dump(
+            metadata, default_flow_style=False, allow_unicode=True
+        )
+        metadata_section = f"---\n{yaml_metadata}---"
 
         # generate lc-en problem readme
         with open(f"{path}/README_EN.md", "w", encoding="utf-8") as f2:
             f2.write(
                 readme_template_en.format(
+                    metadata_section,
                     int(item["frontend_question_id"]),
-                    item["title_en"],
+                    item["title_en"].strip() + paid_only,
                     item["url_en"],
                     item["relative_path_cn"],
-                    ",".join(item["tags_en"]),
                     item["content_en"],
                 )
             )
@@ -262,59 +352,107 @@ def refresh(result):
     for question in result:
         front_question_id = question["frontend_question_id"]
         print(front_question_id)
-        title = question["title_cn"]
-        title_en = question["title_en"]
-        tags = ",".join(question["tags_cn"])
-        tags_en = ",".join(question["tags_en"])
+        paid_only = " 🔒" if question["paid_only"] else ""
 
         path_cn = unquote(str(question["relative_path_cn"]).replace("/solution", "."))
         path_en = unquote(str(question["relative_path_en"]).replace("/solution", "."))
 
-        with open(path_cn, "r", encoding="utf-8") as f1:
-            cn_content = f1.read()
+        try:
+            with open(path_cn, "r", encoding="utf-8") as f1:
+                cn_content = f1.read()
+        except Exception as e:
+            print(f"Failed to open {path_cn}: {e}")
+            continue
+        try:
+            with open(path_en, "r", encoding="utf-8") as f2:
+                en_content = f2.read()
+        except Exception as e:
+            print(f"Failed to open {path_en}: {e}")
+            continue
 
-        # update title
-        with open(path_en, "r", encoding="utf-8") as f2:
-            en_content = f2.read()
-        i = cn_content.index(". ")
-        j = cn_content.index("]")
-        cn_content = cn_content.replace(cn_content[i + 2 : j], title)
-        i = en_content.index(". ")
-        j = en_content.index("]")
-        en_content = en_content.replace(en_content[i + 2 : j], title_en)
+        category = question["category"]
 
-        # update tags
-        match = re.search(r"<!-- tags:(.*?) -->", cn_content)
-        if match:
-            # If tags exist, update them
-            cn_content = re.sub(
-                r"<!-- tags:(.*?) -->", f"<!-- tags:{tags} -->", cn_content
-            )
-        else:
-            # If tags do not exist, insert them before "题目描述"
-            cn_content = cn_content.replace(
-                "## 题目描述", f"<!-- tags:{tags} -->\n\n## 题目描述"
-            )
-        match = re.search(r"<!-- tags:(.*?) -->", en_content)
-        if match:
-            # If tags exist, update them
-            en_content = re.sub(
-                r"<!-- tags:(.*?) -->", f"<!-- tags:{tags_en} -->", en_content
-            )
-        else:
-            # If tags do not exist, insert them before "Description"
-            en_content = en_content.replace(
-                "## Description", f"<!-- tags:{tags_en} -->\n\n## Description"
-            )
+        readme_template_cn, readme_template_en = select_templates(category)
+        rating_item = rating_dict.get(str(front_question_id))
+        rating = int(rating_item.get("Rating", 0)) if rating_item else ""
+        source = (
+            rating_item.get("ContestID_zh") + " " + rating_item.get("ProblemIndex")
+            if rating_item
+            else ""
+        )
+        cat = category_dict.get(category, category)
+        cat = cat.title() if cat and cat[0].islower() else cat
+        metadata = {
+            "tags": question["tags_cn"] or [cat],
+            "difficulty": question["difficulty_cn"],
+            "rating": rating,
+            "comments": True,
+            "edit_url": f'https://github.com/doocs/leetcode/edit/main{question["relative_path_cn"]}',
+            "source": source,
+        }
 
-        # update question content
-        old_content = re.search(
-            "<!-- 这里写题目描述 -->(.*?)## 解法", cn_content, re.S
-        ).group(1)
-        if question.get("content_cn"):
-            cn_content = cn_content.replace(
-                old_content, "\n\n" + question["content_cn"] + "\n\n"
-            ).replace("\n\n    <ul>", "\n    <ul>")
+        if (not question["tags_cn"] and not cat) or metadata["tags"] == ["Algorithms"]:
+            metadata.pop("tags")
+        if not rating:
+            metadata.pop("rating")
+        if not source:
+            metadata.pop("source")
+        yaml_metadata = yaml.dump(
+            metadata, default_flow_style=False, allow_unicode=True
+        )
+        metadata_section = f"---\n{yaml_metadata}---"
+        readme_template_cn = readme_template_cn.format(
+            metadata_section,
+            int(question["frontend_question_id"]),
+            question["title_cn"].strip() + paid_only,
+            question["url_cn"],
+            question["relative_path_en"],
+            question["content_cn"].replace("leetcode-cn.com", "leetcode.cn"),
+        )
+        cn_content = (
+            readme_template_cn[: readme_template_cn.index("## 解法")]
+            + cn_content[cn_content.index("## 解法") :]
+        )
+
+        source = (
+            rating_item.get("ContestID_en") + " " + rating_item.get("ProblemIndex")
+            if rating_item
+            else ""
+        )
+
+        cat = category.title() if category and category[0].islower() else category
+        metadata = {
+            "tags": question["tags_en"] or [cat],
+            "difficulty": question["difficulty_en"],
+            "rating": rating,
+            "comments": True,
+            "edit_url": f'https://github.com/doocs/leetcode/edit/main{question["relative_path_en"]}',
+            "source": source,
+        }
+        if (not question["tags_en"] and not [category]) or metadata["tags"] == [
+            "Algorithms"
+        ]:
+            metadata.pop("tags")
+        if not rating:
+            metadata.pop("rating")
+        if not source:
+            metadata.pop("source")
+        yaml_metadata = yaml.dump(
+            metadata, default_flow_style=False, allow_unicode=True
+        )
+        metadata_section = f"---\n{yaml_metadata}---"
+        readme_template_en = readme_template_en.format(
+            metadata_section,
+            int(question["frontend_question_id"]),
+            question["title_en"].strip() + paid_only,
+            question["url_en"],
+            question["relative_path_cn"],
+            question["content_en"],
+        )
+        en_content = (
+            readme_template_en[: readme_template_en.index("## Solutions")]
+            + en_content[en_content.index("## Solutions") :]
+        )
 
         # replace image url to cdn link
         for url in pattern.findall(cn_content) or []:
@@ -331,14 +469,6 @@ def refresh(result):
         cn_content = cn_content.replace("leetcode-cn.com", "leetcode.cn")
         with open(path_cn, "w", encoding="utf-8") as f1:
             f1.write(cn_content)
-
-        old_content = re.search(
-            "## Description(.*?)## Solutions", en_content, re.S
-        ).group(1)
-        if question.get("content_en"):
-            en_content = en_content.replace(
-                old_content, "\n\n" + question["content_en"] + "\n\n"
-            ).replace("\n\n    <ul>", "\n    <ul>")
 
         for url in pattern.findall(en_content) or []:
             image_name = (
@@ -359,9 +489,10 @@ def generate_contest_readme(result: List):
     result.sort(key=lambda x: -x[0])
     content_cn = "\n\n".join(c[1] for c in result)
     content_en = "\n\n".join(c[2] for c in result)
-    content_cn = contest_readme_cn.format(content_cn)
+    metadata_section = "---\ncomments: true\n---"
+    content_cn = contest_readme_cn.format(metadata_section, content_cn)
     with open("./CONTEST_README.md", "w", encoding="utf-8") as f:
         f.write(content_cn)
-    content_en = contest_readme_en.format(content_en)
+    content_en = contest_readme_en.format(metadata_section, content_en)
     with open("./CONTEST_README_EN.md", "w", encoding="utf-8") as f:
         f.write(content_en)

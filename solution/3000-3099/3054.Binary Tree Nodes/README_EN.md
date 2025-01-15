@@ -1,10 +1,20 @@
-# [3054. Binary Tree Nodes](https://leetcode.com/problems/binary-tree-nodes)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/3000-3099/3054.Binary%20Tree%20Nodes/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [3054. Binary Tree Nodes 🔒](https://leetcode.com/problems/binary-tree-nodes)
 
 [中文文档](/solution/3000-3099/3054.Binary%20Tree%20Nodes/README.md)
 
-<!-- tags:Database -->
-
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <font face="monospace"><code>Tree</code></font></p>
 
@@ -62,11 +72,18 @@ Tree table:
 +---+-------+
 <strong>Explanation:</strong> 
 - Node 5 is the root node since it has no parent node.
-- Nodes 1, 3, 6, and 8 are leaf nodes because they don&#39;t have any child nodes.
-- Nodes 2, 4, and 7 are inner nodes as they serve as parents to some of the nodes in the structure.
+- Nodes 1, 3, 6, and 9 are leaf nodes because they don&#39;t have any child nodes.
+- Nodes 2, and 8 are inner nodes as they serve as parents to some of the nodes in the structure.
 </pre>
 
+<p>&nbsp;</p>
+<p><strong>Note:</strong> This question is the same as <a href="https://leetcode.com/problems/tree-node/description/" target="_blank"> 608: Tree Node.</a></p>
+
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
 
 ### Solution 1: Left Join
 
@@ -75,6 +92,8 @@ If a node's parent is null, then it is a root node; if a node is not the parent 
 Therefore, we use left join to join the `Tree` table twice, with the join condition being `t1.N = t2.P`. If `t1.P` is null, then `t1.N` is a root node; if `t2.P` is null, then `t1.N` is a leaf node; otherwise, `t1.N` is an internal node.
 
 <!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -89,4 +108,6 @@ ORDER BY 1;
 
 <!-- tabs:end -->
 
-<!-- end -->
+<!-- solution:end -->
+
+<!-- problem:end -->
